@@ -13748,8 +13748,14 @@ To explicitly enable LastLog in SSH, add or correct the following line in
 <td xml:lang="en-US">The <code>RekeyLimit</code> parameter specifies how often
 the session key of the is renegotiated, both in terms of
 amount of data that may be transmitted and the time
-elapsed. To decrease the default limits, put line
-<code>RekeyLimit <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_rekey_limit_size"></xccdf-1.1:sub> <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_rekey_limit_time"></xccdf-1.1:sub></code> to file <code>/etc/ssh/sshd_config</code>.</td>
+elapsed.<br>
+To decrease the default limits, add or correct the following line in
+
+
+<code>/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf</code>:
+
+<pre>RekeyLimit <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_rekey_limit_size"></xccdf-1.1:sub> <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_rekey_limit_time"></xccdf-1.1:sub></pre>
+</td>
 </tr>
 <tr>
 <td>CCE-90811-1</td>
@@ -14039,14 +14045,6 @@ This prevents the system from being accidentally or maliciously booted into a <c
 mode. To do so, run the following command:
 
 <pre>sudo dnf remove xorg-x11-server-Xorg xorg-x11-server-common xorg-x11-server-utils xorg-x11-server-Xwayland</pre>
-
-Additionally, setting the system's default target to
-<code>multi-user.target</code> will prevent automatic startup of the X server.
-To do so, run:
-<pre>$ systemctl set-default multi-user.target</pre>
-You should see the following output:
-<pre>Removed symlink /etc/systemd/system/default.target.
-Created symlink from /etc/systemd/system/default.target to /usr/lib/systemd/system/multi-user.target.</pre>
 </td>
 </tr>
 <tr>

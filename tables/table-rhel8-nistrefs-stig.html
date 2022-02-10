@@ -4773,14 +4773,6 @@ This prevents the system from being accidentally or maliciously booted into a <t
 mode. To do so, run the following command:
 
 <pre>sudo yum remove xorg-x11-server-Xorg xorg-x11-server-common xorg-x11-server-utils xorg-x11-server-Xwayland</pre>
-
-Additionally, setting the system's default target to
-<tt>multi-user.target</tt> will prevent automatic startup of the X server.
-To do so, run:
-<pre>$ systemctl set-default multi-user.target</pre>
-You should see the following output:
-<pre>Removed symlink /etc/systemd/system/default.target.
-Created symlink from /etc/systemd/system/default.target to /usr/lib/systemd/system/multi-user.target.</pre>
   </td>
   <td xml:lang="en-US">
 Unnecessary service packages must not be installed to decrease the attack surface of the system. X windows has a long history of security
@@ -8134,8 +8126,13 @@ feeds random data from hardware device to kernel random device.
 The <tt>RekeyLimit</tt> parameter specifies how often
 the session key of the is renegotiated, both in terms of
 amount of data that may be transmitted and the time
-elapsed. To decrease the default limits, put line
-<tt>RekeyLimit <tt>1G</tt> <tt>1hour</tt></tt> to file <tt>/etc/ssh/sshd_config</tt>.
+elapsed.<br/>
+To decrease the default limits, add or correct the following line in
+
+
+<tt>/etc/ssh/sshd_config</tt>:
+
+<pre>RekeyLimit <tt>1G</tt> <tt>1hour</tt></pre>
   </td>
   <td xml:lang="en-US">
 By decreasing the limit based on the amount of data and enabling

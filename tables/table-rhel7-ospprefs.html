@@ -2601,8 +2601,13 @@ The Common Criteria requirements specify that certain parameters for OpenSSH Ser
 The <tt>RekeyLimit</tt> parameter specifies how often
 the session key of the is renegotiated, both in terms of
 amount of data that may be transmitted and the time
-elapsed. To decrease the default limits, put line
-<tt>RekeyLimit <abbr title="$var_rekey_limit_size"><tt>512M</tt></abbr> <abbr title="$var_rekey_limit_time"><tt>1h</tt></abbr></tt> to file <tt>/etc/ssh/sshd_config</tt>.
+elapsed.<br/>
+To decrease the default limits, add or correct the following line in
+
+
+<tt>/etc/ssh/sshd_config</tt>:
+
+<pre>RekeyLimit <abbr title="$var_rekey_limit_size"><tt>512M</tt></abbr> <abbr title="$var_rekey_limit_time"><tt>1h</tt></abbr></pre>
   </td>
   <td xml:lang="en-US">
 By decreasing the limit based on the amount of data and enabling

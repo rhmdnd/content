@@ -2130,13 +2130,21 @@ Encryption provides a means to secure the remote connection to prevent unauthori
 <td xml:lang="en-US">The <code>RekeyLimit</code> parameter specifies how often
 the session key of the is renegotiated, both in terms of
 amount of data that may be transmitted and the time
-elapsed. To decrease the default limits, put line
-<code>RekeyLimit <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_rekey_limit_size"></xccdf-1.1:sub> <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_rekey_limit_time"></xccdf-1.1:sub></code> to file <code>/etc/ssh/sshd_config</code>.</td>
+elapsed.<br>
+To decrease the default limits, add or correct the following line in
+
+
+<code>/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf</code>:
+
+<pre>RekeyLimit <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_rekey_limit_size"></xccdf-1.1:sub> <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_rekey_limit_time"></xccdf-1.1:sub></pre>
+</td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system implements DoD-approved encryption to protect the confidentiality of remote access sessions. If it does not, this is a finding.</td>
 <td>To check if RekeyLimit is set correctly, run the
 following command:
-$ sudo grep RekeyLimit /etc/ssh/sshd_config
+
+$ sudo grep RekeyLimit /etc/ssh/sshd_config /etc/ssh/sshd_config.d/*
+
 If configured properly, output should be
 RekeyLimit  
       Is it the case that it is commented out or is not set?
@@ -2145,8 +2153,13 @@ RekeyLimit
 <td>The RekeyLimit parameter specifies how often
 the session key of the is renegotiated, both in terms of
 amount of data that may be transmitted and the time
-elapsed. To decrease the default limits, put line
-RekeyLimit   to file /etc/ssh/sshd_config.</td>
+elapsed.
+To decrease the default limits, add or correct the following line in
+
+
+/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf:
+
+RekeyLimit  </td>
 <td>medium</td>
 <td></td>
 <td></td>
@@ -17358,7 +17371,7 @@ to prevent a run of (<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/
 <td>Verify the operating system requires the change of at least eight of the total number of characters when passwords are changed. If it does not, this is a finding.</td>
 <td>To check the value for maximum consecutive repeating characters, run the following command:
 $ grep maxclassrepeat /etc/security/pwquality.conf
-For DoD systems, the output should show maxclassrepeat=4.
+For DoD systems, the output should show maxclassrepeat=4 or less but greater than zero.
       Is it the case that that is not the case?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3753r557609_fix"> Configure the operating system to require the change of at least eight of the total number of characters when passwords are changed.</fixtext></td>
@@ -20841,7 +20854,8 @@ Output will be similar to:
 /dev/sda2: UUID=" bc98d7ef-6g54-321h-1d24-9870de2ge1a2
 " TYPE="crypto_LUKS"
 
-Pseudo-file systems, such as /proc, /sys, and tmpfs, are not required to use disk encryption and are not a finding.
+The boot partition and pseudo-file systems, such as /proc, /sys, and tmpfs,
+are not required to use disk encryption and are not a finding.
       Is it the case that partitions do not have a type of crypto_LUKS?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3786r557229_fix">Configure the operating system to protect the confidentiality and integrity of all information at rest.</fixtext></td>
@@ -33599,7 +33613,8 @@ Output will be similar to:
 /dev/sda2: UUID=" bc98d7ef-6g54-321h-1d24-9870de2ge1a2
 " TYPE="crypto_LUKS"
 
-Pseudo-file systems, such as /proc, /sys, and tmpfs, are not required to use disk encryption and are not a finding.
+The boot partition and pseudo-file systems, such as /proc, /sys, and tmpfs,
+are not required to use disk encryption and are not a finding.
       Is it the case that partitions do not have a type of crypto_LUKS?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3870r375300_fix">Configure the operating system to implement cryptographic mechanisms to prevent unauthorized modification of all information at rest on all operating system components.</fixtext></td>
@@ -33686,7 +33701,8 @@ Output will be similar to:
 /dev/sda2: UUID=" bc98d7ef-6g54-321h-1d24-9870de2ge1a2
 " TYPE="crypto_LUKS"
 
-Pseudo-file systems, such as /proc, /sys, and tmpfs, are not required to use disk encryption and are not a finding.
+The boot partition and pseudo-file systems, such as /proc, /sys, and tmpfs,
+are not required to use disk encryption and are not a finding.
       Is it the case that partitions do not have a type of crypto_LUKS?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3871r375303_fix">Configure the operating system to implement cryptographic mechanisms to prevent unauthorized disclosure of all information at rest on all operating system components.</fixtext></td>
@@ -51947,13 +51963,21 @@ Configuration settings are the set of parameters that can be changed in hardware
 <td xml:lang="en-US">The <code>RekeyLimit</code> parameter specifies how often
 the session key of the is renegotiated, both in terms of
 amount of data that may be transmitted and the time
-elapsed. To decrease the default limits, put line
-<code>RekeyLimit <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_rekey_limit_size"></xccdf-1.1:sub> <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_rekey_limit_time"></xccdf-1.1:sub></code> to file <code>/etc/ssh/sshd_config</code>.</td>
+elapsed.<br>
+To decrease the default limits, add or correct the following line in
+
+
+<code>/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf</code>:
+
+<pre>RekeyLimit <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_rekey_limit_size"></xccdf-1.1:sub> <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_rekey_limit_time"></xccdf-1.1:sub></pre>
+</td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system is configured in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs. If it is not, this is a finding.</td>
 <td>To check if RekeyLimit is set correctly, run the
 following command:
-$ sudo grep RekeyLimit /etc/ssh/sshd_config
+
+$ sudo grep RekeyLimit /etc/ssh/sshd_config /etc/ssh/sshd_config.d/*
+
 If configured properly, output should be
 RekeyLimit  
       Is it the case that it is commented out or is not set?
@@ -51962,8 +51986,13 @@ RekeyLimit
 <td>The RekeyLimit parameter specifies how often
 the session key of the is renegotiated, both in terms of
 amount of data that may be transmitted and the time
-elapsed. To decrease the default limits, put line
-RekeyLimit   to file /etc/ssh/sshd_config.</td>
+elapsed.
+To decrease the default limits, add or correct the following line in
+
+
+/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf:
+
+RekeyLimit  </td>
 <td>medium</td>
 <td></td>
 <td></td>
@@ -52038,14 +52067,6 @@ This prevents the system from being accidentally or maliciously booted into a <c
 mode. To do so, run the following command:
 
 <pre>sudo dnf remove xorg-x11-server-Xorg xorg-x11-server-common xorg-x11-server-utils xorg-x11-server-Xwayland</pre>
-
-Additionally, setting the system's default target to
-<code>multi-user.target</code> will prevent automatic startup of the X server.
-To do so, run:
-<pre>$ systemctl set-default multi-user.target</pre>
-You should see the following output:
-<pre>Removed symlink /etc/systemd/system/default.target.
-Created symlink from /etc/systemd/system/default.target to /usr/lib/systemd/system/multi-user.target.</pre>
 </td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system is configured in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs. If it is not, this is a finding.</td>
@@ -52066,15 +52087,7 @@ If X Windows is not installed then the system cannot boot into graphical user mo
 This prevents the system from being accidentally or maliciously booted into a graphical.target
 mode. To do so, run the following command:
 
-sudo dnf remove xorg-x11-server-Xorg xorg-x11-server-common xorg-x11-server-utils xorg-x11-server-Xwayland
-
-Additionally, setting the system's default target to
-multi-user.target will prevent automatic startup of the X server.
-To do so, run:
-$ systemctl set-default multi-user.target
-You should see the following output:
-Removed symlink /etc/systemd/system/default.target.
-Created symlink from /etc/systemd/system/default.target to /usr/lib/systemd/system/multi-user.target.</td>
+sudo dnf remove xorg-x11-server-Xorg xorg-x11-server-common xorg-x11-server-utils xorg-x11-server-Xwayland</td>
 <td>medium</td>
 <td></td>
 <td></td>
