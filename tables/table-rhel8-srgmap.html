@@ -6342,22 +6342,7 @@ To enable FIPS mode, run the following command:
 Some maintenance and test tools are either standalone devices with their own operating systems or are applications bundled with an operating system.
 
 Nonlocal maintenance and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network (e.g., the Internet) or an internal network. Local maintenance and diagnostic activities are those activities carried out by individuals physically present at the information system or information system component and not communicating across a network connection.</td>
-<td><table><tr>
-<td>Set SSH Idle Timeout Interval</td>
-<td xml:lang="en-US">SSH allows administrators to set an idle timeout interval. After this interval
-has passed, the idle user will be automatically logged out.
-<br><br>
-To set an idle timeout interval, edit the following line in <code>/etc/ssh/sshd_config</code> as
-follows:
-<pre>ClientAliveInterval <b><xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="sshd_idle_timeout_value"></xccdf-1.1:sub></b></pre>
-<br><br>
-The timeout <b>interval</b> is given in seconds. For example, have a timeout
-of 10 minutes, set <b>interval</b> to 600.
-<br><br>
-If a shorter timeout has already been set for the login shell, that value will
-preempt any SSH setting made in <code>/etc/ssh/sshd_config</code>. Keep in mind that
-some processes may stop SSH  from correctly detecting that the user is idle.</td>
-</tr></table></td>
+<td></td>
 </tr>
 <tr>
 <td>V-56835</td>
@@ -6505,40 +6490,7 @@ Managing excess capacity ensures that sufficient capacity is available to counte
 <td>Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element. 
 
 Terminating network connections associated with communications sessions includes, for example, de-allocating associated TCP/IP address/port pairs at the operating system level, and de-allocating networking assignments at the application level if multiple application sessions are using a single operating system-level network connection. This does not mean that the operating system terminates all sessions or network access; it only ends the inactive session and releases the resources associated with that session.</td>
-<td>
-<table><tr>
-<td>Set SSH Idle Timeout Interval</td>
-<td xml:lang="en-US">SSH allows administrators to set an idle timeout interval. After this interval
-has passed, the idle user will be automatically logged out.
-<br><br>
-To set an idle timeout interval, edit the following line in <code>/etc/ssh/sshd_config</code> as
-follows:
-<pre>ClientAliveInterval <b><xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="sshd_idle_timeout_value"></xccdf-1.1:sub></b></pre>
-<br><br>
-The timeout <b>interval</b> is given in seconds. For example, have a timeout
-of 10 minutes, set <b>interval</b> to 600.
-<br><br>
-If a shorter timeout has already been set for the login shell, that value will
-preempt any SSH setting made in <code>/etc/ssh/sshd_config</code>. Keep in mind that
-some processes may stop SSH  from correctly detecting that the user is idle.</td>
-</tr></table>
-<table><tr>
-<td>Set SSH Client Alive Count Max to zero</td>
-<td xml:lang="en-US">The SSH server sends at most <code>ClientAliveCountMax</code> messages
-during a SSH session and waits for a response from the SSH client.
-The option <code>ClientAliveInterval</code> configures timeout after
-each <code>ClientAliveCountMax</code> message. If the SSH server does not
-receive a response from the client, then the connection is considered idle
-and terminated.
-
-To ensure the SSH idle timeout occurs precisely when the
-<code>ClientAliveInterval</code> is set, set the <code>ClientAliveCountMax</code> to
-value of <code>0</code> in
-
-
-<code>/etc/ssh/sshd_config</code>:</td>
-</tr></table>
-</td>
+<td></td>
 </tr>
 <tr>
 <td>V-56869</td>
@@ -7729,40 +7681,7 @@ Session termination terminates all processes associated with a user's logical se
 Conditions or trigger events requiring automatic session termination can include, for example, organization-defined periods of user inactivity, targeted responses to certain types of incidents, and time-of-day restrictions on information system use.
 
 This capability is typically reserved for specific operating system functionality where the system owner, data owner, or organization requires additional assurance.</td>
-<td>
-<table><tr>
-<td>Set SSH Idle Timeout Interval</td>
-<td xml:lang="en-US">SSH allows administrators to set an idle timeout interval. After this interval
-has passed, the idle user will be automatically logged out.
-<br><br>
-To set an idle timeout interval, edit the following line in <code>/etc/ssh/sshd_config</code> as
-follows:
-<pre>ClientAliveInterval <b><xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="sshd_idle_timeout_value"></xccdf-1.1:sub></b></pre>
-<br><br>
-The timeout <b>interval</b> is given in seconds. For example, have a timeout
-of 10 minutes, set <b>interval</b> to 600.
-<br><br>
-If a shorter timeout has already been set for the login shell, that value will
-preempt any SSH setting made in <code>/etc/ssh/sshd_config</code>. Keep in mind that
-some processes may stop SSH  from correctly detecting that the user is idle.</td>
-</tr></table>
-<table><tr>
-<td>Set SSH Client Alive Count Max to zero</td>
-<td xml:lang="en-US">The SSH server sends at most <code>ClientAliveCountMax</code> messages
-during a SSH session and waits for a response from the SSH client.
-The option <code>ClientAliveInterval</code> configures timeout after
-each <code>ClientAliveCountMax</code> message. If the SSH server does not
-receive a response from the client, then the connection is considered idle
-and terminated.
-
-To ensure the SSH idle timeout occurs precisely when the
-<code>ClientAliveInterval</code> is set, set the <code>ClientAliveCountMax</code> to
-value of <code>0</code> in
-
-
-<code>/etc/ssh/sshd_config</code>:</td>
-</tr></table>
-</td>
+<td></td>
 </tr>
 <tr>
 <td>V-57209</td>
@@ -10890,22 +10809,7 @@ Crypto policies may be customized by crypto policy modules, in which case it is 
 <td><i>TBD - Assigned by DISA after STIG release</i></td>
 <td>The operating system must verify remote disconnection at the termination of nonlocal maintenance and diagnostic sessions, when used for nonlocal maintenance sessions.</td>
 <td>If the remote connection is not closed and verified as closed, the session may remain open and be exploited by an attacker; this is referred to as a zombie session. Remote connections must be disconnected and verified as disconnected when nonlocal maintenance sessions have been terminated and are no longer available for use.</td>
-<td><table><tr>
-<td>Set SSH Idle Timeout Interval</td>
-<td xml:lang="en-US">SSH allows administrators to set an idle timeout interval. After this interval
-has passed, the idle user will be automatically logged out.
-<br><br>
-To set an idle timeout interval, edit the following line in <code>/etc/ssh/sshd_config</code> as
-follows:
-<pre>ClientAliveInterval <b><xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="sshd_idle_timeout_value"></xccdf-1.1:sub></b></pre>
-<br><br>
-The timeout <b>interval</b> is given in seconds. For example, have a timeout
-of 10 minutes, set <b>interval</b> to 600.
-<br><br>
-If a shorter timeout has already been set for the login shell, that value will
-preempt any SSH setting made in <code>/etc/ssh/sshd_config</code>. Keep in mind that
-some processes may stop SSH  from correctly detecting that the user is idle.</td>
-</tr></table></td>
+<td></td>
 </tr>
 <tr>
 <td>SV-71043</td>

@@ -1876,31 +1876,6 @@ lack of prompt attention to patching could result in a system compromise.
   <td></td>
 </tr>
 <tr>
-  <td>AC-2(5)<br/>AC-12<br/>AC-17(a)<br/>SC-10<br/>CM-6(a)</td>
-  <td>CCE-83405-1</td>
-  <td>Set SSH Client Alive Count Max to zero</td>
-  <td xml:lang="en-US">
-The SSH server sends at most <tt>ClientAliveCountMax</tt> messages
-during a SSH session and waits for a response from the SSH client.
-The option <tt>ClientAliveInterval</tt> configures timeout after
-each <tt>ClientAliveCountMax</tt> message. If the SSH server does not
-receive a response from the client, then the connection is considered idle
-and terminated.
-
-To ensure the SSH idle timeout occurs precisely when the
-<tt>ClientAliveInterval</tt> is set, set the <tt>ClientAliveCountMax</tt> to
-value of <tt>0</tt> in
-
-
-<tt>/etc/ssh/sshd_config</tt>:
-  </td>
-  <td xml:lang="en-US">
-This ensures a user login will be terminated as soon as the <tt>ClientAliveInterval</tt>
-is reached.
-  </td>
-  <td></td>
-</tr>
-<tr>
   <td>SI-2(6)<br/>CM-11(a)<br/>CM-11(b)<br/>CM-6(a)</td>
   <td>CCE-82476-3</td>
   <td>Ensure yum Removes Previous Package Versions</td>
@@ -4537,32 +4512,6 @@ If other users have access to modify user-specific SSH configuration files, they
 may be able to log into the system as another user.
   </td>
   <td></td>
-</tr>
-<tr>
-  <td>CM-6(a)<br/>AC-17(a)<br/>AC-2(5)<br/>AC-12<br/>AC-17(a)<br/>SC-10<br/>CM-6(a)</td>
-  <td>CCE-80906-1</td>
-  <td>Set SSH Idle Timeout Interval</td>
-  <td xml:lang="en-US">
-SSH allows administrators to set an idle timeout interval. After this interval
-has passed, the idle user will be automatically logged out.
-<br /><br />
-To set an idle timeout interval, edit the following line in <tt>/etc/ssh/sshd_config</tt> as
-follows:
-<pre>ClientAliveInterval <b><tt>10_minutes</tt></b></pre>
-<br/><br/>
-The timeout <b>interval</b> is given in seconds. For example, have a timeout
-of 10 minutes, set <b>interval</b> to 600.
-<br /><br />
-If a shorter timeout has already been set for the login shell, that value will
-preempt any SSH setting made in <tt>/etc/ssh/sshd_config</tt>. Keep in mind that
-some processes may stop SSH  from correctly detecting that the user is idle.
-  </td>
-  <td xml:lang="en-US">
-Terminating an idle ssh session within a short time period reduces the window of
-opportunity for unauthorized personnel to take control of a management session
-enabled on the console or console port that has been let unattended.
-  </td>
-  <td>sshd_idle_timeout_value=10_minutes</td>
 </tr>
 <tr>
   <td>CM-6(b)</td>

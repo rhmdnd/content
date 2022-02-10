@@ -7888,59 +7888,6 @@ To decrease the default limits, add or correct the following line in
 <td></td>
 </tr>
 <tr>
-<td>sshd_set_idle_timeout</td>
-<td>medium</td>
-<td>Set SSH Idle Timeout Interval</td>
-<td xml:lang="en-US">Terminating an idle ssh session within a short time period reduces the window of
-opportunity for unauthorized personnel to take control of a management session
-enabled on the console or console port that has been let unattended.</td>
-<td xml:lang="en-US">SSH allows administrators to set an idle timeout interval. After this interval
-has passed, the idle user will be automatically logged out.
-<br><br>
-To set an idle timeout interval, edit the following line in <code>/etc/ssh/sshd_config</code> as
-follows:
-<pre>ClientAliveInterval <b><xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="sshd_idle_timeout_value"></xccdf-1.1:sub></b></pre>
-<br><br>
-The timeout <b>interval</b> is given in seconds. For example, have a timeout
-of 10 minutes, set <b>interval</b> to 600.
-<br><br>
-If a shorter timeout has already been set for the login shell, that value will
-preempt any SSH setting made in <code>/etc/ssh/sshd_config</code>. Keep in mind that
-some processes may stop SSH  from correctly detecting that the user is idle.</td>
-<td></td>
-<td>SRG-OS-000126-GPOS-00066<br>SRG-OS-000163-GPOS-00072<br>SRG-OS-000279-GPOS-00109<br>
-</td>
-<td>CCI-000879<br>CCI-001133<br>CCI-002361<br>
-</td>
-<td></td>
-</tr>
-<tr>
-<td>sshd_set_keepalive_0</td>
-<td>medium</td>
-<td>Set SSH Client Alive Count Max to zero</td>
-<td xml:lang="en-US">This ensures a user login will be terminated as soon as the <code>ClientAliveInterval</code>
-is reached.</td>
-<td xml:lang="en-US">The SSH server sends at most <code>ClientAliveCountMax</code> messages
-during a SSH session and waits for a response from the SSH client.
-The option <code>ClientAliveInterval</code> configures timeout after
-each <code>ClientAliveCountMax</code> message. If the SSH server does not
-receive a response from the client, then the connection is considered idle
-and terminated.
-
-To ensure the SSH idle timeout occurs precisely when the
-<code>ClientAliveInterval</code> is set, set the <code>ClientAliveCountMax</code> to
-value of <code>0</code> in
-
-
-<code>/etc/ssh/sshd_config</code>:</td>
-<td></td>
-<td>SRG-OS-000126-GPOS-00066<br>SRG-OS-000163-GPOS-00072<br>SRG-OS-000279-GPOS-00109<br>
-</td>
-<td>CCI-000879<br>CCI-001133<br>CCI-002361<br>
-</td>
-<td></td>
-</tr>
-<tr>
 <td>sshd_use_strong_rng</td>
 <td>medium</td>
 <td>SSH server uses strong entropy to seed</td>
