@@ -312,6 +312,8 @@ grub2_disable_interactive_boot
 grub2_enable_iommu_force
 grub2_enable_selinux
 grub2_ipv6_disable_argument
+grub2_nosmap_argument_absent
+grub2_nosmep_argument_absent
 grub2_nousb_argument
 grub2_page_poison_argument
 grub2_pti_argument
@@ -370,6 +372,7 @@ mount_option_var_tmp_bind
 network_nmcli_permissions
 no_direct_root_logins
 no_empty_passwords
+no_empty_passwords_etc_shadow
 no_legacy_plus_entries_etc_group
 no_legacy_plus_entries_etc_passwd
 no_legacy_plus_entries_etc_shadow

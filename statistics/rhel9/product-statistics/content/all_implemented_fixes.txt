@@ -392,6 +392,8 @@ grub2_enable_selinux
 grub2_init_on_alloc_argument
 grub2_ipv6_disable_argument
 grub2_kernel_trust_cpu_rng
+grub2_nosmap_argument_absent
+grub2_nosmep_argument_absent
 grub2_page_alloc_shuffle_argument
 grub2_page_poison_argument
 grub2_pti_argument
@@ -460,6 +462,7 @@ mount_option_var_tmp_nosuid
 network_nmcli_permissions
 no_direct_root_logins
 no_empty_passwords
+no_empty_passwords_etc_shadow
 no_host_based_files
 no_legacy_plus_entries_etc_group
 no_legacy_plus_entries_etc_passwd
@@ -507,6 +510,7 @@ package_openscap-scanner_installed
 package_openssh-clients_installed
 package_openssh-server_installed
 package_openssh-server_removed
+package_pam_pwquality_installed
 package_pcsc-lite_installed
 package_policycoreutils-python-utils_installed
 package_policycoreutils_installed

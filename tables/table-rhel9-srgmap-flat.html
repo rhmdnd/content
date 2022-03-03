@@ -1640,11 +1640,7 @@ The session lock is implemented at the point where session activity can be deter
 Regardless of where the session lock is determined and implemented, once invoked, the session lock shall remain in place until the user re-authenticates. No other activity aside from re-authentication shall unlock the system.</td>
 <td xml:lang="en-US">The <code>tmux</code> terminal multiplexer is used to implement
 automatic session locking. It should be started from
-<code>/etc/bashrc</code> or drop-in files within <code>/etc/profile.d/</code>.
-Additionally it must be ensured that the <code>tmux</code> process is running
-and it can be verified with the following command:
-<pre>ps all | grep tmux | grep -v grep</pre>
-</td>
+<code>/etc/bashrc</code> or drop-in files within <code>/etc/profile.d/</code>.</td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system retains a user's session lock until that user reestablishes access using established identification and authentication procedures. If it does not, this is a finding.</td>
 <td>To verify that tmux is configured to execute,
@@ -1656,19 +1652,12 @@ if [ "$PS1" ]; then
   name=$(ps -o comm= -p $parent)
   case "$name" in sshd|login) exec tmux ;; esac
 fi
-To verify that the tmux process is running,
-run the following command:
-ps all | grep tmux | grep -v grep
-If the command does not produce output, this is a finding.
-      Is it the case that exec tmux is not present at the end of bashrc or tmux process is not running?
+      Is it the case that exec tmux is not present at the end of bashrc?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3723r557051_fix">Configure the operating system to retain a user's session lock until that user reestablishes access using established identification and authentication procedures.</fixtext></td>
 <td>The tmux terminal multiplexer is used to implement
 automatic session locking. It should be started from
-/etc/bashrc or drop-in files within /etc/profile.d/.
-Additionally it must be ensured that the tmux process is running
-and it can be verified with the following command:
-ps all | grep tmux | grep -v grep</td>
+/etc/bashrc or drop-in files within /etc/profile.d/.</td>
 <td>medium</td>
 <td></td>
 <td></td>
@@ -1979,11 +1968,7 @@ The session lock is implemented at the point where session activity can be deter
 Publicly viewable images can include static or dynamic images, for example, patterns used with screen savers, photographic images, solid colors, a clock, a battery life indicator, or a blank screen, with the additional caveat that none of the images convey sensitive information.</td>
 <td xml:lang="en-US">The <code>tmux</code> terminal multiplexer is used to implement
 automatic session locking. It should be started from
-<code>/etc/bashrc</code> or drop-in files within <code>/etc/profile.d/</code>.
-Additionally it must be ensured that the <code>tmux</code> process is running
-and it can be verified with the following command:
-<pre>ps all | grep tmux | grep -v grep</pre>
-</td>
+<code>/etc/bashrc</code> or drop-in files within <code>/etc/profile.d/</code>.</td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system conceals, via the session lock, information previously visible on the display with a publicly viewable image. If it does not, this is a finding.</td>
 <td>To verify that tmux is configured to execute,
@@ -1995,19 +1980,12 @@ if [ "$PS1" ]; then
   name=$(ps -o comm= -p $parent)
   case "$name" in sshd|login) exec tmux ;; esac
 fi
-To verify that the tmux process is running,
-run the following command:
-ps all | grep tmux | grep -v grep
-If the command does not produce output, this is a finding.
-      Is it the case that exec tmux is not present at the end of bashrc or tmux process is not running?
+      Is it the case that exec tmux is not present at the end of bashrc?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3726r557060_fix">Configure the operating system to conceal, via the session lock, information previously visible on the display with a publicly viewable image.</fixtext></td>
 <td>The tmux terminal multiplexer is used to implement
 automatic session locking. It should be started from
-/etc/bashrc or drop-in files within /etc/profile.d/.
-Additionally it must be ensured that the tmux process is running
-and it can be verified with the following command:
-ps all | grep tmux | grep -v grep</td>
+/etc/bashrc or drop-in files within /etc/profile.d/.</td>
 <td>medium</td>
 <td></td>
 <td></td>
@@ -20740,7 +20718,7 @@ Managing excess capacity ensures that sufficient capacity is available to counte
 <td>SV-71125</td>
 <td>SRG-OS-000163-GPOS-00072</td>
 <td><i>TBD - Assigned by DISA after STIG release</i></td>
-<td>The operating system must terminate all network connections associated with a communications session at the end of the session, or as follows: for in-band management sessions (privileged sessions), the session must be terminated after 10 minutes of inacti</td>
+<td>The operating system must terminate all network connections associated with a communications session at the end of the session, or as follows: for in-band management sessions (privileged sessions), the session must be terminated after 10 minutes of inactivity; and for user sessions (non-privileged session), the session must be terminated after 15 minutes of inactivity, except to fulfill documented and validated mission requirements.</td>
 <td></td>
 <td>Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element. 
 
@@ -20870,11 +20848,11 @@ the Red Hat Enterprise Linux 9 Documentation web site:
 <td>V-56883</td>
 <td>SRG-OS-000191-GPOS-00080</td>
 <td><i>TBD - Assigned by DISA after STIG release</i></td>
-<td>The operating system must employ automated mechanisms to determine the state of system components with regard to flaw remediation using the following frequency: continuously, where HBSS is used; 30 days, for any additional internal network scans not cover</td>
+<td>The operating system must employ automated mechanisms to determine the state of system components with regard to flaw remediation using the following frequency: continuously, where Endpoint Security Solution (ESS) is used; 30 days, for any additional internal network scans not covered by ESS; and annually, for external scans by Computer Network Defense Service Provider (CNDSP).</td>
 <td>CCE-86236-7:Install McAfee Endpoint Security for Linux (ENSL)</td>
 <td>Without the use of automated mechanisms to scan for security flaws on a continuous and/or periodic basis, the operating system or other system components may remain vulnerable to the exploits presented by undetected software flaws.
 
-To support this requirement, the operating system may have an integrated solution incorporating continuous scanning using HBSS and periodic scanning using other tools, as specified in the requirement.</td>
+To support this requirement, the operating system may have an integrated solution incorporating continuous scanning using ESS and periodic scanning using other tools, as specified in the requirement.</td>
 <td xml:lang="en-US">Install McAfee Endpoint Security for Linux antivirus software
 which is provided for DoD systems and uses signatures to search for the
 presence of viruses on the filesystem.
@@ -20884,11 +20862,13 @@ The <code>mcafeetp</code> package can be installed with the following command:
 $ sudo dnf install mcafeetp</pre>
 </td>
 <td>Applicable - Configurable</td>
-<td>Verify the operating system employs automated mechanisms to determine the state of system components with regard to flaw remediation using the following frequency: continuously, where HBSS is used; 30 days, for any additional internal network scans not co</td>
+<td>Verify the operating system employs automated mechanisms to determine the state of system components with regard to flaw remediation using the following frequency: continuously, where ESS is used; 30 days, for any additional internal network scans not covered by ESS; and annually, for external scans by CNDSP.
+
+If it does not, this is a finding.</td>
 <td>Run the following command to determine if the mcafeetp package is installed: $ rpm -q mcafeetp
       Is it the case that the package is not installed?
       </td>
-<td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3787r557232_fix">Configure the operating system to employ automated mechanisms to determine the state of system components with regard to flaw remediation using the following frequency: continuously, where HBSS is used; 30 days, for any additional internal network scans n</fixtext></td>
+<td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3787r804655_fix">Configure the operating system to employ automated mechanisms to determine the state of system components with regard to flaw remediation using the following frequency: continuously, where ESS is used; 30 days, for any additional internal network scans not covered by ESS; and annually, for external scans by CNDSP.</fixtext></td>
 <td>Install McAfee Endpoint Security for Linux antivirus software
 which is provided for DoD systems and uses signatures to search for the
 presence of viruses on the filesystem.
@@ -20905,22 +20885,24 @@ $ sudo dnf install mcafeetp</td>
 <td>V-56883</td>
 <td>SRG-OS-000191-GPOS-00080</td>
 <td><i>TBD - Assigned by DISA after STIG release</i></td>
-<td>The operating system must employ automated mechanisms to determine the state of system components with regard to flaw remediation using the following frequency: continuously, where HBSS is used; 30 days, for any additional internal network scans not cover</td>
+<td>The operating system must employ automated mechanisms to determine the state of system components with regard to flaw remediation using the following frequency: continuously, where Endpoint Security Solution (ESS) is used; 30 days, for any additional internal network scans not covered by ESS; and annually, for external scans by Computer Network Defense Service Provider (CNDSP).</td>
 <td>CCE-88806-5:Ensure McAfee Endpoint Security for Linux (ENSL) is running</td>
 <td>Without the use of automated mechanisms to scan for security flaws on a continuous and/or periodic basis, the operating system or other system components may remain vulnerable to the exploits presented by undetected software flaws.
 
-To support this requirement, the operating system may have an integrated solution incorporating continuous scanning using HBSS and periodic scanning using other tools, as specified in the requirement.</td>
+To support this requirement, the operating system may have an integrated solution incorporating continuous scanning using ESS and periodic scanning using other tools, as specified in the requirement.</td>
 <td xml:lang="en-US">Install McAfee Endpoint Security for Linux antivirus software
 which is provided for DoD systems and uses signatures to search for the
 presence of viruses on the filesystem.</td>
 <td>Applicable - Configurable</td>
-<td>Verify the operating system employs automated mechanisms to determine the state of system components with regard to flaw remediation using the following frequency: continuously, where HBSS is used; 30 days, for any additional internal network scans not co</td>
+<td>Verify the operating system employs automated mechanisms to determine the state of system components with regard to flaw remediation using the following frequency: continuously, where ESS is used; 30 days, for any additional internal network scans not covered by ESS; and annually, for external scans by CNDSP.
+
+If it does not, this is a finding.</td>
 <td>To verify that McAfee Endpoint Security for Linux is
 running, run the following command:
 $ sudo ps -ef | grep -i mfetpd
       Is it the case that virus scanning software is not running?
       </td>
-<td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3787r557232_fix">Configure the operating system to employ automated mechanisms to determine the state of system components with regard to flaw remediation using the following frequency: continuously, where HBSS is used; 30 days, for any additional internal network scans n</fixtext></td>
+<td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3787r804655_fix">Configure the operating system to employ automated mechanisms to determine the state of system components with regard to flaw remediation using the following frequency: continuously, where ESS is used; 30 days, for any additional internal network scans not covered by ESS; and annually, for external scans by CNDSP.</fixtext></td>
 <td>Install McAfee Endpoint Security for Linux antivirus software
 which is provided for DoD systems and uses signatures to search for the
 presence of viruses on the filesystem.</td>
@@ -26137,7 +26119,7 @@ depending on the OS version.</td>
 This requirement enables organizations to extend or limit auditing as necessary to meet organizational requirements. Auditing that is limited to conserve information system resources may be extended to address certain threat situations. In addition, auditing may be limited to a specific set of events to facilitate audit reduction, analysis, and reporting.</td>
 <td xml:lang="en-US">The audit package should be installed.</td>
 <td>Applicable - Configurable</td>
-<td>Verify the operating system provides the capability for assigned IMOs/ISSOs or designated SAs to change the auditing to be performed on all operating system components, based on all selectable event criteria in near real time. If it does not, this is a fi</td>
+<td>Verify the operating system provides the capability for assigned IMOs/ISSOs or designated SAs to change the auditing to be performed on all operating system components, based on all selectable event criteria in near real time. If it does not, this is a finding.</td>
 <td>Run the following command to determine if the audit package is installed: $ rpm -q audit
       Is it the case that the package is not installed?
       </td>
@@ -26168,7 +26150,7 @@ This requirement enables organizations to extend or limit auditing as necessary 
 If both the "b32" and "b64" audit rules for "SUID" files are not defined, this is a finding.
 If both the "b32" and "b64" audit rules for "SGID" files are not defined, this is a finding.</td>
 <td>Applicable - Configurable</td>
-<td>Verify the operating system provides the capability for assigned IMOs/ISSOs or designated SAs to change the auditing to be performed on all operating system components, based on all selectable event criteria in near real time. If it does not, this is a fi</td>
+<td>Verify the operating system provides the capability for assigned IMOs/ISSOs or designated SAs to change the auditing to be performed on all operating system components, based on all selectable event criteria in near real time. If it does not, this is a finding.</td>
 <td>Add or update the following rules in "/etc/audit/rules.d/audit.rules":
 
 -a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -k setuid
@@ -27351,7 +27333,7 @@ If both the "b32" and "b64" audit rules for "SGID" files are not defined, this i
 <td>V-57267</td>
 <td>SRG-OS-000355-GPOS-00143</td>
 <td><i>TBD - Assigned by DISA after STIG release</i></td>
-<td>The operating system must, for networked systems, compare internal information system clocks at least every 24 hours with a server which is synchronized to one of the redundant United States Naval Observatory (USNO) time servers, or a time server designat</td>
+<td>The operating system must, for networked systems, compare internal information system clocks at least every 24 hours with a server which is synchronized to one of the redundant United States Naval Observatory (USNO) time servers, or a time server designated for the appropriate DoD network (NIPRNet/SIPRNet), and/or the Global Positioning System (GPS).</td>
 <td>CCE-88648-1:Configure Time Service Maxpoll Interval</td>
 <td>Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events. Sources outside the configured acceptable allowance (drift) may be inaccurate.
 
@@ -27362,7 +27344,7 @@ Organizations should consider endpoints that may not have regular access to the 
 <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_time_service_set_maxpoll"></xccdf-1.1:sub> in <code>/etc/ntp.conf</code> or
 <code>/etc/chrony.conf</code> to continuously poll time servers. To configure
 <code>maxpoll</code> in <code>/etc/ntp.conf</code> or <code>/etc/chrony.conf</code>
-add the following:
+add the following after each `server`, `pool` or `peer` entry:
 <pre>maxpoll <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_time_service_set_maxpoll"></xccdf-1.1:sub></pre>
 to <pre>server</pre> directives. If using chrony any <pre>pool</pre> directives
 should be configured too.
@@ -27372,7 +27354,7 @@ to pass.</td>
 <td>Verify the operating system, for networked systems, compares internal information system clocks at least every 24 hours with a server which is synchronized to one of the redundant United States Naval Observatory (USNO) time servers, or a time server designated for the appropriate DoD network (NIPRNet/SIPRNet), and/or the Global Positioning System (GPS). If it does not, this is a finding.</td>
 <td>To verify that maxpoll has been set properly, perform the following:
 $ sudo grep maxpoll /etc/ntp.conf /etc/chrony.conf
-The output should return
+The output should return:
 maxpoll .
       Is it the case that it does not exist or maxpoll has not been set to the expected value?
       </td>
@@ -27381,7 +27363,7 @@ maxpoll .
  in /etc/ntp.conf or
 /etc/chrony.conf to continuously poll time servers. To configure
 maxpoll in /etc/ntp.conf or /etc/chrony.conf
-add the following:
+add the following after each `server`, `pool` or `peer` entry:
 maxpoll 
 to server directives. If using chrony any pool directives
 should be configured too.
@@ -27396,7 +27378,7 @@ to pass.</td>
 <td>V-57267</td>
 <td>SRG-OS-000355-GPOS-00143</td>
 <td><i>TBD - Assigned by DISA after STIG release</i></td>
-<td>The operating system must, for networked systems, compare internal information system clocks at least every 24 hours with a server which is synchronized to one of the redundant United States Naval Observatory (USNO) time servers, or a time server designat</td>
+<td>The operating system must, for networked systems, compare internal information system clocks at least every 24 hours with a server which is synchronized to one of the redundant United States Naval Observatory (USNO) time servers, or a time server designated for the appropriate DoD network (NIPRNet/SIPRNet), and/or the Global Positioning System (GPS).</td>
 <td>CCE-87077-4:Ensure Chrony is only configured with the server directive</td>
 <td>Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events. Sources outside the configured acceptable allowance (drift) may be inaccurate.
 
@@ -27433,7 +27415,7 @@ Organizations should also consider endpoints that may not have regular access to
 <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_time_service_set_maxpoll"></xccdf-1.1:sub> in <code>/etc/ntp.conf</code> or
 <code>/etc/chrony.conf</code> to continuously poll time servers. To configure
 <code>maxpoll</code> in <code>/etc/ntp.conf</code> or <code>/etc/chrony.conf</code>
-add the following:
+add the following after each `server`, `pool` or `peer` entry:
 <pre>maxpoll <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_time_service_set_maxpoll"></xccdf-1.1:sub></pre>
 to <pre>server</pre> directives. If using chrony any <pre>pool</pre> directives
 should be configured too.
@@ -27443,7 +27425,7 @@ to pass.</td>
 <td>Verify the operating system synchronizes internal information system clocks to the authoritative time source when the time difference is greater than one second. If it does not, this is a finding.</td>
 <td>To verify that maxpoll has been set properly, perform the following:
 $ sudo grep maxpoll /etc/ntp.conf /etc/chrony.conf
-The output should return
+The output should return:
 maxpoll .
       Is it the case that it does not exist or maxpoll has not been set to the expected value?
       </td>
@@ -27452,7 +27434,7 @@ maxpoll .
  in /etc/ntp.conf or
 /etc/chrony.conf to continuously poll time servers. To configure
 maxpoll in /etc/ntp.conf or /etc/chrony.conf
-add the following:
+add the following after each `server`, `pool` or `peer` entry:
 maxpoll 
 to server directives. If using chrony any pool directives
 should be configured too.
@@ -27644,7 +27626,7 @@ Time stamps generated by the operating system include date and time. Time is com
 <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_time_service_set_maxpoll"></xccdf-1.1:sub> in <code>/etc/ntp.conf</code> or
 <code>/etc/chrony.conf</code> to continuously poll time servers. To configure
 <code>maxpoll</code> in <code>/etc/ntp.conf</code> or <code>/etc/chrony.conf</code>
-add the following:
+add the following after each `server`, `pool` or `peer` entry:
 <pre>maxpoll <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_time_service_set_maxpoll"></xccdf-1.1:sub></pre>
 to <pre>server</pre> directives. If using chrony any <pre>pool</pre> directives
 should be configured too.
@@ -27654,7 +27636,7 @@ to pass.</td>
 <td>Verify the operating system records time stamps for audit records that can be mapped to Coordinated Universal Time (UTC) or Greenwich Mean Time (GMT). If it does not, this is a finding.</td>
 <td>To verify that maxpoll has been set properly, perform the following:
 $ sudo grep maxpoll /etc/ntp.conf /etc/chrony.conf
-The output should return
+The output should return:
 maxpoll .
       Is it the case that it does not exist or maxpoll has not been set to the expected value?
       </td>
@@ -27663,7 +27645,7 @@ maxpoll .
  in /etc/ntp.conf or
 /etc/chrony.conf to continuously poll time servers. To configure
 maxpoll in /etc/ntp.conf or /etc/chrony.conf
-add the following:
+add the following after each `server`, `pool` or `peer` entry:
 maxpoll 
 to server directives. If using chrony any pool directives
 should be configured too.
@@ -33423,15 +33405,14 @@ FIPS mode by automatically configuring the following:
 </li>
 <li>Creating <code>/etc/system-fips</code>
 </li>
-<li>Setting the system crypto policy in <code>/etc/crypto-policies/config</code> to <code>FIPS</code>
+<li>Setting the system crypto policy in <code>/etc/crypto-policies/config</code> to <code><xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_system_crypto_policy"></xccdf-1.1:sub></code>
 </li>
 <li>Loading the Dracut <code>fips</code> module</li>
 </ul>
-This rule also ensures that the system policy is set to <code><xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_system_crypto_policy"></xccdf-1.1:sub></code>.
-Furthermore, the system running in FIPS mode should be FIPS certified by NIST.</td>
+</td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system implements NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards. If it does not, this is a finding.</td>
-<td>To verify that FIPS is enabled properly, run the following command:
+<td>To verify that FIPS mode is enabled properly, run the following command:
 fips-mode-setup --check
 The output should contain the following:
 FIPS mode is enabled.
@@ -33447,9 +33428,7 @@ fips-mode-setup --enable
 
 The fips-mode-setup command will configure the system in
 FIPS mode by automatically configuring the following:
-Setting the kernel FIPS mode flag (/proc/sys/crypto/fips_enabled) to 1Creating /etc/system-fipsSetting the system crypto policy in /etc/crypto-policies/config to FIPSLoading the Dracut fips module
-This rule also ensures that the system policy is set to .
-Furthermore, the system running in FIPS mode should be FIPS certified by NIST.</td>
+Setting the kernel FIPS mode flag (/proc/sys/crypto/fips_enabled) to 1Creating /etc/system-fipsSetting the system crypto policy in /etc/crypto-policies/config to Loading the Dracut fips module</td>
 <td>high</td>
 <td></td>
 <td></td>
@@ -33897,7 +33876,7 @@ $ sudo systemctl enable sshd.service</td>
 <td>V-56733</td>
 <td>SRG-OS-000424-GPOS-00188</td>
 <td><i>TBD - Assigned by DISA after STIG release</i></td>
-<td>The operating system must implement cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a minimum, a</td>
+<td>The operating system must implement cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a minimum, a Protected Distribution System (PDS).</td>
 <td>CCE-84066-0:Deactivate Wireless Network Interfaces</td>
 <td>Encrypting information for transmission protects information from unauthorized disclosure and modification. Cryptographic mechanisms implemented to protect information integrity include, for example, cryptographic hash functions which have common application in digital signatures, checksums, and message authentication codes. 
 
@@ -33913,7 +33892,9 @@ following command:
 <pre>$ sudo nmcli radio wifi off</pre>
 </td>
 <td>Applicable - Configurable</td>
-<td>Verify the operating system implements cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a minimum</td>
+<td>Verify the operating system implements cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a minimum, a Protected Distribution System (PDS). 
+
+If it does not, this is a finding.</td>
 <td>Verify that there are no wireless interfaces configured on the system
 with the following command:
 
@@ -33922,7 +33903,7 @@ The output should contain the following:
 wifi disconnected
       Is it the case that it is not?
       </td>
-<td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3874r375312_fix">Configure the operating system to implement cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a mi</fixtext></td>
+<td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3874r793158_fix">Configure the operating system to implement cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a minimum, a Protected Distribution System (PDS).</fixtext></td>
 <td>Deactivating wireless network interfaces should prevent
 normal usage of the wireless capability.
 
@@ -33939,7 +33920,7 @@ $ sudo nmcli radio wifi off</td>
 <td>V-56733</td>
 <td>SRG-OS-000424-GPOS-00188</td>
 <td><i>TBD - Assigned by DISA after STIG release</i></td>
-<td>The operating system must implement cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a minimum, a</td>
+<td>The operating system must implement cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a minimum, a Protected Distribution System (PDS).</td>
 <td>CCE-90823-6:Install the OpenSSH Server Package</td>
 <td>Encrypting information for transmission protects information from unauthorized disclosure and modification. Cryptographic mechanisms implemented to protect information integrity include, for example, cryptographic hash functions which have common application in digital signatures, checksums, and message authentication codes. 
 
@@ -33952,11 +33933,13 @@ The <code>openssh-server</code> package can be installed with the following comm
 $ sudo dnf install openssh-server</pre>
 </td>
 <td>Applicable - Configurable</td>
-<td>Verify the operating system implements cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a minimum</td>
+<td>Verify the operating system implements cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a minimum, a Protected Distribution System (PDS). 
+
+If it does not, this is a finding.</td>
 <td>Run the following command to determine if the openssh-server package is installed: $ rpm -q openssh-server
       Is it the case that the package is not installed?
       </td>
-<td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3874r375312_fix">Configure the operating system to implement cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a mi</fixtext></td>
+<td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3874r793158_fix">Configure the operating system to implement cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a minimum, a Protected Distribution System (PDS).</fixtext></td>
 <td>The openssh-server package should be installed.
 The openssh-server package can be installed with the following command:
 
@@ -47271,15 +47254,14 @@ FIPS mode by automatically configuring the following:
 </li>
 <li>Creating <code>/etc/system-fips</code>
 </li>
-<li>Setting the system crypto policy in <code>/etc/crypto-policies/config</code> to <code>FIPS</code>
+<li>Setting the system crypto policy in <code>/etc/crypto-policies/config</code> to <code><xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_system_crypto_policy"></xccdf-1.1:sub></code>
 </li>
 <li>Loading the Dracut <code>fips</code> module</li>
 </ul>
-This rule also ensures that the system policy is set to <code><xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_system_crypto_policy"></xccdf-1.1:sub></code>.
-Furthermore, the system running in FIPS mode should be FIPS certified by NIST.</td>
+</td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system implements NIST FIPS-validated cryptography for the following: to provision digital signatures, to generate cryptographic hashes, and to protect unclassified information requiring confidentiality and cryptographic protection in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards. If it does not, this is a finding.</td>
-<td>To verify that FIPS is enabled properly, run the following command:
+<td>To verify that FIPS mode is enabled properly, run the following command:
 fips-mode-setup --check
 The output should contain the following:
 FIPS mode is enabled.
@@ -47295,9 +47277,7 @@ fips-mode-setup --enable
 
 The fips-mode-setup command will configure the system in
 FIPS mode by automatically configuring the following:
-Setting the kernel FIPS mode flag (/proc/sys/crypto/fips_enabled) to 1Creating /etc/system-fipsSetting the system crypto policy in /etc/crypto-policies/config to FIPSLoading the Dracut fips module
-This rule also ensures that the system policy is set to .
-Furthermore, the system running in FIPS mode should be FIPS certified by NIST.</td>
+Setting the kernel FIPS mode flag (/proc/sys/crypto/fips_enabled) to 1Creating /etc/system-fipsSetting the system crypto policy in /etc/crypto-policies/config to Loading the Dracut fips module</td>
 <td>high</td>
 <td></td>
 <td></td>

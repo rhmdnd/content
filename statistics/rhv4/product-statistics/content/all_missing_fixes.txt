@@ -38,6 +38,7 @@ dhcp_client_restrict_options
 dhcp_server_minimize_served_info
 dir_perms_world_writable_system_owned
 dir_perms_world_writable_system_owned_group
+disallow_bypass_password_sudo
 enable_dracut_fips_module
 enable_ldap_client
 encrypt_partitions

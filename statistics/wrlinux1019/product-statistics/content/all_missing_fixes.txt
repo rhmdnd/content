@@ -89,6 +89,7 @@ dir_perms_world_writable_sticky_bits
 dir_perms_world_writable_system_owned
 dir_perms_world_writable_system_owned_group
 directory_permissions_var_log_audit
+disallow_bypass_password_sudo
 etc_system_fips_exists
 file_ownership_binary_dirs
 file_permission_user_init_files
@@ -105,6 +106,8 @@ gid_passwd_group_same
 grub2_admin_username
 grub2_enable_iommu_force
 grub2_no_removeable_media
+grub2_nosmap_argument_absent
+grub2_nosmep_argument_absent
 grub2_password
 grub2_uefi_admin_username
 grub2_uefi_password

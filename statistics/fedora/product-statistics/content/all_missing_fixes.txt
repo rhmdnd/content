@@ -60,6 +60,7 @@ dir_perms_world_writable_system_owned_group
 directory_permissions_var_log_audit
 disable_anacron
 disable_logwatch_for_logserver
+disallow_bypass_password_sudo
 enable_dconf_user_profile
 enable_dracut_fips_module
 etc_system_fips_exists

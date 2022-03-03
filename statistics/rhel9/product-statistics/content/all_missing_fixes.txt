@@ -51,6 +51,7 @@ coreos_enable_selinux_kernel_argument
 dconf_gnome_disable_power_settings
 dhcp_client_restrict_options
 dhcp_server_minimize_served_info
+disallow_bypass_password_sudo
 enable_dconf_user_profile
 enable_dracut_fips_module
 encrypt_partitions

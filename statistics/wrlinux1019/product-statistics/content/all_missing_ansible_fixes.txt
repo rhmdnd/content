@@ -124,6 +124,7 @@ directory_access_var_log_audit
 directory_permissions_var_log_audit
 disable_ctrlaltdel_reboot
 disable_prelink
+disallow_bypass_password_sudo
 etc_system_fips_exists
 file_ownership_binary_dirs
 file_ownership_var_log_audit
@@ -144,6 +145,8 @@ grub2_admin_username
 grub2_enable_fips_mode
 grub2_enable_iommu_force
 grub2_no_removeable_media
+grub2_nosmap_argument_absent
+grub2_nosmep_argument_absent
 grub2_password
 grub2_uefi_admin_username
 grub2_uefi_password
@@ -190,8 +193,6 @@ rsyslog_accept_remote_messages_tcp
 rsyslog_accept_remote_messages_udp
 rsyslog_cron_logging
 rsyslog_encrypt_offload_actionsendstreamdriverauthmode
-rsyslog_encrypt_offload_actionsendstreamdrivermode
-rsyslog_encrypt_offload_defaultnetstreamdriver
 rsyslog_files_groupownership
 rsyslog_files_ownership
 rsyslog_files_permissions

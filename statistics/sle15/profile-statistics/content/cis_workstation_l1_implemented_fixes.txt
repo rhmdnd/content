@@ -90,7 +90,6 @@ file_permissions_unauthorized_world_writable
 journald_compress
 journald_storage
 kernel_module_udf_disabled
-kernel_module_vfat_disabled
 mount_option_dev_shm_nodev
 mount_option_dev_shm_noexec
 mount_option_dev_shm_nosuid
@@ -135,7 +134,7 @@ require_emergency_target_auth
 require_singleuser_auth
 rsyslog_remote_loghost
 securetty_root_login_console_only
-service_crond_enabled
+service_cron_enabled
 service_firewalld_enabled
 service_ip6tables_enabled
 service_iptables_enabled

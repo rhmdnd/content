@@ -2463,7 +2463,7 @@ The DoD STIG requirement is 5 passwords.
   <td xml:lang="en-US">
 Preventing re-use of previous passwords helps ensure that a compromised password is not re-used by a user.
   </td>
-  <td>var_password_pam_remember_control_flag=required<br/>var_password_pam_remember=5</td>
+  <td>var_password_pam_remember=5<br/>var_password_pam_remember_control_flag=required</td>
 </tr>
 <tr>
   <td>IA-5(f)<br/>IA-5(1)(e)</td>
@@ -2483,7 +2483,7 @@ The DoD STIG requirement is 5 passwords.
   <td xml:lang="en-US">
 Preventing re-use of previous passwords helps ensure that a compromised password is not re-used by a user.
   </td>
-  <td>var_password_pam_remember_control_flag=required<br/>var_password_pam_remember=5</td>
+  <td>var_password_pam_remember=5<br/>var_password_pam_remember_control_flag=required</td>
 </tr>
 <tr>
   <td>IA-5(c)<br/>IA-5(1)(a)<br/>CM-6(a)<br/>IA-5(4)</td>
@@ -3333,7 +3333,7 @@ The <tt>maxpoll</tt> should be configured to
 <tt>18_hours</tt> in <tt>/etc/ntp.conf</tt> or
 <tt>/etc/chrony.conf</tt> to continuously poll time servers. To configure
 <tt>maxpoll</tt> in <tt>/etc/ntp.conf</tt> or <tt>/etc/chrony.conf</tt>
-add the following:
+add the following after each `server`, `pool` or `peer` entry:
 <pre>maxpoll <tt>18_hours</tt></pre>
 to <pre>server</pre> directives. If using chrony any <pre>pool</pre> directives
 should be configured too.
@@ -6407,11 +6407,9 @@ FIPS mode by automatically configuring the following:
 <ul>
 <li>Setting the kernel FIPS mode flag (<tt>/proc/sys/crypto/fips_enabled</tt>) to <tt>1</tt></li>
 <li>Creating <tt>/etc/system-fips</tt></li>
-<li>Setting the system crypto policy in <tt>/etc/crypto-policies/config</tt> to <tt>FIPS</tt></li>
+<li>Setting the system crypto policy in <tt>/etc/crypto-policies/config</tt> to <tt><tt>fips</tt></tt></li>
 <li>Loading the Dracut <tt>fips</tt> module</li>
 </ul>
-This rule also ensures that the system policy is set to <tt><tt>fips</tt></tt>.
-Furthermore, the system running in FIPS mode should be FIPS certified by NIST.
   </td>
   <td xml:lang="en-US">
 Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to
@@ -7527,9 +7525,6 @@ Depending on the infrastruture being used the <tt>pool</tt> directive may not be
 The <tt>tmux</tt> terminal multiplexer is used to implement
 automatic session locking. It should be started from
 <tt>/etc/bashrc</tt> or drop-in files within <tt>/etc/profile.d/</tt>.
-Additionally it must be ensured that the <tt>tmux</tt> process is running
-and it can be verified with the following command:
-<pre>ps all | grep tmux | grep -v grep</pre>
   </td>
   <td xml:lang="en-US">
 Unlike <tt>bash</tt> itself, the <tt>tmux</tt> terminal multiplexer

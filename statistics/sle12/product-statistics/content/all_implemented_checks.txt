@@ -181,6 +181,7 @@ disable_ctrlaltdel_reboot
 disable_host_auth
 disable_prelink
 disable_users_coredumps
+disallow_bypass_password_sudo
 display_login_attempts
 enable_dconf_user_profile
 ensure_gpgcheck_globally_activated
@@ -282,6 +283,8 @@ gnome_gdm_disable_xdmcp
 grub2_audit_argument
 grub2_audit_backlog_limit_argument
 grub2_enable_iommu_force
+grub2_nosmap_argument_absent
+grub2_nosmep_argument_absent
 grub2_password
 grub2_uefi_password
 gui_login_dod_acknowledgement
@@ -320,6 +323,7 @@ mount_option_var_tmp_nosuid
 network_sniffer_disabled
 no_direct_root_logins
 no_empty_passwords
+no_empty_passwords_etc_shadow
 no_files_unowned_by_user
 no_host_based_files
 no_netrc_files
@@ -511,7 +515,6 @@ sysctl_net_ipv6_conf_default_accept_redirects
 sysctl_net_ipv6_conf_default_accept_source_route
 sysctl_net_ipv6_conf_default_disable_ipv6
 sysctl_net_ipv6_conf_default_forwarding
-use_pam_wheel_for_su
 vlock_installed
 wireless_disable_interfaces
 xwindows_remove_packages

@@ -213,6 +213,7 @@ directory_permissions_var_log_audit
 disable_ctrlaltdel_burstaction
 disable_ctrlaltdel_reboot
 disable_host_auth
+disallow_bypass_password_sudo
 display_login_attempts
 enable_dracut_fips_module
 enable_fips_mode
@@ -320,6 +321,8 @@ grub2_enable_iommu_force
 grub2_enable_selinux
 grub2_ipv6_disable_argument
 grub2_no_removeable_media
+grub2_nosmap_argument_absent
+grub2_nosmep_argument_absent
 grub2_password
 grub2_uefi_admin_username
 grub2_uefi_password
@@ -371,6 +374,7 @@ network_nmcli_permissions
 network_sniffer_disabled
 no_all_squash_exports
 no_direct_root_logins
+no_empty_passwords_etc_shadow
 no_files_unowned_by_user
 no_host_based_files
 no_legacy_plus_entries_etc_group

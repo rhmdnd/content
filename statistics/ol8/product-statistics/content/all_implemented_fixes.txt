@@ -284,6 +284,7 @@ disable_ctrlaltdel_burstaction
 disable_ctrlaltdel_reboot
 disable_host_auth
 disable_users_coredumps
+disallow_bypass_password_sudo
 display_login_attempts
 dnf-automatic_apply_updates
 dnf-automatic_security_updates_only
@@ -372,6 +373,8 @@ grub2_enable_iommu_force
 grub2_enable_selinux
 grub2_ipv6_disable_argument
 grub2_kernel_trust_cpu_rng
+grub2_nosmap_argument_absent
+grub2_nosmep_argument_absent
 grub2_page_poison_argument
 grub2_pti_argument
 grub2_slub_debug_argument
@@ -434,6 +437,7 @@ mount_option_var_tmp_nosuid
 network_ipv6_privacy_extensions
 no_direct_root_logins
 no_empty_passwords
+no_empty_passwords_etc_shadow
 no_host_based_files
 no_legacy_plus_entries_etc_group
 no_legacy_plus_entries_etc_passwd

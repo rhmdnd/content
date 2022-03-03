@@ -315,6 +315,7 @@ directory_ownership_var_log_audit
 directory_permissions_var_log_audit
 disable_anacron
 disable_logwatch_for_logserver
+disallow_bypass_password_sudo
 display_login_attempts
 dnf-automatic_apply_updates
 dnf-automatic_security_updates_only
@@ -463,6 +464,8 @@ grub2_enable_selinux
 grub2_ipv6_disable_argument
 grub2_kernel_trust_cpu_rng
 grub2_no_removeable_media
+grub2_nosmap_argument_absent
+grub2_nosmep_argument_absent
 grub2_nousb_argument
 grub2_page_poison_argument
 grub2_password
@@ -607,6 +610,7 @@ nfs_fixed_mountd_port
 nfs_fixed_statd_port
 nfs_no_anonymous
 no_all_squash_exports
+no_empty_passwords_etc_shadow
 no_files_unowned_by_user
 no_host_based_files
 no_insecure_locks_exports
@@ -675,6 +679,7 @@ package_openscap-scanner_installed
 package_openssh-clients_installed
 package_openssh-server_installed
 package_openssh-server_removed
+package_pam_pwquality_installed
 package_pcsc-lite_installed
 package_pigz_removed
 package_policycoreutils-python-utils_installed

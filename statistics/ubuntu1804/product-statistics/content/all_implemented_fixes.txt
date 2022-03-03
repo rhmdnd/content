@@ -100,6 +100,8 @@ file_permissions_var_log_messages
 file_permissions_var_log_syslog
 gnome_gdm_disable_xdmcp
 grub2_enable_iommu_force
+grub2_nosmap_argument_absent
+grub2_nosmep_argument_absent
 harden_ssh_client_crypto_policy
 kerberos_disable_no_keytab
 kernel_module_cramfs_disabled
@@ -124,6 +126,7 @@ mount_option_var_tmp_nodev
 mount_option_var_tmp_noexec
 mount_option_var_tmp_nosuid
 no_direct_root_logins
+no_empty_passwords_etc_shadow
 package_audit-audispd-plugins_installed
 package_audit_installed
 package_chrony_installed
