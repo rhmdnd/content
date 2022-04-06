@@ -4903,7 +4903,9 @@ If the system is configured to audit this activity, it will return a line.
       </pre></td>
 <td><pre>To capture kernel module unloading events, use following line, setting ARCH to
 either b32 for 32-bit system, or having two lines for both b32 and b64 in case your system is 64-bit:
+
 <pre>-a always,exit -F arch=<i>ARCH</i> -S delete_module -F key=modules</pre>
+
 
 Place to add the line depends on a way <code>auditd</code> daemon is configured. If it is configured
 to use the <code>augenrules</code> program (the default), add the line to a file with suffix
@@ -4932,7 +4934,9 @@ If the system is configured to audit this activity, it will return a line.
       </pre></td>
 <td><pre>To capture kernel module loading events, use following line, setting ARCH to
 either b32 for 32-bit system, or having two lines for both b32 and b64 in case your system is 64-bit:
+
 <pre>-a always,exit -F arch=<i>ARCH</i> -S init_module -F key=modules</pre>
+
 
 Place to add the line depends on a way <code>auditd</code> daemon is configured. If it is configured
 to use the <code>augenrules</code> program (the default), add the line to a file with suffix
