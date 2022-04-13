@@ -1023,7 +1023,7 @@ thead
       <td>SRG-OS-000109-GPOS-00056,SRG-OS-000480-GPOS-00227</td>
       <td></td>
       <td>The operating system must require individuals to be authenticated with an individual authenticator prior to using a group authenticator.</td>
-      <td>The operating system must require individuals to be authenticated with an individual authenticator prior to using a group authenticator.</td>
+      <td>Red Hat Enterprise Linux 9must require individuals to be authenticated with an individual authenticator prior to using a group authenticator.</td>
       <td>To assure individual accountability and prevent unauthorized access, organizational users must be individually identified and authenticated.<br><br>A group authenticator is a generic account used by multiple individuals. Use of a group authenticator alone does not uniquely identify individual users. Examples of the group authenticator is the UNIX OS "root" user account, the Windows "Administrator" account, the "sa" account, or a "helpdesk" account.<br><br>For example, the UNIX and Windows operating systems offer a 'switch user' capability allowing users to authenticate with their individual credentials and, when needed, 'switch' to the administrator role. This method provides for unique individual authentication prior to using a group authenticator.<br><br>Users (and any processes acting on behalf of users) need to be uniquely identified and authenticated for all accesses other than those accesses explicitly identified and documented by the organization, which outlines specific user actions that can be performed on the operating system without identification or authentication.<br><br>Requiring individuals to be authenticated with an individual authenticator prior to using a group authenticator allows for traceability of actions, as well as adding an additional level of protection of the actions that can be taken with group account knowledge.</td>
       <td>Even though the communications channel may be encrypted, an additional layer of<br>security is gained by extending the policy of not logging directly on as root.<br>In addition, logging in with a user-specific account provides individual<br>accountability of actions performed on the system and also helps to minimize<br>direct attack attempts on root's password.</td>
       <td>Applicable - Configurable</td>
@@ -1323,7 +1323,7 @@ thead
       <td>SRG-OS-000106-GPOS-00053,SRG-OS-000480-GPOS-00229,SRG-OS-000480-GPOS-00227</td>
       <td></td>
       <td>The operating system must use multifactor authentication for network access to non-privileged accounts.</td>
-      <td>The operating system must use multifactor authentication for network access to non-privileged accounts.</td>
+      <td>Red Hat Enterprise Linux 9 must use multifactor authentication for network access to non-privileged accounts.</td>
       <td>To assure accountability and prevent unauthenticated access, non-privileged users must utilize multifactor authentication to prevent potential misuse and compromise of the system.<br><br>Multifactor authentication uses two or more factors to achieve authentication.<br><br>Factors include: <br>1) Something you know (e.g., password/PIN);<br>2) Something you have (e.g., cryptographic identification device, token); and<br>3) Something you are (e.g., biometric).<br><br>A non-privileged account is any information system account with authorizations of a non-privileged user.<br><br>Network access is any access to an application by a user (or process acting on behalf of a user) where said access is obtained through a network connection.<br><br>The DoD CAC with DoD-approved PKI is an example of multifactor authentication.</td>
       <td>Configuring this setting for the SSH daemon provides additional assurance<br>that remote login via SSH will require a password, even in the event of<br>misconfiguration elsewhere.</td>
       <td>Applicable - Configurable</td>
@@ -1623,14 +1623,14 @@ thead
       <td>SRG-OS-000105-GPOS-00052,SRG-OS-000106-GPOS-00053,SRG-OS-000107-GPOS-00054,SRG-OS-000108-GPOS-00055</td>
       <td></td>
       <td>The operating system must use multifactor authentication for local access to privileged accounts.</td>
-      <td>The operating system must use multifactor authentication for local access to privileged accounts.</td>
+      <td>Red Hat Enterprise Linux 9 must use multifactor authentication for local access to privileged accounts.</td>
       <td>To assure accountability and prevent unauthenticated access, privileged users must utilize multifactor authentication to prevent potential misuse and compromise of the system.<br><br>Multifactor authentication is defined as using two or more factors to achieve authentication.<br><br>Factors include: <br>1) Something you know (e.g., password/PIN); <br>2) Something you have (e.g., cryptographic identification device, token); and<br>3) Something you are (e.g., biometric).<br><br>A privileged account is defined as an operating system account with authorizations of a privileged user.<br><br>Local access is defined as access to an organizational information system by a user (or process acting on behalf of a user) communicating through a direct connection without the use of a network.<br><br>The DoD CAC with DoD-approved PKI is an example of multifactor authentication.</td>
       <td>Without the use of multifactor authentication, the ease of access to<br>privileged functions is greatly increased. Multifactor authentication<br>requires using two or more factors to achieve authentication.<br>A privileged account is defined as an information system account with<br>authorizations of a privileged user. <br>The DoD CAC with DoD-approved PKI is an example of multifactor<br>authentication.</td>
       <td>Applicable - Configurable</td>
       <td>Verify the operating system uses multifactor authentication for local access to privileged accounts. If it does not, this is a finding.</td>
       <td>To determine how the SSH daemon's "PubkeyAuthentication" option is set, run the following command:<br><br> $ sudo grep -i PubkeyAuthentication /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf <br><br><br>If a line indicating "yes" is returned, then the required value is set.<br><br><br>If the required value is not set then this is a finding.</td>
       <td></td>
-      <td></td>
+      <td>To configure the system add or modify the following line in "/etc/ssh/sshd_config".<br><br>PubkeyAuthentication yes<br><br>Restart the SSH daemon for the settings to take effect:<br><br>$ sudo systemctl restart sshd.service</td>
       <td>CAT II</td>
       <td></td>
       <td></td>
@@ -2603,7 +2603,7 @@ thead
       <td>SRG-OS-000108-GPOS-00055</td>
       <td></td>
       <td>The operating system must use multifactor authentication for local access to non-privileged accounts.</td>
-      <td>The operating system must use multifactor authentication for local access to non-privileged accounts.</td>
+      <td>Red Hat Enterprise Linux 9 must use multifactor authentication for local access to non-privileged accounts.</td>
       <td>To assure accountability, prevent unauthenticated access, and prevent misuse of the system, non-privileged users must utilize multifactor authentication for local access.<br><br>Multifactor authentication is defined as using two or more factors to achieve authentication.<br><br>Factors include: <br>1) Something you know (e.g., password/PIN); <br>2) Something you have (e.g., cryptographic identification device or token); and<br>3) Something you are (e.g., biometric).<br><br>A non-privileged account is defined as an operating system account with authorizations of a regular or non-privileged user.<br><br>Local access is defined as access to an organizational information system by a user (or process acting on behalf of a user) communicating through a direct connection without the use of a network.<br><br>The DoD CAC with DoD-approved PKI is an example of multifactor authentication.</td>
       <td></td>
       <td>Applicable - Configurable</td>
@@ -3043,7 +3043,7 @@ thead
       <td>SRG-OS-000105-GPOS-00052</td>
       <td></td>
       <td>The operating system must use multifactor authentication for network access to privileged accounts.</td>
-      <td>The operating system must use multifactor authentication for network access to privileged accounts.</td>
+      <td>Red Hat Enterprise Linux 9 must use multifactor authentication for network access to privileged accounts.</td>
       <td>Without the use of multifactor authentication, the ease of access to privileged functions is greatly increased.<br><br>Multifactor authentication requires using two or more factors to achieve authentication.<br><br>Factors include: <br>1) something a user knows (e.g., password/PIN);<br>2) something a user has (e.g., cryptographic identification device, token); and<br>3) something a user is (e.g., biometric).<br><br>A privileged account is defined as an information system account with authorizations of a privileged user.<br><br>Network access is defined as access to an information system by a user (or a process acting on behalf of a user) communicating through a network (e.g., local area network, wide area network, or the Internet).<br><br>The DoD CAC with DoD-approved PKI is an example of multifactor authentication.</td>
       <td></td>
       <td>Applicable - Configurable</td>
