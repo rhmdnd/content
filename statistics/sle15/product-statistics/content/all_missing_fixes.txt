@@ -21,7 +21,6 @@ auditd_audispd_network_failure_action
 auditd_data_disk_error_action
 auditd_overflow_action
 avahi_disable_publishing
-banner_etc_motd
 bios_enable_execution_restrictions
 chronyd_server_directive
 configure_etc_hosts_deny
@@ -101,7 +100,6 @@ no_all_squash_exports
 no_files_unowned_by_user
 no_netrc_files
 no_password_auth_for_systemaccounts
-no_rsh_trust_files
 no_shelllogin_for_systemaccounts
 ntpd_specify_multiple_servers
 ntpd_specify_remote_server
@@ -126,7 +124,6 @@ rsyslog_files_groupownership
 rsyslog_files_ownership
 rsyslog_nolisten
 selinux_confinement_of_daemons
-selinux_policytype
 selinux_state
 set_firewalld_default_zone
 sshd_allow_only_protocol2

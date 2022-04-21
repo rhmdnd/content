@@ -3599,7 +3599,8 @@ Detailed information on encrypting partitions using LUKS or LUKS ciphers can be 
 the Oracle Linux 8 Documentation web site:<br />
 
     
-    <a xmlns='http://www.w3.org/1999/xhtml' href='https://docs.oracle.com/en/operating-systems/oracle-linux/8/install/install-InstallingOracleLinuxManually.html#install-storage-network'>https://docs.oracle.com/en/operating-systems/oracle-linux/8/install/install-InstallingOracleLinuxManually.html#install-storage-network</a>.
+    <a xmlns='http://www.w3.org/1999/xhtml' href='https://docs.oracle.com/en/operating-systems/oracle-linux/8/install/install-InstallingOracleLinuxManually.html#install-storage-network'>https://docs.oracle.com/en/operating-systems/oracle-linux/8/install/install-InstallingOracleLinuxManually.html#install-storage-network</a>
+.
   </td>
   <td xml:lang="en-US">
 The risk of a system's physical compromise, particularly mobile systems such as
@@ -3772,7 +3773,7 @@ To improve the kernel capacity to queue all log events, even those which occurre
 prior to the audit daemon, add the argument <tt>audit_backlog_limit=8192</tt> to the default
 GRUB 2 command line for the Linux operating system.
 To ensure that <tt>audit_backlog_limit=8192</tt> is added as a kernel command line
-argument to newly installed kernels, ad <tt>audit_backlog_limit=8192</tt> to the
+argument to newly installed kernels, add <tt>audit_backlog_limit=8192</tt> to the
 default Grub2 command line for Linux operating systems.  Modify the line within
 <tt>/etc/default/grub</tt> as shown below:
 <pre>GRUB_CMDLINE_LINUX="... audit_backlog_limit=8192 ..."</pre>
@@ -3795,7 +3796,7 @@ To enable poisoning of free pages,
 add the argument <tt>page_poison=1</tt> to the default
 GRUB 2 command line for the Linux operating system.
 To ensure that <tt>page_poison=1</tt> is added as a kernel command line
-argument to newly installed kernels, ad <tt>page_poison=1</tt> to the
+argument to newly installed kernels, add <tt>page_poison=1</tt> to the
 default Grub2 command line for Linux operating systems.  Modify the line within
 <tt>/etc/default/grub</tt> as shown below:
 <pre>GRUB_CMDLINE_LINUX="... page_poison=1 ..."</pre>
@@ -3843,7 +3844,7 @@ To enable poisoning of SLUB/SLAB objects,
 add the argument <tt>slub_debug=P</tt> to the default
 GRUB 2 command line for the Linux operating system.
 To ensure that <tt>slub_debug=P</tt> is added as a kernel command line
-argument to newly installed kernels, ad <tt>slub_debug=P</tt> to the
+argument to newly installed kernels, add <tt>slub_debug=P</tt> to the
 default Grub2 command line for Linux operating systems.  Modify the line within
 <tt>/etc/default/grub</tt> as shown below:
 <pre>GRUB_CMDLINE_LINUX="... slub_debug=P ..."</pre>
@@ -3878,7 +3879,7 @@ Change the superuser to a different username (The default is 'root').
 Once the superuser account has been added,
 update the
 <tt>grub.cfg</tt> file by running:
-<pre>grub2-mkconfig -o /boot/grub2/grub.cfg</pre>
+<pre>grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg</pre>
   </td>
   <td xml:lang="en-US">
 Having a non-default grub superuser username makes password-guessing attacks less effective.
@@ -4892,7 +4893,7 @@ To disable use of virtual syscalls,
 add the argument <tt>vsyscall=none</tt> to the default
 GRUB 2 command line for the Linux operating system.
 To ensure that <tt>vsyscall=none</tt> is added as a kernel command line
-argument to newly installed kernels, ad <tt>vsyscall=none</tt> to the
+argument to newly installed kernels, add <tt>vsyscall=none</tt> to the
 default Grub2 command line for Linux operating systems.  Modify the line within
 <tt>/etc/default/grub</tt> as shown below:
 <pre>GRUB_CMDLINE_LINUX="... vsyscall=none ..."</pre>
@@ -6493,7 +6494,7 @@ To enable Kernel page-table isolation,
 add the argument <tt>pti=on</tt> to the default
 GRUB 2 command line for the Linux operating system.
 To ensure that <tt>pti=on</tt> is added as a kernel command line
-argument to newly installed kernels, ad <tt>pti=on</tt> to the
+argument to newly installed kernels, add <tt>pti=on</tt> to the
 default Grub2 command line for Linux operating systems.  Modify the line within
 <tt>/etc/default/grub</tt> as shown below:
 <pre>GRUB_CMDLINE_LINUX="... pti=on ..."</pre>
@@ -6717,7 +6718,7 @@ To ensure all processes can be audited, even those which start
 prior to the audit daemon, add the argument <tt>audit=1</tt> to the default
 GRUB 2 command line for the Linux operating system.
 To ensure that <tt>audit=1</tt> is added as a kernel command line
-argument to newly installed kernels, ad <tt>audit=1</tt> to the
+argument to newly installed kernels, add <tt>audit=1</tt> to the
 default Grub2 command line for Linux operating systems.  Modify the line within
 <tt>/etc/default/grub</tt> as shown below:
 <pre>GRUB_CMDLINE_LINUX="... audit=1 ..."</pre>
@@ -8060,7 +8061,7 @@ By decreasing the limit based on the amount of data and enabling
 time-based limit, effects of potential attacks against
 encryption keys are limited.
   </td>
-  <td>var_rekey_limit_size=1G<br/>var_rekey_limit_time=1hour</td>
+  <td>var_rekey_limit_time=1hour<br/>var_rekey_limit_size=1G</td>
 </tr>
 <tr>
   <td></td>

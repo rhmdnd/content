@@ -86,6 +86,7 @@ grub2_enable_selinux
 kernel_module_usb-storage_disabled
 no_direct_root_logins
 no_empty_passwords
+no_rsh_trust_files
 package_rsh-server_removed
 package_talk-server_removed
 package_talk_removed
@@ -101,6 +102,7 @@ sebool_selinuxuser_execheap
 sebool_selinuxuser_execmod
 sebool_selinuxuser_execstack
 securetty_root_login_console_only
+selinux_policytype
 service_auditd_enabled
 service_autofs_disabled
 service_cron_enabled

@@ -134,6 +134,7 @@ auditd_name_format
 auditd_write_logs
 banner_etc_gdm_banner
 banner_etc_issue
+banner_etc_motd
 chronyd_or_ntpd_set_maxpoll
 chronyd_or_ntpd_specify_multiple_servers
 chronyd_run_as_chrony_user
@@ -306,6 +307,7 @@ no_direct_root_logins
 no_empty_passwords
 no_empty_passwords_etc_shadow
 no_host_based_files
+no_rsh_trust_files
 no_user_host_based_files
 package_SuSEfirewall2_installed
 package_aide_installed

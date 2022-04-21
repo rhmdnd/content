@@ -19,7 +19,6 @@ auditd_audispd_network_failure_action
 auditd_data_disk_error_action
 auditd_overflow_action
 avahi_disable_publishing
-banner_etc_motd
 bios_enable_execution_restrictions
 chronyd_server_directive
 configure_user_data_backups
@@ -91,7 +90,6 @@ no_all_squash_exports
 no_files_unowned_by_user
 no_netrc_files
 no_password_auth_for_systemaccounts
-no_rsh_trust_files
 no_shelllogin_for_systemaccounts
 ntpd_configure_restrictions
 ntpd_run_as_ntp_user
