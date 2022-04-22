@@ -19520,12 +19520,11 @@ The remote access functionality (e.g., RDP) may implement features such as autom
 Wireless technologies include, for example, microwave, packet radio (UHF/VHF), 802.11x, and Bluetooth. Wireless networks use authentication protocols (e.g., EAP/TLS, PEAP), which provide credential protection and mutual authentication.
 
 This requirement applies to those operating systems that control wireless devices.</td>
-<td>Deactivating wireless network interfaces should prevent
-normal usage of the wireless capability.
+<td>Deactivating wireless network interfaces should prevent normal usage of the wireless
+capability.
 <br><br>
 
-Configure the system to disable all wireless network interfaces with the
-following command:
+Configure the system to disable all wireless network interfaces with the following command:
 <pre>$ sudo nmcli radio all off</pre>
 </td>
 <td>Applicable - Configurable</td>
@@ -19534,17 +19533,17 @@ following command:
 with the following command:
 
 $ sudo nmcli device
-The output should contain the following:
-wifi disconnected
-      Is it the case that it is not?
+The output should only contain wireless devices in unavailable state, like in the
+following example:
+wlp0s20f3          wifi      unavailable             -- 
+      Is it the case that wireless interfaces are not active?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3813r374952_fix">Configure the operating system to protect wireless access to and from the system using encryption.</fixtext></td>
-<td>Deactivating wireless network interfaces should prevent
-normal usage of the wireless capability.
+<td>Deactivating wireless network interfaces should prevent normal usage of the wireless
+capability.
 
 
-Configure the system to disable all wireless network interfaces with the
-following command:
+Configure the system to disable all wireless network interfaces with the following command:
 $ sudo nmcli radio all off</td>
 <td>medium</td>
 <td></td>
@@ -19562,12 +19561,11 @@ $ sudo nmcli radio all off</td>
 Wireless technologies include, for example, microwave, packet radio (UHF/VHF), 802.11x, and Bluetooth. Wireless networks use authentication protocols (e.g., EAP/TLS, PEAP), which provide credential protection and mutual authentication.
 
 This requirement applies to those operating systems that control wireless devices.</td>
-<td>Deactivating wireless network interfaces should prevent
-normal usage of the wireless capability.
+<td>Deactivating wireless network interfaces should prevent normal usage of the wireless
+capability.
 <br><br>
 
-Configure the system to disable all wireless network interfaces with the
-following command:
+Configure the system to disable all wireless network interfaces with the following command:
 <pre>$ sudo nmcli radio all off</pre>
 </td>
 <td>Applicable - Configurable</td>
@@ -19576,17 +19574,17 @@ following command:
 with the following command:
 
 $ sudo nmcli device
-The output should contain the following:
-wifi disconnected
-      Is it the case that it is not?
+The output should only contain wireless devices in unavailable state, like in the
+following example:
+wlp0s20f3          wifi      unavailable             -- 
+      Is it the case that wireless interfaces are not active?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3814r374955_fix">Configure the operating system to protect wireless access to the system using authentication of users and/or devices.</fixtext></td>
-<td>Deactivating wireless network interfaces should prevent
-normal usage of the wireless capability.
+<td>Deactivating wireless network interfaces should prevent normal usage of the wireless
+capability.
 
 
-Configure the system to disable all wireless network interfaces with the
-following command:
+Configure the system to disable all wireless network interfaces with the following command:
 $ sudo nmcli radio all off</td>
 <td>medium</td>
 <td></td>
@@ -27722,12 +27720,11 @@ $ sudo systemctl enable sshd.service</td>
 Use of this requirement will be limited to situations where the data owner has a strict requirement for ensuring data integrity and confidentiality is maintained at every step of the data transfer and handling process. When transmitting data, operating systems need to leverage transmission protection mechanisms such as TLS, SSL VPNs, or IPSec.
 
 Alternative physical protection measures include PDS. PDSs are used to transmit unencrypted classified National Security Information (NSI) through an area of lesser classification or control. Since the classified NSI is unencrypted, the PDS must provide adequate electrical, electromagnetic, and physical safeguards to deter exploitation.</td>
-<td>Deactivating wireless network interfaces should prevent
-normal usage of the wireless capability.
+<td>Deactivating wireless network interfaces should prevent normal usage of the wireless
+capability.
 <br><br>
 
-Configure the system to disable all wireless network interfaces with the
-following command:
+Configure the system to disable all wireless network interfaces with the following command:
 <pre>$ sudo nmcli radio all off</pre>
 </td>
 <td>Applicable - Configurable</td>
@@ -27738,17 +27735,17 @@ If it does not, this is a finding.</td>
 with the following command:
 
 $ sudo nmcli device
-The output should contain the following:
-wifi disconnected
-      Is it the case that it is not?
+The output should only contain wireless devices in unavailable state, like in the
+following example:
+wlp0s20f3          wifi      unavailable             -- 
+      Is it the case that wireless interfaces are not active?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3874r793158_fix">Configure the operating system to implement cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a minimum, a Protected Distribution System (PDS).</fixtext></td>
-<td>Deactivating wireless network interfaces should prevent
-normal usage of the wireless capability.
+<td>Deactivating wireless network interfaces should prevent normal usage of the wireless
+capability.
 
 
-Configure the system to disable all wireless network interfaces with the
-following command:
+Configure the system to disable all wireless network interfaces with the following command:
 $ sudo nmcli radio all off</td>
 <td>medium</td>
 <td></td>
@@ -44322,12 +44319,11 @@ $ sudo systemctl enable firewalld.service</td>
 This requirement applies to wireless peripheral technologies (e.g., wireless mice, keyboards, displays, etc.) used with an operating system. Wireless peripherals (e.g., Wi-Fi/Bluetooth/IR Keyboards, Mice, and Pointing Devices and Near Field Communications [NFC]) present a unique challenge by creating an open, unsecured port on a computer. Wireless peripherals must meet DoD requirements for wireless data transmission and be approved for use by the AO. Even though some wireless peripherals, such as mice and pointing devices, do not ordinarily carry information that need to be protected, modification of communications with these wireless peripherals may be used to compromise the operating system. Communication paths outside the physical protection of a controlled boundary are exposed to the possibility of interception and modification.
 
 Protecting the confidentiality and integrity of communications with wireless peripherals can be accomplished by physical means (e.g., employing physical barriers to wireless radio frequencies) or by logical means (e.g., employing cryptographic techniques). If physical means of protection are employed, then logical means (cryptography) do not have to be employed, and vice versa. If the wireless peripheral is only passing telemetry data, encryption of the data may not be required.</td>
-<td>Deactivating wireless network interfaces should prevent
-normal usage of the wireless capability.
+<td>Deactivating wireless network interfaces should prevent normal usage of the wireless
+capability.
 <br><br>
 
-Configure the system to disable all wireless network interfaces with the
-following command:
+Configure the system to disable all wireless network interfaces with the following command:
 <pre>$ sudo nmcli radio all off</pre>
 </td>
 <td>Applicable - Configurable</td>
@@ -44336,17 +44332,17 @@ following command:
 with the following command:
 
 $ sudo nmcli device
-The output should contain the following:
-wifi disconnected
-      Is it the case that it is not?
+The output should only contain wireless devices in unavailable state, like in the
+following example:
+wlp0s20f3          wifi      unavailable             -- 
+      Is it the case that wireless interfaces are not active?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3910r375747_fix">Configure the operating system to protect the confidentiality and integrity of communications with wireless peripherals.</fixtext></td>
-<td>Deactivating wireless network interfaces should prevent
-normal usage of the wireless capability.
+<td>Deactivating wireless network interfaces should prevent normal usage of the wireless
+capability.
 
 
-Configure the system to disable all wireless network interfaces with the
-following command:
+Configure the system to disable all wireless network interfaces with the following command:
 $ sudo nmcli radio all off</td>
 <td>medium</td>
 <td></td>
