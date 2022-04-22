@@ -4069,7 +4069,7 @@ problems caused by excessive logins. Automated login processes operating imprope
 maliciously may result in an exceptional number of simultaneous login sessions.</pre></td>
 <td><pre>Run the following command to ensure the maxlogins value is
 configured for all users on the system:
-# grep "maxlogins" /etc/security/limits.conf
+# grep "maxlogins" /etc/security/limits.conf /etc/security/limits.d/*.conf
 You should receive output similar to the following:
 *\t\thard\tmaxlogins\t
       Is it the case that maxlogins is not equal to or less than the expected value?
