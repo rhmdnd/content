@@ -34503,8 +34503,9 @@ is not commented out or superseded by later includes:
 <td>Verify the operating system protects the confidentiality and integrity of transmitted information. If it does not, this is a finding.</td>
 <td>To verify that BIND uses the system crypto policy, check out that the BIND config file
 /etc/named.conf contains the include "/etc/crypto-policies/back-ends/bind.config";
-directive: grep 'include "/etc/crypto-policies/back-ends/bind.config";' /etc/named.conf,
-and verify that the directive is at the bottom of the options section of the config file.
+directive:
+$ sudo grep 'include "/etc/crypto-policies/back-ends/bind.config";' /etc/named.conf
+Verify that the directive is at the bottom of the options section of the config file.
       Is it the case that BIND is installed and the BIND config file doesn't contain the
 &lt;pre&gt;include "/etc/crypto-policies/back-ends/bind.config";&lt;/pre&gt; directive?
       </td>
@@ -34838,8 +34839,9 @@ is not commented out or superseded by later includes:
 <td>Verify the operating system maintains the confidentiality and integrity of information during reception. If it does not, this is a finding.</td>
 <td>To verify that BIND uses the system crypto policy, check out that the BIND config file
 /etc/named.conf contains the include "/etc/crypto-policies/back-ends/bind.config";
-directive: grep 'include "/etc/crypto-policies/back-ends/bind.config";' /etc/named.conf,
-and verify that the directive is at the bottom of the options section of the config file.
+directive:
+$ sudo grep 'include "/etc/crypto-policies/back-ends/bind.config";' /etc/named.conf
+Verify that the directive is at the bottom of the options section of the config file.
       Is it the case that BIND is installed and the BIND config file doesn't contain the
 &lt;pre&gt;include "/etc/crypto-policies/back-ends/bind.config";&lt;/pre&gt; directive?
       </td>
