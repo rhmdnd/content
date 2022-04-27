@@ -27604,7 +27604,7 @@ Run the following command to determine the current status of the
 sshd service:
 $ systemctl is-active sshd
 If the service is running, it should return the following: active
-      Is it the case that ?
+      Is it the case that sshd service is disabled?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3873r375309_fix">Configure the operating system to protect the confidentiality and integrity of transmitted information.</fixtext></td>
 <td>The SSH server service, sshd, is commonly needed.
@@ -27693,6 +27693,44 @@ $ sudo yum install openssh-server</td>
 <td></td>
 </tr>
 <tr>
+<td>V-56733</td>
+<td>SRG-OS-000424-GPOS-00188</td>
+<td><i>TBD - Assigned by DISA after STIG release</i></td>
+<td>The operating system must implement cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a minimum, a Protected Distribution System (PDS).</td>
+<td>CCE-80216-5:Enable the OpenSSH Service</td>
+<td>Encrypting information for transmission protects information from unauthorized disclosure and modification. Cryptographic mechanisms implemented to protect information integrity include, for example, cryptographic hash functions which have common application in digital signatures, checksums, and message authentication codes. 
+
+Use of this requirement will be limited to situations where the data owner has a strict requirement for ensuring data integrity and confidentiality is maintained at every step of the data transfer and handling process. When transmitting data, operating systems need to leverage transmission protection mechanisms such as TLS, SSL VPNs, or IPSec.
+
+Alternative physical protection measures include PDS. PDSs are used to transmit unencrypted classified National Security Information (NSI) through an area of lesser classification or control. Since the classified NSI is unencrypted, the PDS must provide adequate electrical, electromagnetic, and physical safeguards to deter exploitation.</td>
+<td>The SSH server service, sshd, is commonly needed.
+
+The <code>sshd</code> service can be enabled with the following command:
+<pre>$ sudo systemctl enable sshd.service</pre>
+</td>
+<td>Applicable - Configurable</td>
+<td>Verify the operating system implements cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a minimum, a Protected Distribution System (PDS). 
+
+If it does not, this is a finding.</td>
+<td>
+
+Run the following command to determine the current status of the
+sshd service:
+$ systemctl is-active sshd
+If the service is running, it should return the following: active
+      Is it the case that sshd service is disabled?
+      </td>
+<td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3874r793158_fix">Configure the operating system to implement cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission unless otherwise protected by alternative physical safeguards, such as, at a minimum, a Protected Distribution System (PDS).</fixtext></td>
+<td>The SSH server service, sshd, is commonly needed.
+
+The sshd service can be enabled with the following command:
+$ sudo systemctl enable sshd.service</td>
+<td>medium</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>V-56731</td>
 <td>SRG-OS-000425-GPOS-00189</td>
 <td><i>TBD - Assigned by DISA after STIG release</i></td>
@@ -27724,6 +27762,42 @@ $ sudo yum install openssh-server</td>
 <td></td>
 </tr>
 <tr>
+<td>V-56731</td>
+<td>SRG-OS-000425-GPOS-00189</td>
+<td><i>TBD - Assigned by DISA after STIG release</i></td>
+<td>The operating system must maintain the confidentiality and integrity of information during preparation for transmission.</td>
+<td>CCE-80216-5:Enable the OpenSSH Service</td>
+<td>Information can be either unintentionally or maliciously disclosed or modified during preparation for transmission, for example, during aggregation, at protocol transformation points, and during packing/unpacking. These unauthorized disclosures or modifications compromise the confidentiality or integrity of the information.
+
+Ensuring the confidentiality of transmitted information requires the operating system to take measures in preparing information for transmission. This can be accomplished via access control and encryption.
+
+Use of this requirement will be limited to situations where the data owner has a strict requirement for ensuring data integrity and confidentiality is maintained at every step of the data transfer and handling process. When transmitting data, operating systems need to support transmission protection mechanisms such as TLS, SSL VPNs, or IPSec.</td>
+<td>The SSH server service, sshd, is commonly needed.
+
+The <code>sshd</code> service can be enabled with the following command:
+<pre>$ sudo systemctl enable sshd.service</pre>
+</td>
+<td>Applicable - Configurable</td>
+<td>Verify the operating system maintains the confidentiality and integrity of information during preparation for transmission. If it does not, this is a finding.</td>
+<td>
+
+Run the following command to determine the current status of the
+sshd service:
+$ systemctl is-active sshd
+If the service is running, it should return the following: active
+      Is it the case that sshd service is disabled?
+      </td>
+<td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3875r375750_fix">Configure the operating system to maintain the confidentiality and integrity of information during preparation for transmission.</fixtext></td>
+<td>The SSH server service, sshd, is commonly needed.
+
+The sshd service can be enabled with the following command:
+$ sudo systemctl enable sshd.service</td>
+<td>medium</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>V-56729</td>
 <td>SRG-OS-000426-GPOS-00190</td>
 <td><i>TBD - Assigned by DISA after STIG release</i></td>
@@ -27749,6 +27823,42 @@ $ sudo yum install openssh-server</pre>
 The openssh-server package can be installed with the following command:
 
 $ sudo yum install openssh-server</td>
+<td>medium</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>V-56729</td>
+<td>SRG-OS-000426-GPOS-00190</td>
+<td><i>TBD - Assigned by DISA after STIG release</i></td>
+<td>The operating system must maintain the confidentiality and integrity of information during reception.</td>
+<td>CCE-80216-5:Enable the OpenSSH Service</td>
+<td>Information can be either unintentionally or maliciously disclosed or modified during reception, including, for example, during aggregation, at protocol transformation points, and during packing/unpacking. These unauthorized disclosures or modifications compromise the confidentiality or integrity of the information.
+
+Ensuring the confidentiality of transmitted information requires the operating system to take measures in preparing information for transmission. This can be accomplished via access control and encryption.
+
+Use of this requirement will be limited to situations where the data owner has a strict requirement for ensuring data integrity and confidentiality is maintained at every step of the data transfer and handling process. When receiving data, operating systems need to leverage protection mechanisms such as TLS, SSL VPNs, or IPSec.</td>
+<td>The SSH server service, sshd, is commonly needed.
+
+The <code>sshd</code> service can be enabled with the following command:
+<pre>$ sudo systemctl enable sshd.service</pre>
+</td>
+<td>Applicable - Configurable</td>
+<td>Verify the operating system maintains the confidentiality and integrity of information during reception. If it does not, this is a finding.</td>
+<td>
+
+Run the following command to determine the current status of the
+sshd service:
+$ systemctl is-active sshd
+If the service is running, it should return the following: active
+      Is it the case that sshd service is disabled?
+      </td>
+<td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3876r375375_fix">Configure the operating system to maintain the confidentiality and integrity of information during reception.</fixtext></td>
+<td>The SSH server service, sshd, is commonly needed.
+
+The sshd service can be enabled with the following command:
+$ sudo systemctl enable sshd.service</td>
 <td>medium</td>
 <td></td>
 <td></td>

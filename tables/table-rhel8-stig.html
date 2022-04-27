@@ -2193,22 +2193,20 @@ $ sudo yum install openssl-pkcs11</pre></pre></td>
 <td>medium</td>
 <td>RHEL 8 must implement certificate status checking for multifactor authentication.</td>
 <td>SRG-OS-ID</td>
-<td><pre>Enusring that multifactor solutions certificates are checked via Online Certificate Status Protocol (OCSP)
+<td><pre>Ensuring that multifactor solutions certificates are checked via Online Certificate Status Protocol (OCSP)
 ensures the security of the system.</pre></td>
 <td><pre>Check to see if Online Certificate Status Protocol (OCSP)
 is enabled and using the proper digest value on the system with the following command:
 $ sudo grep certificate_verification /etc/sssd/sssd.conf /etc/sssd/conf.d/*.conf | grep -v "^#"
 If configured properly, output should look like
 
-    certificate_verification = ocsp_dgst=sha1
+    certificate_verification = ocsp_dgst=
 
-The "sssd" service must be restarted for the changes to take effect. To restart the "sssd" service, run the following command:
-$ sudo systemctl restart sssd.service
       Is it the case that certificate_verification in sssd is not configured?
       </pre></td>
 <td><pre>Multifactor solutions that require devices separate from information systems gaining access include,
 for example, hardware tokens providing time-based or challenge-response authenticators and smart cards.
-By configuring <code>certificate_verification</code> to <code>ocsp_dgst=sha1</code> sures that certificates for
+Configuring <code>certificate_verification</code> to <code>ocsp_dgst=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_sssd_certificate_verification_digest_function"></xccdf-1.1:sub></code> ensures that certificates for
 multifactor solutions are checked via Online Certificate Status Protocol (OCSP).</pre></td>
 <td>RHEL-08-010400</td>
 <td>sssd_certificate_verification</td>
@@ -9064,7 +9062,7 @@ Run the following command to determine the current status of the
 sshd service:
 $ systemctl is-active sshd
 If the service is running, it should return the following: active
-      Is it the case that ?
+      Is it the case that sshd service is disabled?
       </pre></td>
 <td><pre>The SSH server service, sshd, is commonly needed.
 
