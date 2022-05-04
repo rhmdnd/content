@@ -156,11 +156,11 @@ configured to automatically terminate these types of accounts after a
 period of 72 hours.</td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system automatically removes or disables local temporary user accounts after 72 hours. If it does not, this is a finding.</td>
-<td>For every temporary and emergency account, run the following command
+<td>For every temporary account, run the following command
 to obtain its account aging and expiration information:
 $ sudo chage -l USER
 Verify each of these accounts has an expiration date set as documented.
-      Is it the case that any temporary or emergency accounts have no expiration date set or do not expire within a documented time frame?
+      Is it the case that any temporary accounts have no expiration date set or do not expire within a documented time frame?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3717r557033_fix">Configure the operating system to automatically remove or disable local temporary user accounts after 72 hours.</fixtext></td>
 <td>Temporary accounts are established as part of normal account activation
@@ -20100,11 +20100,11 @@ configured to automatically terminate these types of accounts after a
 period of 72 hours.</td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system is configured such that emergency administrator accounts are automatically removed or disabled within 72 hours. If it is not, this is a finding.</td>
-<td>For every temporary and emergency account, run the following command
+<td>For every temporary account, run the following command
 to obtain its account aging and expiration information:
 $ sudo chage -l USER
 Verify each of these accounts has an expiration date set as documented.
-      Is it the case that any temporary or emergency accounts have no expiration date set or do not expire within a documented time frame?
+      Is it the case that any temporary accounts have no expiration date set or do not expire within a documented time frame?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3777r557202_fix">Configure the operating system such that emergency administrator accounts are automatically removed or disabled within 72 hours.</fixtext></td>
 <td>Temporary accounts are established as part of normal account activation
@@ -23719,15 +23719,12 @@ ownership with the following command:
 </td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system limits privileges to change software resident within software libraries. If it does not, this is a finding.</td>
-<td>Shared libraries are stored in the following directories:
-/lib
-/lib64
-/usr/lib
-/usr/lib64
-For each of these directories, run the following command to find files not
-owned by root:
-$ sudo find -L $DIR ! -user root -type d -exec chgrp root {} \;
-      Is it the case that any of these directories are not group-owned by root?
+<td>Verify the system-wide shared library directories are group-owned by "root" with the following command:
+
+$ sudo find /lib /lib64 /usr/lib /usr/lib64 ! -group root -type d -exec stat -c "%n %G" '{}' \;
+
+If any system-wide shared library directory is returned and is not group-owned by a required system account, this is a finding.
+      Is it the case that any system-wide shared library directory is returned and is not group-owned by a required system account?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3800r374913_fix">Configure the operating system to limit privileges to change software resident within software libraries.</fixtext></td>
 <td>System-wide shared library files, which are linked to executables
@@ -23775,15 +23772,10 @@ ownership with the following command:
 </td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system limits privileges to change software resident within software libraries. If it does not, this is a finding.</td>
-<td>Shared libraries are stored in the following directories:
-/lib
-/lib64
-/usr/lib
-/usr/lib64
-For each of these directories, run the following command to find files not
-owned by root:
-$ sudo find -L $DIR ! -user root -type d -exec chown root {} \;
-      Is it the case that any of these directories are not owned by root?
+<td>Verify the system-wide shared library directories are owned by "root" with the following command:
+
+$ sudo find /lib /lib64 /usr/lib /usr/lib64 ! -user root -type d -exec stat -c "%n %U" '{}' \;
+      Is it the case that any system-wide shared library directory is not owned by root?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3800r374913_fix">Configure the operating system to limit privileges to change software resident within software libraries.</fixtext></td>
 <td>System-wide shared library files, which are linked to executables
@@ -23867,7 +23859,7 @@ $ sudo chmod go-w DIR</td>
 <td>SRG-OS-000259-GPOS-00100</td>
 <td><i>TBD - Assigned by DISA after STIG release</i></td>
 <td>The operating system must limit privileges to change software resident within software libraries.</td>
-<td>CCE-89442-8:Verify that system commands files are group owned by root </td>
+<td>CCE-89442-8:Verify that system commands files are group owned by root</td>
 <td> If the operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
 
 This requirement applies to operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals shall be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.</td>
@@ -23886,17 +23878,10 @@ by a group other than root correct its ownership with the following command:
 </td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system limits privileges to change software resident within software libraries. If it does not, this is a finding.</td>
-<td>System commands are stored in the following directories:
-/bin
-/sbin
-/usr/bin
-/usr/sbin
-/usr/local/bin
-/usr/local/sbin
-For each of these directories, run the following command to find files not
-owned by root group:
-$ sudo find -L $DIR ! -group root -type f \;
-      Is it the case that any of these files are not owned by root group?
+<td>Verify the system commands contained in the following directories are group-owned by "root", or a required system account, with the following command:
+
+$ sudo find -L /bin /sbin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin ! -group root -exec ls -l {} \;
+      Is it the case that any system commands are returned and is not group-owned by a required system account?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3800r374913_fix">Configure the operating system to limit privileges to change software resident within software libraries.</fixtext></td>
 <td>System commands files are stored in the following directories by default:
@@ -23941,18 +23926,10 @@ following command:
 </td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system limits privileges to change software resident within software libraries. If it does not, this is a finding.</td>
-<td>System executables are stored in the following directories by default:
-/bin
-/sbin
-/usr/bin
-/usr/libexec
-/usr/local/bin
-/usr/local/sbin
-/usr/sbin
-To find system executables that are not owned by root,
-run the following command for each directory DIR which contains system executables:
-$ sudo find DIR/ \! -user root
-      Is it the case that any system executables are found to not be owned by root?
+<td>Verify the system commands contained in the following directories are owned by "root" with the following command:
+
+$ sudo find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin ! -user root -exec ls -l {} \;
+      Is it the case that any system commands are found to not be owned by root?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3800r374913_fix">Configure the operating system to limit privileges to change software resident within software libraries.</fixtext></td>
 <td>System executables are stored in the following directories by default:
@@ -23999,15 +23976,10 @@ ownership with the following command:
 </td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system limits privileges to change software resident within software libraries. If it does not, this is a finding.</td>
-<td>Shared libraries are stored in the following directories:
-/lib
-/lib64
-/usr/lib
-/usr/lib64
-For each of these directories, run the following command to find files not
-owned by root:
-$ sudo find -L $DIR ! -user root -exec chown root {} \;
-      Is it the case that any of these files are not owned by root?
+<td>Verify the system-wide shared library files are owned by "root" with the following command:
+
+$ sudo find -L /lib /lib64 /usr/lib /usr/lib64 ! -user root -exec ls -l {} \;
+      Is it the case that any system wide shared library file is not owned by root?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3800r374913_fix">Configure the operating system to limit privileges to change software resident within software libraries.</fixtext></td>
 <td>System-wide shared library files, which are linked to executables
@@ -24054,18 +24026,10 @@ following command:
 </td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system limits privileges to change software resident within software libraries. If it does not, this is a finding.</td>
-<td>System executables are stored in the following directories by default:
-/bin
-/sbin
-/usr/bin
-/usr/libexec
-/usr/local/bin
-/usr/local/sbin
-/usr/sbin
-To find system executables that are group-writable or world-writable,
-run the following command for each directory DIR which contains system executables:
-$ sudo find -L DIR -perm /022 -type f
-      Is it the case that any system executables are found to be group or world writable?
+<td>Verify the system commands contained in the following directories have mode "755" or less permissive with the following command:
+
+$ sudo find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin -perm /022 -exec ls -l {} \;
+      Is it the case that any system commands are found to be group-writable or world-writable?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3800r374913_fix">Configure the operating system to limit privileges to change software resident within software libraries.</fixtext></td>
 <td>System executables are stored in the following directories by default:
@@ -24112,16 +24076,10 @@ its permission with the following command:
 </td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system limits privileges to change software resident within software libraries. If it does not, this is a finding.</td>
-<td>Shared libraries are stored in the following directories:
-/lib
-/lib64
-/usr/lib
-/usr/lib64
+<td>Verify the system-wide shared library files contained in the following directories have mode "755" or less permissive with the following command:
 
-To find shared libraries that are group-writable or world-writable,
-run the following command for each directory DIR which contains shared libraries:
-$ sudo find -L DIR -perm /022 -type f
-      Is it the case that any of these files are group-writable or world-writable?
+$ sudo find -L /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type f -exec ls -l {} \;
+      Is it the case that any system-wide shared library file is found to be group-writable or world-writable?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3800r374913_fix">Configure the operating system to limit privileges to change software resident within software libraries.</fixtext></td>
 <td>System-wide shared library files, which are linked to executables
@@ -24167,16 +24125,10 @@ the following command:
 </td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system limits privileges to change software resident within software libraries. If it does not, this is a finding.</td>
-<td>System-wide library files are stored in the following directories:
-/lib
-/lib64
-/usr/lib
-/usr/lib64
+<td>Verify the system-wide shared library files are group-owned by "root" with the following command:
 
-To find if system-wide library files stored in these directories are not group-owned by
-root run the following command for each directory DIR:
-$ sudo find -L DIR ! -group root -type f 
-      Is it the case that system wide library files are not group-owned by root?
+$ sudo find -L /lib /lib64 /usr/lib /usr/lib64 ! -group root -exec ls -l {} \;
+      Is it the case that any system wide shared library file is returned and is not group-owned by a required system account?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3800r374913_fix">Configure the operating system to limit privileges to change software resident within software libraries.</fixtext></td>
 <td>System-wide library files are stored in the following directories
