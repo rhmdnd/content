@@ -3796,10 +3796,13 @@ the SSH server is being used but denied by the firewall, this exception should
 be added to the firewall configuration.
 <br /><br />
 
-To configure <code>firewalld</code> to allow access, run the following command(s):
 
 
-<code>firewall-cmd --permanent --add-service=ssh</code>
+To configure <code>firewalld</code> to allow <code>ssh</code> access, run the following command(s):
+<pre>firewall-cmd --permanent --add-service=ssh</pre>
+
+Then run the following command to load the newly created rule(s):
+<pre>firewall-cmd --reload</pre>
   </td>
   <td xml:lang="en-US">
 If inbound SSH connections are expected, adding a firewall rule exception
