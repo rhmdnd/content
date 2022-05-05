@@ -4590,7 +4590,6 @@ more difficult by ensuring a larger search space.</pre></td>
 <td><pre>To check how many lowercase characters are required in a password, run the following command:
 $ grep lcredit /etc/security/pwquality.conf
 The lcredit parameter (as a negative number) will indicate how many special characters are required.
-The DoD and FISMA require at least one lowercase character in a password. This would appear as lcredit = -1.
       Is it the case that lcredit is not found or not less than or equal to the required value?
       </pre></td>
 <td><pre>The pam_pwquality module's <code>lcredit</code> parameter controls requirements for
@@ -4620,7 +4619,6 @@ search space.</pre></td>
 <td><pre>To check how many digits are required in a password, run the following command:
 $ grep dcredit /etc/security/pwquality.conf
 The dcredit parameter (as a negative number) will indicate how many digits are required.
-The DoD requires at least one digit in a password. This would appear as dcredit = -1.
       Is it the case that dcredit is not found or not equal to or less than the required value?
       </pre></td>
 <td><pre>The pam_pwquality module's <code>dcredit</code> parameter controls requirements for
@@ -4773,13 +4771,10 @@ changes to defeat the password reuse or history enforcement requirement. If
 users are allowed to immediately and continually change their password, the
 password could be repeatedly changed in a short period of time to defeat the
 organization's policy regarding password reuse.</pre></td>
-<td><pre>Check whether the minimum time period between password changes for each
-user account is one day or greater by running the following command for
-each user:
-$ sudo chage -l USER | grep Minimum
-The output for each user should return something similary to the following:
-Minimum number of days between password change\t\t: 1
-      Is it the case that existing passwords are not configured correctly?
+<td><pre>Check whether the minimum time period between password changes for each user account is one day or greater.
+
+$ sudo awk -F: '$4 &lt; 1 {print $1 "" "" $4}' /etc/shadow
+      Is it the case that any results are returned that are not associated with a system account?
       </pre></td>
 <td><pre>Configure non-compliant accounts to enforce a 24 hours/1 day minimum password
 lifetime by running the following command:
@@ -5118,8 +5113,6 @@ more difficult by ensuring a larger search space.</pre></td>
 $ grep ocredit /etc/security/pwquality.conf
 The ocredit parameter (as a negative number) will indicate how many special
 characters are required.
-The DoD and FISMA require at least one special character in a password.
-This would appear as ocredit = -1.
       Is it the case that value of "ocredit" is a positive number or is commented out?
       </pre></td>
 <td><pre>The pam_pwquality module's <code>ocredit=</code> parameter controls requirements for
@@ -5838,7 +5831,7 @@ $ sudo stat -c "%a %n" [audit_log_directory]
 Replace "[audit_log_directory]" to the correct audit log directory path, by default this location is "/var/log/audit".
 
 If the log_group is "root" or is not set, the correct permissions are 0700, otherwise they are 0750.
-      Is it the case that audit logs has more permissive mode?
+      Is it the case that audit logs have a more permissive mode?
       </pre></td>
 <td><pre>If <code>log_group</code> in <code>/etc/audit/auditd.conf</code> is set to a group other than the <code>root</code>
 group account, change the mode of the audit log files with the following command:
