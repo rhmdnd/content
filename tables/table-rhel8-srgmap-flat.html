@@ -2199,7 +2199,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -5627,7 +5627,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -5691,7 +5691,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -5789,7 +5789,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -5849,7 +5849,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -9174,7 +9174,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -9421,7 +9421,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -9510,7 +9510,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -10761,7 +10761,7 @@ If it does not, this is a finding.</td>
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -19627,7 +19627,7 @@ The <code>firewalld</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 firewalld service:
-$ systemctl is-active firewalld
+$ sudo systemctl is-active firewalld
 If the service is running, it should return the following: active
       Is it the case that the service is not enabled?
       </td>
@@ -20117,19 +20117,19 @@ The <code>autofs</code> service can be disabled with the following command:
 <td>
 To check that the autofs service is disabled in system boot configuration,
 run the following command:
-$ systemctl is-enabled autofs
+$ sudo systemctl is-enabled autofs
 Output should indicate the autofs service has either not been installed,
 or has been disabled at all runlevels, as shown in the example below:
-$ systemctl is-enabled autofs disabled
+$ sudo systemctl is-enabled autofs disabled
 
 Run the following command to verify autofs is not active (i.e. not running) through current runtime configuration:
-$ systemctl is-active autofs
+$ sudo systemctl is-active autofs
 
 If the service is not running the command will return the following output:
 inactive
 
 The service will also be masked, to check that the autofs is masked, run the following command:
-$ systemctl show autofs | grep "LoadState\|UnitFileState"
+$ sudo systemctl show autofs | grep "LoadState\|UnitFileState"
 
 If the service is masked the command will return the following outputs:
 
@@ -20583,7 +20583,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -23978,7 +23978,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -24130,7 +24130,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -25213,7 +25213,7 @@ The <code>firewalld</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 firewalld service:
-$ systemctl is-active firewalld
+$ sudo systemctl is-active firewalld
 If the service is running, it should return the following: active
       Is it the case that the service is not enabled?
       </td>
@@ -26673,19 +26673,19 @@ The <code>debug-shell</code> service can be disabled with the following command:
 <td>
 To check that the debug-shell service is disabled in system boot configuration,
 run the following command:
-$ systemctl is-enabled debug-shell
+$ sudo systemctl is-enabled debug-shell
 Output should indicate the debug-shell service has either not been installed,
 or has been disabled at all runlevels, as shown in the example below:
-$ systemctl is-enabled debug-shell disabled
+$ sudo systemctl is-enabled debug-shell disabled
 
 Run the following command to verify debug-shell is not active (i.e. not running) through current runtime configuration:
-$ systemctl is-active debug-shell
+$ sudo systemctl is-active debug-shell
 
 If the service is not running the command will return the following output:
 inactive
 
 The service will also be masked, to check that the debug-shell is masked, run the following command:
-$ systemctl show debug-shell | grep "LoadState\|UnitFileState"
+$ sudo systemctl show debug-shell | grep "LoadState\|UnitFileState"
 
 If the service is masked the command will return the following outputs:
 
@@ -27230,7 +27230,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -27931,7 +27931,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -27995,7 +27995,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -28055,7 +28055,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -28115,7 +28115,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -28175,7 +28175,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -28239,7 +28239,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -28303,7 +28303,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -28509,7 +28509,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -28856,7 +28856,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -29732,7 +29732,7 @@ The <code>fapolicyd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 fapolicyd service:
-$ systemctl is-active fapolicyd
+$ sudo systemctl is-active fapolicyd
 If the service is running, it should return the following: active
       Is it the case that the service is not enabled?
       </td>
@@ -29801,7 +29801,7 @@ The <code>fapolicyd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 fapolicyd service:
-$ systemctl is-active fapolicyd
+$ sudo systemctl is-active fapolicyd
 If the service is running, it should return the following: active
       Is it the case that the service is not enabled?
       </td>
@@ -30355,19 +30355,19 @@ The <code>autofs</code> service can be disabled with the following command:
 <td>
 To check that the autofs service is disabled in system boot configuration,
 run the following command:
-$ systemctl is-enabled autofs
+$ sudo systemctl is-enabled autofs
 Output should indicate the autofs service has either not been installed,
 or has been disabled at all runlevels, as shown in the example below:
-$ systemctl is-enabled autofs disabled
+$ sudo systemctl is-enabled autofs disabled
 
 Run the following command to verify autofs is not active (i.e. not running) through current runtime configuration:
-$ systemctl is-active autofs
+$ sudo systemctl is-active autofs
 
 If the service is not running the command will return the following output:
 inactive
 
 The service will also be masked, to check that the autofs is masked, run the following command:
-$ systemctl show autofs | grep "LoadState\|UnitFileState"
+$ sudo systemctl show autofs | grep "LoadState\|UnitFileState"
 
 If the service is masked the command will return the following outputs:
 
@@ -30485,7 +30485,7 @@ The <code>usbguard</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 usbguard service:
-$ systemctl is-active usbguard
+$ sudo systemctl is-active usbguard
 If the service is running, it should return the following: active
       Is it the case that the service is not enabled?
       </td>
@@ -30680,7 +30680,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -34812,7 +34812,7 @@ The <code>sshd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 sshd service:
-$ systemctl is-active sshd
+$ sudo systemctl is-active sshd
 If the service is running, it should return the following: active
       Is it the case that sshd service is disabled?
       </td>
@@ -34926,7 +34926,7 @@ If it does not, this is a finding.</td>
 
 Run the following command to determine the current status of the
 sshd service:
-$ systemctl is-active sshd
+$ sudo systemctl is-active sshd
 If the service is running, it should return the following: active
       Is it the case that sshd service is disabled?
       </td>
@@ -34993,7 +34993,7 @@ The <code>sshd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 sshd service:
-$ systemctl is-active sshd
+$ sudo systemctl is-active sshd
 If the service is running, it should return the following: active
       Is it the case that sshd service is disabled?
       </td>
@@ -35106,7 +35106,7 @@ The <code>sshd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 sshd service:
-$ systemctl is-active sshd
+$ sudo systemctl is-active sshd
 If the service is running, it should return the following: active
       Is it the case that sshd service is disabled?
       </td>
@@ -47793,7 +47793,7 @@ The <code>auditd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 auditd service:
-$ systemctl is-active auditd
+$ sudo systemctl is-active auditd
 If the service is running, it should return the following: active
       Is it the case that the auditd service is not running?
       </td>
@@ -49617,19 +49617,19 @@ The <code>debug-shell</code> service can be disabled with the following command:
 <td>
 To check that the debug-shell service is disabled in system boot configuration,
 run the following command:
-$ systemctl is-enabled debug-shell
+$ sudo systemctl is-enabled debug-shell
 Output should indicate the debug-shell service has either not been installed,
 or has been disabled at all runlevels, as shown in the example below:
-$ systemctl is-enabled debug-shell disabled
+$ sudo systemctl is-enabled debug-shell disabled
 
 Run the following command to verify debug-shell is not active (i.e. not running) through current runtime configuration:
-$ systemctl is-active debug-shell
+$ sudo systemctl is-active debug-shell
 
 If the service is not running the command will return the following output:
 inactive
 
 The service will also be masked, to check that the debug-shell is masked, run the following command:
-$ systemctl show debug-shell | grep "LoadState\|UnitFileState"
+$ sudo systemctl show debug-shell | grep "LoadState\|UnitFileState"
 
 If the service is masked the command will return the following outputs:
 
@@ -50451,7 +50451,7 @@ The <code>rsyslog</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 rsyslog service:
-$ systemctl is-active rsyslog
+$ sudo systemctl is-active rsyslog
 If the service is running, it should return the following: active
       Is it the case that ?
       </td>
@@ -50721,7 +50721,7 @@ The <code>firewalld</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 firewalld service:
-$ systemctl is-active firewalld
+$ sudo systemctl is-active firewalld
 If the service is running, it should return the following: active
       Is it the case that the service is not enabled?
       </td>
@@ -51576,19 +51576,19 @@ The <code>autofs</code> service can be disabled with the following command:
 <td>
 To check that the autofs service is disabled in system boot configuration,
 run the following command:
-$ systemctl is-enabled autofs
+$ sudo systemctl is-enabled autofs
 Output should indicate the autofs service has either not been installed,
 or has been disabled at all runlevels, as shown in the example below:
-$ systemctl is-enabled autofs disabled
+$ sudo systemctl is-enabled autofs disabled
 
 Run the following command to verify autofs is not active (i.e. not running) through current runtime configuration:
-$ systemctl is-active autofs
+$ sudo systemctl is-active autofs
 
 If the service is not running the command will return the following output:
 inactive
 
 The service will also be masked, to check that the autofs is masked, run the following command:
-$ systemctl show autofs | grep "LoadState\|UnitFileState"
+$ sudo systemctl show autofs | grep "LoadState\|UnitFileState"
 
 If the service is masked the command will return the following outputs:
 
@@ -52504,19 +52504,19 @@ The <code>kdump</code> service can be disabled with the following command:
 <td>
 To check that the kdump service is disabled in system boot configuration,
 run the following command:
-$ systemctl is-enabled kdump
+$ sudo systemctl is-enabled kdump
 Output should indicate the kdump service has either not been installed,
 or has been disabled at all runlevels, as shown in the example below:
-$ systemctl is-enabled kdump disabled
+$ sudo systemctl is-enabled kdump disabled
 
 Run the following command to verify kdump is not active (i.e. not running) through current runtime configuration:
-$ systemctl is-active kdump
+$ sudo systemctl is-active kdump
 
 If the service is not running the command will return the following output:
 inactive
 
 The service will also be masked, to check that the kdump is masked, run the following command:
-$ systemctl show kdump | grep "LoadState\|UnitFileState"
+$ sudo systemctl show kdump | grep "LoadState\|UnitFileState"
 
 If the service is masked the command will return the following outputs:
 
@@ -52860,7 +52860,7 @@ The <code>rngd</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 rngd service:
-$ systemctl is-active rngd
+$ sudo systemctl is-active rngd
 If the service is running, it should return the following: active
       Is it the case that the service is not enabled?
       </td>
@@ -53890,7 +53890,7 @@ The <code>firewalld</code> service can be enabled with the following command:
 
 Run the following command to determine the current status of the
 firewalld service:
-$ systemctl is-active firewalld
+$ sudo systemctl is-active firewalld
 If the service is running, it should return the following: active
       Is it the case that the service is not enabled?
       </td>
