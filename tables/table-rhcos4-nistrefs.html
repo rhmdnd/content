@@ -9238,8 +9238,7 @@ and validated.
   <td xml:lang="en-US">
 To enable FIPS mode, run the following command:
 <pre>fips-mode-setup --enable</pre>
-To enable FIPS, the system requires that the <tt>fips</tt> module is added in
-<tt>dracut</tt> configuration.
+To enable FIPS, the system requires that the <tt>fips</tt> module is added in <tt>dracut</tt> configuration.
 Check if <tt>/etc/dracut.conf.d/40-fips.conf</tt> contain <tt>add_dracutmodules+=" fips "</tt>
   </td>
   <td xml:lang="en-US">
@@ -9254,8 +9253,7 @@ and validated.
   <td>Set kernel parameter 'crypto.fips_enabled' to 1</td>
   <td xml:lang="en-US">
 System running in FIPS mode is indicated by kernel parameter
-<tt>'crypto.fips_enabled'</tt>. This parameter should be set to <tt>1</tt>
-in FIPS mode.
+<tt>'crypto.fips_enabled'</tt>. This parameter should be set to <tt>1</tt> in FIPS mode.
 To enable FIPS mode, run the following command:
 <pre>fips-mode-setup --enable</pre>
   </td>

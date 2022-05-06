@@ -521,21 +521,8 @@ length credit for each uppercase character. Modify the <code>ucredit</code> sett
 <td>medium</td>
 <td>Limit Password Reuse</td>
 <td>Preventing re-use of previous passwords helps ensure that a compromised password is not re-used by a user.</td>
-<td>Do not allow users to reuse recent passwords. This can be
-accomplished by using the <code>remember</code> option for the <code>pam_unix</code>
-or <code>pam_pwhistory</code> PAM modules.
-<br><br>
-In the file <code>/etc/pam.d/system-auth</code>, append <code>remember=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_unix_remember"></xccdf-1.1:sub></code>
-to the line which refers to the <code>pam_unix.so</code> or <code>pam_pwhistory.so</code>module, as shown below:
-<ul>
-<li>for the <code>pam_unix.so</code> case:
-<pre>password sufficient pam_unix.so <i>...existing_options...</i> remember=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_unix_remember"></xccdf-1.1:sub></pre>
-</li>
-<li>for the <code>pam_pwhistory.so</code> case:
-<pre>password requisite pam_pwhistory.so <i>...existing_options...</i> remember=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_unix_remember"></xccdf-1.1:sub></pre>
-</li>
-</ul>
-The DoD STIG requirement is 5 passwords.</td>
+<td>Do not allow users to reuse recent passwords. This can be accomplished by using the
+<code>remember</code> option for the <code>pam_unix</code> or <code>pam_pwhistory</code> PAM modules.</td>
 <td></td>
 <td>SRG-OS-000077-GPOS-00045<br>
 </td>

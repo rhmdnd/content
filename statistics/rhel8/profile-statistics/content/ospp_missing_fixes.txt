@@ -1,3 +1,2 @@
-enable_dracut_fips_module
 grub2_uefi_password
 zipl_bls_entries_only

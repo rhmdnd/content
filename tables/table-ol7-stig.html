@@ -860,15 +860,8 @@ restriction by running the following command:
 <td>SRG-OS-ID</td>
 <td><pre>Preventing re-use of previous passwords helps ensure that a compromised password is not re-used by a user.</pre></td>
 <td><pre></pre></td>
-<td><pre>Do not allow users to reuse recent passwords. This can be
-accomplished by using the <code>remember</code> option for the
-<code>pam_pwhistory</code> PAM modules.
-<br><br>
-In the file <code>/etc/pam.d/system-auth</code>, make sure the parameter
-<code>remember</code> is present, and that the value
-for the <code>remember</code> parameter is <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_remember"></xccdf-1.1:sub> or greater. For example:
-<pre>password <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_remember_control_flag"></xccdf-1.1:sub> pam_pwhistory.so <i>...existing_options...</i> remember=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_remember"></xccdf-1.1:sub> use_authtok</pre>
-The DoD STIG requirement is 5 passwords.</pre></td>
+<td><pre>Do not allow users to reuse recent passwords. This can be accomplished by using the
+<code>remember</code> option for the <code>pam_pwhistory</code> PAM module.</pre></td>
 <td>OL07-00-010270</td>
 <td>accounts_password_pam_pwhistory_remember_system_auth</td>
 </tr>

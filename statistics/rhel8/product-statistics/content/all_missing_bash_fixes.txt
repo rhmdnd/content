@@ -79,7 +79,6 @@ dovecot_configure_ssl_key
 dovecot_disable_plaintext_auth
 dovecot_enable_ssl
 enable_dconf_user_profile
-enable_dracut_fips_module
 enable_ldap_client
 encrypt_partitions
 ensure_gpgcheck_repo_metadata

@@ -53,7 +53,6 @@ dhcp_server_minimize_served_info
 dir_perms_world_writable_system_owned
 dir_perms_world_writable_system_owned_group
 enable_dconf_user_profile
-enable_dracut_fips_module
 encrypt_partitions
 ensure_gpgcheck_repo_metadata
 etc_system_fips_exists

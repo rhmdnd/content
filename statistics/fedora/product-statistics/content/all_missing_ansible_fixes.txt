@@ -74,7 +74,6 @@ disable_anacron
 disable_logwatch_for_logserver
 disallow_bypass_password_sudo
 enable_dconf_user_profile
-enable_dracut_fips_module
 encrypt_partitions
 ensure_fedora_gpgkey_installed
 ensure_gpgcheck_repo_metadata

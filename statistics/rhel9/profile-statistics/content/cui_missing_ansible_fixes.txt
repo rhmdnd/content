@@ -5,7 +5,6 @@ disable_ctrlaltdel_burstaction
 disable_ctrlaltdel_reboot
 dnf-automatic_apply_updates
 dnf-automatic_security_updates_only
-enable_dracut_fips_module
 enable_fips_mode
 grub2_uefi_password
 no_tmux_in_shells

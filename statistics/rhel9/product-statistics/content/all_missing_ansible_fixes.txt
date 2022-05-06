@@ -86,7 +86,6 @@ disallow_bypass_password_sudo
 dnf-automatic_apply_updates
 dnf-automatic_security_updates_only
 enable_dconf_user_profile
-enable_dracut_fips_module
 enable_fips_mode
 encrypt_partitions
 etc_system_fips_exists

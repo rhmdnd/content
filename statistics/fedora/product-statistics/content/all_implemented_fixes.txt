@@ -235,6 +235,7 @@ disable_users_coredumps
 display_login_attempts
 dnf-automatic_apply_updates
 dnf-automatic_security_updates_only
+enable_dracut_fips_module
 enable_fips_mode
 enable_pam_namespace
 ensure_fedora_gpgkey_installed

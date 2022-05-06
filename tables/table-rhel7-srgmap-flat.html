@@ -14731,42 +14731,19 @@ $ sudo chage -M  USER</td>
 <td>The operating system must prohibit password reuse for a minimum of five generations.</td>
 <td>CCE-82030-8:Limit Password Reuse</td>
 <td>Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. If the information system or application allows the user to consecutively reuse their password when that password has exceeded its defined lifetime, the end result is a password that is not changed as per policy requirements.</td>
-<td>Do not allow users to reuse recent passwords. This can be
-accomplished by using the <code>remember</code> option for the <code>pam_unix</code>
-or <code>pam_pwhistory</code> PAM modules.
-<br><br>
-In the file <code>/etc/pam.d/system-auth</code>, append <code>remember=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_unix_remember"></xccdf-1.1:sub></code>
-to the line which refers to the <code>pam_unix.so</code> or <code>pam_pwhistory.so</code>module, as shown below:
-<ul>
-<li>for the <code>pam_unix.so</code> case:
-<pre>password sufficient pam_unix.so <i>...existing_options...</i> remember=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_unix_remember"></xccdf-1.1:sub></pre>
-</li>
-<li>for the <code>pam_pwhistory.so</code> case:
-<pre>password requisite pam_pwhistory.so <i>...existing_options...</i> remember=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_unix_remember"></xccdf-1.1:sub></pre>
-</li>
-</ul>
-The DoD STIG requirement is 5 passwords.</td>
+<td>Do not allow users to reuse recent passwords. This can be accomplished by using the
+<code>remember</code> option for the <code>pam_unix</code> or <code>pam_pwhistory</code> PAM modules.</td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system prohibits password reuse for a minimum of five generations. If it does not, this is a finding.</td>
 <td>To verify the password reuse setting is compliant, run the following command:
 $ grep remember /etc/pam.d/system-auth
 The output should show the following at the end of the line:
 remember=
-      Is it the case that the value of remember is not set equal to or greater than the expected setting?
+      Is it the case that the value of remember is not equal to or greater than the expected value?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3758r557624_fix">Configure the operating system to prohibit password reuse for a minimum of five generations.</fixtext></td>
-<td>Do not allow users to reuse recent passwords. This can be
-accomplished by using the remember option for the pam_unix
-or pam_pwhistory PAM modules.
-
-In the file /etc/pam.d/system-auth, append remember=
-to the line which refers to the pam_unix.so or pam_pwhistory.somodule, as shown below:
-for the pam_unix.so case:
-password sufficient pam_unix.so ...existing_options... remember=
-for the pam_pwhistory.so case:
-password requisite pam_pwhistory.so ...existing_options... remember=
-
-The DoD STIG requirement is 5 passwords.</td>
+<td>Do not allow users to reuse recent passwords. This can be accomplished by using the
+remember option for the pam_unix or pam_pwhistory PAM modules.</td>
 <td>medium</td>
 <td></td>
 <td></td>

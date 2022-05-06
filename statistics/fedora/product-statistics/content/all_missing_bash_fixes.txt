@@ -76,7 +76,6 @@ disable_logwatch_for_logserver
 disable_users_coredumps
 disallow_bypass_password_sudo
 enable_dconf_user_profile
-enable_dracut_fips_module
 encrypt_partitions
 ensure_gpgcheck_repo_metadata
 etc_system_fips_exists

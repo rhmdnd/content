@@ -5713,15 +5713,8 @@ behavior that may result.
   <td>3.5.8</td>
   <td>Limit Password Reuse: system-auth</td>
   <td xml:lang="en-US">
-Do not allow users to reuse recent passwords. This can be
-accomplished by using the <tt>remember</tt> option for the
-<tt>pam_pwhistory</tt> PAM modules.
-<br /><br />
-In the file <tt>/etc/pam.d/system-auth</tt>, make sure the parameter
-<tt>remember</tt> is present, and that the value
-for the <tt>remember</tt> parameter is <abbr title="$var_password_pam_remember"><tt>5</tt></abbr> or greater. For example:
-<pre>password <abbr title="$var_password_pam_remember_control_flag"><tt>requisite</tt></abbr> pam_pwhistory.so <i>...existing_options...</i> remember=<abbr title="$var_password_pam_remember"><tt>5</tt></abbr> use_authtok</pre>
-The DoD STIG requirement is 5 passwords.
+Do not allow users to reuse recent passwords. This can be accomplished by using the
+<tt>remember</tt> option for the <tt>pam_pwhistory</tt> PAM module.
   </td>
   <td xml:lang="en-US">
 Preventing re-use of previous passwords helps ensure that a compromised password is not re-used by a user.
@@ -5748,21 +5741,8 @@ make the change at a practical time.
   <td>3.5.8</td>
   <td>Limit Password Reuse</td>
   <td xml:lang="en-US">
-Do not allow users to reuse recent passwords. This can be
-accomplished by using the <tt>remember</tt> option for the <tt>pam_unix</tt>
-or <tt>pam_pwhistory</tt> PAM modules.
-<br /><br />
-In the file <tt>/etc/pam.d/system-auth</tt>, append <tt>remember=<abbr title="$var_password_pam_unix_remember"><tt>5</tt></abbr></tt>
-to the line which refers to the <tt>pam_unix.so</tt> or <tt>pam_pwhistory.so</tt>module, as shown below:
-<ul>
-<li>for the <tt>pam_unix.so</tt> case:
-<pre>password sufficient pam_unix.so <i>...existing_options...</i> remember=<abbr title="$var_password_pam_unix_remember"><tt>5</tt></abbr></pre>
-</li>
-<li>for the <tt>pam_pwhistory.so</tt> case:
-<pre>password requisite pam_pwhistory.so <i>...existing_options...</i> remember=<abbr title="$var_password_pam_unix_remember"><tt>5</tt></abbr></pre>
-</li>
-</ul>
-The DoD STIG requirement is 5 passwords.
+Do not allow users to reuse recent passwords. This can be accomplished by using the
+<tt>remember</tt> option for the <tt>pam_unix</tt> or <tt>pam_pwhistory</tt> PAM modules.
   </td>
   <td xml:lang="en-US">
 Preventing re-use of previous passwords helps ensure that a compromised password is not re-used by a user.
@@ -5795,15 +5775,8 @@ favorite password after satisfying the password reuse requirement.
   <td>3.5.8</td>
   <td>Limit Password Reuse: password-auth</td>
   <td xml:lang="en-US">
-Do not allow users to reuse recent passwords. This can be
-accomplished by using the <tt>remember</tt> option for the
-<tt>pam_pwhistory</tt> PAM modules.
-<br /><br />
-In the file <tt>/etc/pam.d/password-auth</tt>, make sure the parameter
-<tt>remember</tt> is present, and that the value
-for the <tt>remember</tt> parameter is <abbr title="$var_password_pam_remember"><tt>5</tt></abbr> or greater. For example:
-<pre>password <abbr title="$var_password_pam_remember_control_flag"><tt>requisite</tt></abbr> pam_pwhistory.so <i>...existing_options...</i> remember=<abbr title="$var_password_pam_remember"><tt>5</tt></abbr> use_authtok</pre>
-The DoD STIG requirement is 5 passwords.
+Do not allow users to reuse recent passwords. This can be accomplished by using the
+<tt>remember</tt> option for the <tt>pam_pwhistory</tt> PAM module.
   </td>
   <td xml:lang="en-US">
 Preventing re-use of previous passwords helps ensure that a compromised password is not re-used by a user.

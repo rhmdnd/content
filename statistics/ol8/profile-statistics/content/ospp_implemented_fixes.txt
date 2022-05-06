@@ -57,6 +57,7 @@ disable_host_auth
 disable_users_coredumps
 dnf-automatic_apply_updates
 dnf-automatic_security_updates_only
+enable_dracut_fips_module
 enable_fips_mode
 ensure_gpgcheck_globally_activated
 ensure_gpgcheck_local_packages

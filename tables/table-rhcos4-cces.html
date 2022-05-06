@@ -148,8 +148,7 @@ The <code>dracut-fips</code> package can be installed with the following command
 <td>Enable Dracut FIPS Module</td>
 <td>To enable FIPS mode, run the following command:
 <pre>fips-mode-setup --enable</pre>
-To enable FIPS, the system requires that the <code>fips</code> module is added in
-<code>dracut</code> configuration.
+To enable FIPS, the system requires that the <code>fips</code> module is added in <code>dracut</code> configuration.
 Check if <code>/etc/dracut.conf.d/40-fips.conf</code> contain <code>add_dracutmodules+=" fips "</code>
 </td>
 </tr>
@@ -206,8 +205,7 @@ Finally, rebuild the <code>grub.cfg</code> file by using the
 <td></td>
 <td>Set kernel parameter 'crypto.fips_enabled' to 1</td>
 <td>System running in FIPS mode is indicated by kernel parameter
-<code>'crypto.fips_enabled'</code>. This parameter should be set to <code>1</code>
-in FIPS mode.
+<code>'crypto.fips_enabled'</code>. This parameter should be set to <code>1</code> in FIPS mode.
 To enable FIPS mode, run the following command:
 <pre>fips-mode-setup --enable</pre>
 </td>

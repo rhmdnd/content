@@ -8,6 +8,7 @@ banner_etc_issue
 chronyd_or_ntpd_set_maxpoll
 chronyd_or_ntpd_specify_remote_server
 configure_bind_crypto_policy
+enable_dracut_fips_module
 enable_fips_mode
 file_ownership_var_log_audit
 file_permissions_var_log_audit

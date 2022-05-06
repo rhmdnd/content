@@ -1964,8 +1964,7 @@ Remote access is access to DoD nonpublic information systems by an authorized us
 
 Encryption provides a means to secure the remote connection to prevent unauthorized access to the data traversing the remote access connection (e.g., RDP), thereby providing a degree of confidentiality. The encryption strength of a mechanism is selected based on the security categorization of the information.</td>
 <td>System running in FIPS mode is indicated by kernel parameter
-<code>'crypto.fips_enabled'</code>. This parameter should be set to <code>1</code>
-in FIPS mode.
+<code>'crypto.fips_enabled'</code>. This parameter should be set to <code>1</code> in FIPS mode.
 To enable FIPS mode, run the following command:
 <pre>fips-mode-setup --enable</pre>
 </td>
@@ -1979,8 +1978,7 @@ crypto.fips_enabled = 1
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3728r557066_fix">Configure the operating system to implement DoD-approved encryption to protect the confidentiality of remote access sessions.</fixtext></td>
 <td>System running in FIPS mode is indicated by kernel parameter
-'crypto.fips_enabled'. This parameter should be set to 1
-in FIPS mode.
+'crypto.fips_enabled'. This parameter should be set to 1 in FIPS mode.
 To enable FIPS mode, run the following command:
 fips-mode-setup --enable</td>
 <td>high</td>
@@ -18093,15 +18091,8 @@ $ sudo chage -M  USER</td>
 <td>The operating system must prohibit password reuse for a minimum of five generations.</td>
 <td>CCE-86354-8:Limit Password Reuse: password-auth</td>
 <td>Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. If the information system or application allows the user to consecutively reuse their password when that password has exceeded its defined lifetime, the end result is a password that is not changed as per policy requirements.</td>
-<td>Do not allow users to reuse recent passwords. This can be
-accomplished by using the <code>remember</code> option for the
-<code>pam_pwhistory</code> PAM modules.
-<br><br>
-In the file <code>/etc/pam.d/password-auth</code>, make sure the parameter
-<code>remember</code> is present, and that the value
-for the <code>remember</code> parameter is <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_remember"></xccdf-1.1:sub> or greater. For example:
-<pre>password <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_remember_control_flag"></xccdf-1.1:sub> pam_pwhistory.so <i>...existing_options...</i> remember=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_remember"></xccdf-1.1:sub> use_authtok</pre>
-The DoD STIG requirement is 5 passwords.</td>
+<td>Do not allow users to reuse recent passwords. This can be accomplished by using the
+<code>remember</code> option for the <code>pam_pwhistory</code> PAM module.</td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system prohibits password reuse for a minimum of five generations. If it does not, this is a finding.</td>
 <td>Check that the operating system prohibits the reuse of a password for
@@ -18115,15 +18106,8 @@ out, has a second column value different from , does not contain
       Is it the case that the value of remember is not set equal to or greater than &lt;sub idref="var_password_pam_remember" /&gt;?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3758r557624_fix">Configure the operating system to prohibit password reuse for a minimum of five generations.</fixtext></td>
-<td>Do not allow users to reuse recent passwords. This can be
-accomplished by using the remember option for the
-pam_pwhistory PAM modules.
-
-In the file /etc/pam.d/password-auth, make sure the parameter
-remember is present, and that the value
-for the remember parameter is  or greater. For example:
-password  pam_pwhistory.so ...existing_options... remember= use_authtok
-The DoD STIG requirement is 5 passwords.</td>
+<td>Do not allow users to reuse recent passwords. This can be accomplished by using the
+remember option for the pam_pwhistory PAM module.</td>
 <td>medium</td>
 <td></td>
 <td></td>
@@ -18136,37 +18120,23 @@ The DoD STIG requirement is 5 passwords.</td>
 <td>The operating system must prohibit password reuse for a minimum of five generations.</td>
 <td>CCE-89176-2:Limit Password Reuse: system-auth</td>
 <td>Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. If the information system or application allows the user to consecutively reuse their password when that password has exceeded its defined lifetime, the end result is a password that is not changed as per policy requirements.</td>
-<td>Do not allow users to reuse recent passwords. This can be
-accomplished by using the <code>remember</code> option for the
-<code>pam_pwhistory</code> PAM modules.
-<br><br>
-In the file <code>/etc/pam.d/system-auth</code>, make sure the parameter
-<code>remember</code> is present, and that the value
-for the <code>remember</code> parameter is <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_remember"></xccdf-1.1:sub> or greater. For example:
-<pre>password <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_remember_control_flag"></xccdf-1.1:sub> pam_pwhistory.so <i>...existing_options...</i> remember=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_remember"></xccdf-1.1:sub> use_authtok</pre>
-The DoD STIG requirement is 5 passwords.</td>
+<td>Do not allow users to reuse recent passwords. This can be accomplished by using the
+<code>remember</code> option for the <code>pam_pwhistory</code> PAM module.</td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system prohibits password reuse for a minimum of five generations. If it does not, this is a finding.</td>
-<td>Check that the operating system prohibits the reuse of a password for
-a minimum of  generations with the following command:
+<td>Check that the operating system prohibits the reuse of a password for a minimum of
+ generations with the following command:
 # grep pam_pwhistory.so /etc/pam.d/system-auth
 password  pam_pwhistory.so remember= use_authtok
-If the command does not return a result, or the returned line is commented
-out, has a second column value different from , does not contain
-"remember" value, or the value is less than
-, this is a finding.
+If the command does not return a result, or the returned line is commented out, has a second
+column value different from ,
+does not contain "remember" value, or the value is less than ,
+this is a finding.
       Is it the case that the value of remember is not set equal to or greater than &lt;sub idref="var_password_pam_remember" /&gt;?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3758r557624_fix">Configure the operating system to prohibit password reuse for a minimum of five generations.</fixtext></td>
-<td>Do not allow users to reuse recent passwords. This can be
-accomplished by using the remember option for the
-pam_pwhistory PAM modules.
-
-In the file /etc/pam.d/system-auth, make sure the parameter
-remember is present, and that the value
-for the remember parameter is  or greater. For example:
-password  pam_pwhistory.so ...existing_options... remember= use_authtok
-The DoD STIG requirement is 5 passwords.</td>
+<td>Do not allow users to reuse recent passwords. This can be accomplished by using the
+remember option for the pam_pwhistory PAM module.</td>
 <td>medium</td>
 <td></td>
 <td></td>
@@ -20318,8 +20288,7 @@ Some maintenance and test tools are either standalone devices with their own ope
 
 Nonlocal maintenance and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network (e.g., the Internet) or an internal network. Local maintenance and diagnostic activities are those activities carried out by individuals physically present at the information system or information system component and not communicating across a network connection. Typically, strong authentication requires authenticators that are resistant to replay attacks and employ multifactor authentication. Strong authenticators include, for example, PKI where certificates are stored on a token protected by a password, passphrase, or biometric.</td>
 <td>System running in FIPS mode is indicated by kernel parameter
-<code>'crypto.fips_enabled'</code>. This parameter should be set to <code>1</code>
-in FIPS mode.
+<code>'crypto.fips_enabled'</code>. This parameter should be set to <code>1</code> in FIPS mode.
 To enable FIPS mode, run the following command:
 <pre>fips-mode-setup --enable</pre>
 </td>
@@ -20333,8 +20302,7 @@ crypto.fips_enabled = 1
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3778r557205_fix">Configure the operating system to employ strong authenticators in the establishment of nonlocal maintenance and diagnostic sessions.</fixtext></td>
 <td>System running in FIPS mode is indicated by kernel parameter
-'crypto.fips_enabled'. This parameter should be set to 1
-in FIPS mode.
+'crypto.fips_enabled'. This parameter should be set to 1 in FIPS mode.
 To enable FIPS mode, run the following command:
 fips-mode-setup --enable</td>
 <td>high</td>
@@ -33948,8 +33916,7 @@ Setting the kernel FIPS mode flag (/proc/sys/crypto/fips_enabled) to 1Creating /
 <td>CCE-83441-6:Set kernel parameter 'crypto.fips_enabled' to 1</td>
 <td>Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The operating system must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.</td>
 <td>System running in FIPS mode is indicated by kernel parameter
-<code>'crypto.fips_enabled'</code>. This parameter should be set to <code>1</code>
-in FIPS mode.
+<code>'crypto.fips_enabled'</code>. This parameter should be set to <code>1</code> in FIPS mode.
 To enable FIPS mode, run the following command:
 <pre>fips-mode-setup --enable</pre>
 </td>
@@ -33963,8 +33930,7 @@ crypto.fips_enabled = 1
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3864r375282_fix">Configure the operating system to implement NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.</fixtext></td>
 <td>System running in FIPS mode is indicated by kernel parameter
-'crypto.fips_enabled'. This parameter should be set to 1
-in FIPS mode.
+'crypto.fips_enabled'. This parameter should be set to 1 in FIPS mode.
 To enable FIPS mode, run the following command:
 fips-mode-setup --enable</td>
 <td>high</td>
@@ -34246,8 +34212,7 @@ This requirement applies to both internal and external networks and all types of
 
 Protecting the confidentiality and integrity of organizational information can be accomplished by physical means (e.g., employing physical distribution systems) or by logical means (e.g., employing cryptographic techniques). If physical means of protection are employed, then logical means (cryptography) do not have to be employed, and vice versa.</td>
 <td>System running in FIPS mode is indicated by kernel parameter
-<code>'crypto.fips_enabled'</code>. This parameter should be set to <code>1</code>
-in FIPS mode.
+<code>'crypto.fips_enabled'</code>. This parameter should be set to <code>1</code> in FIPS mode.
 To enable FIPS mode, run the following command:
 <pre>fips-mode-setup --enable</pre>
 </td>
@@ -34261,8 +34226,7 @@ crypto.fips_enabled = 1
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3873r375309_fix">Configure the operating system to protect the confidentiality and integrity of transmitted information.</fixtext></td>
 <td>System running in FIPS mode is indicated by kernel parameter
-'crypto.fips_enabled'. This parameter should be set to 1
-in FIPS mode.
+'crypto.fips_enabled'. This parameter should be set to 1 in FIPS mode.
 To enable FIPS mode, run the following command:
 fips-mode-setup --enable</td>
 <td>high</td>
@@ -47930,8 +47894,7 @@ form to /etc/audit/audit.rules:
 <td>Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The operating system must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.</td>
 <td>To enable FIPS mode, run the following command:
 <pre>fips-mode-setup --enable</pre>
-To enable FIPS, the system requires that the <code>fips</code> module is added in
-<code>dracut</code> configuration.
+To enable FIPS, the system requires that the <code>fips</code> module is added in <code>dracut</code> configuration.
 Check if <code>/etc/dracut.conf.d/40-fips.conf</code> contain <code>add_dracutmodules+=" fips "</code>
 </td>
 <td>Applicable - Configurable</td>
@@ -47945,8 +47908,7 @@ add_dracutmodules+=" fips "
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3901r375720_fix">Configure the operating system to implement NIST FIPS-validated cryptography for the following: to provision digital signatures, to generate cryptographic hashes, and to protect unclassified information requiring confidentiality and cryptographic protection in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.</fixtext></td>
 <td>To enable FIPS mode, run the following command:
 fips-mode-setup --enable
-To enable FIPS, the system requires that the fips module is added in
-dracut configuration.
+To enable FIPS, the system requires that the fips module is added in dracut configuration.
 Check if /etc/dracut.conf.d/40-fips.conf contain add_dracutmodules+=" fips "</td>
 <td>high</td>
 <td></td>
@@ -48007,8 +47969,7 @@ Setting the kernel FIPS mode flag (/proc/sys/crypto/fips_enabled) to 1Creating /
 <td>CCE-83441-6:Set kernel parameter 'crypto.fips_enabled' to 1</td>
 <td>Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The operating system must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.</td>
 <td>System running in FIPS mode is indicated by kernel parameter
-<code>'crypto.fips_enabled'</code>. This parameter should be set to <code>1</code>
-in FIPS mode.
+<code>'crypto.fips_enabled'</code>. This parameter should be set to <code>1</code> in FIPS mode.
 To enable FIPS mode, run the following command:
 <pre>fips-mode-setup --enable</pre>
 </td>
@@ -48022,8 +47983,7 @@ crypto.fips_enabled = 1
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3901r375720_fix">Configure the operating system to implement NIST FIPS-validated cryptography for the following: to provision digital signatures, to generate cryptographic hashes, and to protect unclassified information requiring confidentiality and cryptographic protection in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.</fixtext></td>
 <td>System running in FIPS mode is indicated by kernel parameter
-'crypto.fips_enabled'. This parameter should be set to 1
-in FIPS mode.
+'crypto.fips_enabled'. This parameter should be set to 1 in FIPS mode.
 To enable FIPS mode, run the following command:
 fips-mode-setup --enable</td>
 <td>high</td>

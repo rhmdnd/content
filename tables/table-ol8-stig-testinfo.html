@@ -603,15 +603,8 @@ to require use of a special character in passwords.</td>
 <td>medium</td>
 <td>Limit Password Reuse: password-auth</td>
 <td>Preventing re-use of previous passwords helps ensure that a compromised password is not re-used by a user.</td>
-<td>Do not allow users to reuse recent passwords. This can be
-accomplished by using the <code>remember</code> option for the
-<code>pam_pwhistory</code> PAM modules.
-<br><br>
-In the file <code>/etc/pam.d/password-auth</code>, make sure the parameter
-<code>remember</code> is present, and that the value
-for the <code>remember</code> parameter is <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_remember"></xccdf-1.1:sub> or greater. For example:
-<pre>password <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_remember_control_flag"></xccdf-1.1:sub> pam_pwhistory.so <i>...existing_options...</i> remember=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_remember"></xccdf-1.1:sub> use_authtok</pre>
-The DoD STIG requirement is 5 passwords.</td>
+<td>Do not allow users to reuse recent passwords. This can be accomplished by using the
+<code>remember</code> option for the <code>pam_pwhistory</code> PAM module.</td>
 <td></td>
 <td>SRG-OS-000077-GPOS-00045<br>
 </td>
@@ -624,15 +617,8 @@ The DoD STIG requirement is 5 passwords.</td>
 <td>medium</td>
 <td>Limit Password Reuse: system-auth</td>
 <td>Preventing re-use of previous passwords helps ensure that a compromised password is not re-used by a user.</td>
-<td>Do not allow users to reuse recent passwords. This can be
-accomplished by using the <code>remember</code> option for the
-<code>pam_pwhistory</code> PAM modules.
-<br><br>
-In the file <code>/etc/pam.d/system-auth</code>, make sure the parameter
-<code>remember</code> is present, and that the value
-for the <code>remember</code> parameter is <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_remember"></xccdf-1.1:sub> or greater. For example:
-<pre>password <xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_remember_control_flag"></xccdf-1.1:sub> pam_pwhistory.so <i>...existing_options...</i> remember=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_remember"></xccdf-1.1:sub> use_authtok</pre>
-The DoD STIG requirement is 5 passwords.</td>
+<td>Do not allow users to reuse recent passwords. This can be accomplished by using the
+<code>remember</code> option for the <code>pam_pwhistory</code> PAM module.</td>
 <td></td>
 <td>SRG-OS-000077-GPOS-00045<br>
 </td>
@@ -4376,8 +4362,7 @@ standards approved by the federal government since this provides assurance they 
 and validated.</td>
 <td>To enable FIPS mode, run the following command:
 <pre>fips-mode-setup --enable</pre>
-To enable FIPS, the system requires that the <code>fips</code> module is added in
-<code>dracut</code> configuration.
+To enable FIPS, the system requires that the <code>fips</code> module is added in <code>dracut</code> configuration.
 Check if <code>/etc/dracut.conf.d/40-fips.conf</code> contain <code>add_dracutmodules+=" fips "</code>
 </td>
 <td></td>
@@ -8136,8 +8121,7 @@ protect data. The operating system must implement cryptographic modules adhering
 standards approved by the federal government since this provides assurance they have been tested
 and validated.</td>
 <td>System running in FIPS mode is indicated by kernel parameter
-<code>'crypto.fips_enabled'</code>. This parameter should be set to <code>1</code>
-in FIPS mode.
+<code>'crypto.fips_enabled'</code>. This parameter should be set to <code>1</code> in FIPS mode.
 To enable FIPS mode, run the following command:
 <pre>fips-mode-setup --enable</pre>
 </td>

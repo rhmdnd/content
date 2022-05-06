@@ -79,7 +79,6 @@ directory_group_ownership_var_log_audit
 directory_ownership_var_log_audit
 directory_permissions_var_log_audit
 enable_dconf_user_profile
-enable_dracut_fips_module
 encrypt_partitions
 ensure_gpgcheck_repo_metadata
 ensure_oracle_gpgkey_installed

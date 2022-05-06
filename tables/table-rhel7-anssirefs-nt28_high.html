@@ -1279,26 +1279,13 @@ the password is compromised.
   <td>CCE-82030-8</td>
   <td>Limit Password Reuse</td>
   <td xml:lang="en-US">
-Do not allow users to reuse recent passwords. This can be
-accomplished by using the <tt>remember</tt> option for the <tt>pam_unix</tt>
-or <tt>pam_pwhistory</tt> PAM modules.
-<br /><br />
-In the file <tt>/etc/pam.d/system-auth</tt>, append <tt>remember=<tt>2</tt></tt>
-to the line which refers to the <tt>pam_unix.so</tt> or <tt>pam_pwhistory.so</tt>module, as shown below:
-<ul>
-<li>for the <tt>pam_unix.so</tt> case:
-<pre>password sufficient pam_unix.so <i>...existing_options...</i> remember=<tt>2</tt></pre>
-</li>
-<li>for the <tt>pam_pwhistory.so</tt> case:
-<pre>password requisite pam_pwhistory.so <i>...existing_options...</i> remember=<tt>2</tt></pre>
-</li>
-</ul>
-The DoD STIG requirement is 5 passwords.
+Do not allow users to reuse recent passwords. This can be accomplished by using the
+<tt>remember</tt> option for the <tt>pam_unix</tt> or <tt>pam_pwhistory</tt> PAM modules.
   </td>
   <td xml:lang="en-US">
 Preventing re-use of previous passwords helps ensure that a compromised password is not re-used by a user.
   </td>
-  <td>var_password_pam_unix_remember=2</td>
+  <td></td>
 </tr>
 <tr>
   <td>BP28(R18)</td>
@@ -1371,7 +1358,7 @@ By limiting the number of failed logon attempts the risk of unauthorized system
 access via user password guessing, otherwise known as brute-forcing, is reduced.
 Limits are imposed by locking the account.
   </td>
-  <td>var_accounts_passwords_pam_faillock_fail_interval=900<br/>var_accounts_passwords_pam_faillock_unlock_time=900<br/>var_accounts_passwords_pam_faillock_deny=3</td>
+  <td>var_accounts_passwords_pam_faillock_deny=3<br/>var_accounts_passwords_pam_faillock_fail_interval=900<br/>var_accounts_passwords_pam_faillock_unlock_time=900</td>
 </tr>
 <tr>
   <td>BP28(R18)</td>

@@ -2433,40 +2433,26 @@ more difficult by ensuring a larger search space.
   <td>N/A</td>
   <td>Limit Password Reuse: password-auth</td>
   <td xml:lang="en-US">
-Do not allow users to reuse recent passwords. This can be
-accomplished by using the <tt>remember</tt> option for the
-<tt>pam_pwhistory</tt> PAM modules.
-<br /><br />
-In the file <tt>/etc/pam.d/password-auth</tt>, make sure the parameter
-<tt>remember</tt> is present, and that the value
-for the <tt>remember</tt> parameter is <tt>5</tt> or greater. For example:
-<pre>password <tt>required</tt> pam_pwhistory.so <i>...existing_options...</i> remember=<tt>5</tt> use_authtok</pre>
-The DoD STIG requirement is 5 passwords.
+Do not allow users to reuse recent passwords. This can be accomplished by using the
+<tt>remember</tt> option for the <tt>pam_pwhistory</tt> PAM module.
   </td>
   <td xml:lang="en-US">
 Preventing re-use of previous passwords helps ensure that a compromised password is not re-used by a user.
   </td>
-  <td>var_password_pam_remember=5<br/>var_password_pam_remember_control_flag=required</td>
+  <td></td>
 </tr>
 <tr>
   <td>IA-5(f)<br/>IA-5(1)(e)</td>
   <td>N/A</td>
   <td>Limit Password Reuse: system-auth</td>
   <td xml:lang="en-US">
-Do not allow users to reuse recent passwords. This can be
-accomplished by using the <tt>remember</tt> option for the
-<tt>pam_pwhistory</tt> PAM modules.
-<br /><br />
-In the file <tt>/etc/pam.d/system-auth</tt>, make sure the parameter
-<tt>remember</tt> is present, and that the value
-for the <tt>remember</tt> parameter is <tt>5</tt> or greater. For example:
-<pre>password <tt>required</tt> pam_pwhistory.so <i>...existing_options...</i> remember=<tt>5</tt> use_authtok</pre>
-The DoD STIG requirement is 5 passwords.
+Do not allow users to reuse recent passwords. This can be accomplished by using the
+<tt>remember</tt> option for the <tt>pam_pwhistory</tt> PAM module.
   </td>
   <td xml:lang="en-US">
 Preventing re-use of previous passwords helps ensure that a compromised password is not re-used by a user.
   </td>
-  <td>var_password_pam_remember=5<br/>var_password_pam_remember_control_flag=required</td>
+  <td></td>
 </tr>
 <tr>
   <td>IA-5(c)<br/>IA-5(1)(a)<br/>CM-6(a)<br/>IA-5(4)</td>

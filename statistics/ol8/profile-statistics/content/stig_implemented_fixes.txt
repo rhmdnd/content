@@ -149,6 +149,7 @@ disable_ctrlaltdel_burstaction
 disable_ctrlaltdel_reboot
 disable_users_coredumps
 display_login_attempts
+enable_dracut_fips_module
 enable_fips_mode
 ensure_gpgcheck_globally_activated
 ensure_gpgcheck_local_packages

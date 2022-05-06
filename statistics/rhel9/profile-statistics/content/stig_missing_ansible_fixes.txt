@@ -26,7 +26,6 @@ directory_ownership_var_log_audit
 directory_permissions_var_log_audit
 disable_ctrlaltdel_burstaction
 disable_ctrlaltdel_reboot
-enable_dracut_fips_module
 enable_fips_mode
 encrypt_partitions
 file_group_ownership_var_log_audit
