@@ -2258,11 +2258,7 @@ the default.</td>
 <td>CCE-80893-1</td>
 <td>Set PAM's Password Hashing Algorithm</td>
 <td>The PAM system service can be configured to only store encrypted
-representations of passwords. In
-
-<code>/etc/pam.d/system-auth</code>,
-
-the
+representations of passwords. In "/etc/pam.d/password-auth", the
 <code>password</code> section of the file controls which PAM modules execute
 during a password change. Set the <code>pam_unix.so</code> module in the
 <code>password</code> section to include the argument <code>sha512</code>, as shown
@@ -2665,7 +2661,7 @@ configuration be set to encrypt interactive user passwords using a strong
 cryptographic hash.
 Check that the interactive user account passwords are using a strong
 password hash with the following command:
-<pre># sudo cut -d: -f2 /etc/shadow
+<pre>$ sudo cut -d: -f2 /etc/shadow
 $6$kcOnRq/5$NUEYPuyL.wghQwWssXRcLRFiiru7f5JPV6GaJhNC2aK5F3PZpE/BCCtwrxRc/AInKMNX3CdMw11m9STiql12f/</pre>
 Password hashes <code>!</code> or <code>*</code> indicate inactive accounts not
 available for logon and are not evaluated.
@@ -2679,7 +2675,7 @@ this is a finding.</td>
 accomplished by using the <code>rounds</code> option for the <code>pam_unix</code> PAM module.
 <br><br>
 In file <code>/etc/pam.d/password-auth</code> append <code>rounds=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_unix_rounds"></xccdf-1.1:sub></code>
-to the <code>pam_unix.so</code> file, as shown below:
+to the <code>pam_unix.so</code> entry, as shown below:
 <pre>password sufficient pam_unix.so <i>...existing_options...</i> rounds=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_unix_rounds"></xccdf-1.1:sub></pre>
 The system's default number of rounds is 5000.</td>
 </tr>
@@ -2690,7 +2686,7 @@ The system's default number of rounds is 5000.</td>
 accomplished by using the <code>rounds</code> option for the <code>pam_unix</code> PAM module.
 <br><br>
 In file <code>/etc/pam.d/system-auth</code> append <code>rounds=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_unix_rounds"></xccdf-1.1:sub></code>
-to the <code>pam_unix.so</code> file, as shown below:
+to the <code>pam_unix.so</code> entry, as shown below:
 <pre>password sufficient pam_unix.so <i>...existing_options...</i> rounds=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_unix_rounds"></xccdf-1.1:sub></pre>
 The system's default number of rounds is 5000.</td>
 </tr>

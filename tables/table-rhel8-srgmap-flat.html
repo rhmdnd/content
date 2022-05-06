@@ -17834,9 +17834,14 @@ the system will use SHA-512 as the hashing algorithm:
 </td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system stores only encrypted representations of passwords. If it does not, this is a finding.</td>
-<td>Inspect /etc/login.defs and ensure the following line appears:
+<td>Verify that the shadow password suite configuration is set to encrypt password with a FIPS 140-2 approved cryptographic hashing algorithm.
+
+Check the hashing algorithm that is being used to hash passwords with the following command:
+
+$ sudo grep -i ENCRYPT_METHOD /etc/login.defs
+
 ENCRYPT_METHOD SHA512
-      Is it the case that it does not?
+      Is it the case that ENCRYPT_METHOD is not set to SHA512?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3754r557612_fix">Configure the operating system to store only encrypted representations of passwords.</fixtext></td>
 <td>In /etc/login.defs, add or correct the following line to ensure
@@ -17904,11 +17909,7 @@ the default.</td>
 <td>CCE-80893-1:Set PAM's Password Hashing Algorithm</td>
 <td>Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.</td>
 <td>The PAM system service can be configured to only store encrypted
-representations of passwords. In
-
-<code>/etc/pam.d/system-auth</code>,
-
-the
+representations of passwords. In "/etc/pam.d/password-auth", the
 <code>password</code> section of the file controls which PAM modules execute
 during a password change. Set the <code>pam_unix.so</code> module in the
 <code>password</code> section to include the argument <code>sha512</code>, as shown
@@ -17923,22 +17924,18 @@ the new passwords will be generated using the SHA-512 algorithm. This is
 the default.</td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system stores only encrypted representations of passwords. If it does not, this is a finding.</td>
-<td>
-Inspect the password section of /etc/pam.d/system-auth
-
-and ensure that the pam_unix.so module includes the argument
+<td>Inspect the password section of /etc/pam.d/password-auth
+and ensure that the pam_unix.so module  is configured to use the argument
 sha512:
 
-$ grep sha512 /etc/pam.d/system-auth
-      Is it the case that it does not?
+$ sudo grep "^password.*pam_unix.so.*sha512" /etc/pam.d/password-auth
+
+password sufficient pam_unix.so sha512
+      Is it the case that "sha512" is missing, or is commented out?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3754r557612_fix">Configure the operating system to store only encrypted representations of passwords.</fixtext></td>
 <td>The PAM system service can be configured to only store encrypted
-representations of passwords. In
-
-/etc/pam.d/system-auth,
-
-the
+representations of passwords. In "/etc/pam.d/password-auth", the
 password section of the file controls which PAM modules execute
 during a password change. Set the pam_unix.so module in the
 password section to include the argument sha512, as shown
@@ -18002,7 +17999,7 @@ configuration be set to encrypt interactive user passwords using a strong
 cryptographic hash.
 Check that the interactive user account passwords are using a strong
 password hash with the following command:
-<pre># sudo cut -d: -f2 /etc/shadow
+<pre>$ sudo cut -d: -f2 /etc/shadow
 $6$kcOnRq/5$NUEYPuyL.wghQwWssXRcLRFiiru7f5JPV6GaJhNC2aK5F3PZpE/BCCtwrxRc/AInKMNX3CdMw11m9STiql12f/</pre>
 Password hashes <code>!</code> or <code>*</code> indicate inactive accounts not
 available for logon and are not evaluated.
@@ -18013,7 +18010,7 @@ this is a finding.</td>
 <td>Check that the interactive user account passwords are using a strong
 password hash with the following command:
 
-# sudo cut -d: -f2 /etc/shadow
+$ sudo cut -d: -f2 /etc/shadow
 
 $6$kcOnRq/5$NUEYPuyL.wghQwWssXRcLRFiiru7f5JPV6GaJhNC2aK5F3PZpE/BCCtwrxRc/AInKMNX3CdMw11m9STiql12f/
 
@@ -18030,7 +18027,7 @@ configuration be set to encrypt interactive user passwords using a strong
 cryptographic hash.
 Check that the interactive user account passwords are using a strong
 password hash with the following command:
-# sudo cut -d: -f2 /etc/shadow
+$ sudo cut -d: -f2 /etc/shadow
 $6$kcOnRq/5$NUEYPuyL.wghQwWssXRcLRFiiru7f5JPV6GaJhNC2aK5F3PZpE/BCCtwrxRc/AInKMNX3CdMw11m9STiql12f/
 Password hashes ! or * indicate inactive accounts not
 available for logon and are not evaluated.
@@ -19768,9 +19765,10 @@ $ sudo yum install openssl-pkcs11</pre>
 </td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system uses multifactor authentication for network access to privileged accounts. If it does not, this is a finding.</td>
-<td>
-'Run the following command to determine if the openssl-pkcs11 package is installed:
-$ rpm -q openssl-pkcs11'
+<td>Check that Red Hat Enterprise Linux 8 has the packages for smart card support installed.
+
+Run the following command to determine if the openssl-pkcs11 package is installed:
+$ rpm -q openssl-pkcs11
       Is it the case that smartcard software is not installed?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3765r557647_fix">Configure the operating system to use multifactor authentication for network access to privileged accounts.</fixtext></td>
@@ -20335,7 +20333,7 @@ configuration be set to encrypt interactive user passwords using a strong
 cryptographic hash.
 Check that the interactive user account passwords are using a strong
 password hash with the following command:
-<pre># sudo cut -d: -f2 /etc/shadow
+<pre>$ sudo cut -d: -f2 /etc/shadow
 $6$kcOnRq/5$NUEYPuyL.wghQwWssXRcLRFiiru7f5JPV6GaJhNC2aK5F3PZpE/BCCtwrxRc/AInKMNX3CdMw11m9STiql12f/</pre>
 Password hashes <code>!</code> or <code>*</code> indicate inactive accounts not
 available for logon and are not evaluated.
@@ -20346,7 +20344,7 @@ this is a finding.</td>
 <td>Check that the interactive user account passwords are using a strong
 password hash with the following command:
 
-# sudo cut -d: -f2 /etc/shadow
+$ sudo cut -d: -f2 /etc/shadow
 
 $6$kcOnRq/5$NUEYPuyL.wghQwWssXRcLRFiiru7f5JPV6GaJhNC2aK5F3PZpE/BCCtwrxRc/AInKMNX3CdMw11m9STiql12f/
 
@@ -20363,7 +20361,7 @@ configuration be set to encrypt interactive user passwords using a strong
 cryptographic hash.
 Check that the interactive user account passwords are using a strong
 password hash with the following command:
-# sudo cut -d: -f2 /etc/shadow
+$ sudo cut -d: -f2 /etc/shadow
 $6$kcOnRq/5$NUEYPuyL.wghQwWssXRcLRFiiru7f5JPV6GaJhNC2aK5F3PZpE/BCCtwrxRc/AInKMNX3CdMw11m9STiql12f/
 Password hashes ! or * indicate inactive accounts not
 available for logon and are not evaluated.
@@ -30093,9 +30091,10 @@ $ sudo yum install openssl-pkcs11</pre>
 </td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system implements multifactor authentication for remote access to privileged accounts in such a way that one of the factors is provided by a device separate from the system gaining access. If it does not, this is a finding.</td>
-<td>
-'Run the following command to determine if the openssl-pkcs11 package is installed:
-$ rpm -q openssl-pkcs11'
+<td>Check that Red Hat Enterprise Linux 8 has the packages for smart card support installed.
+
+Run the following command to determine if the openssl-pkcs11 package is installed:
+$ rpm -q openssl-pkcs11
       Is it the case that smartcard software is not installed?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3852r375189_fix">Configure the operating system to implement multifactor authentication for remote access to privileged accounts in such a way that one of the factors is provided by a device separate from the system gaining access.</fixtext></td>
@@ -30245,9 +30244,10 @@ $ sudo yum install openssl-pkcs11</pre>
 </td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system electronically verifies Personal Identity Verification (PIV) credentials. If it does not, this is a finding.</td>
-<td>
-'Run the following command to determine if the openssl-pkcs11 package is installed:
-$ rpm -q openssl-pkcs11'
+<td>Check that Red Hat Enterprise Linux 8 has the packages for smart card support installed.
+
+Run the following command to determine if the openssl-pkcs11 package is installed:
+$ rpm -q openssl-pkcs11
       Is it the case that smartcard software is not installed?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3854r375195_fix">Configure the operating system to electronically verify Personal Identity Verification (PIV) credentials.</fixtext></td>

@@ -5417,11 +5417,7 @@ Additionally, the <code>crypt_style</code> configuration option ensures the use
 of a strong hashing algorithm that makes password cracking attacks more
 difficult.</td>
 <td>The PAM system service can be configured to only store encrypted
-representations of passwords. In
-
-<code>/etc/pam.d/system-auth</code>,
-
-the
+representations of passwords. In "/etc/pam.d/password-auth", the
 <code>password</code> section of the file controls which PAM modules execute
 during a password change. Set the <code>pam_unix.so</code> module in the
 <code>password</code> section to include the argument <code>sha512</code>, as shown

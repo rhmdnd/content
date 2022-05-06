@@ -2163,11 +2163,7 @@ left unattended.
   <td>Set PAM's Password Hashing Algorithm</td>
   <td xml:lang="en-US">
 The PAM system service can be configured to only store encrypted
-representations of passwords. In
-
-<tt>/etc/pam.d/system-auth</tt>,
-
-the
+representations of passwords. In "/etc/pam.d/password-auth", the
 <tt>password</tt> section of the file controls which PAM modules execute
 during a password change. Set the <tt>pam_unix.so</tt> module in the
 <tt>password</tt> section to include the argument <tt>sha512</tt>, as shown
@@ -2203,7 +2199,7 @@ Configure the number or rounds for the password hashing algorithm. This can be
 accomplished by using the <tt>rounds</tt> option for the <tt>pam_unix</tt> PAM module.
 <br /><br />
 In file <tt>/etc/pam.d/system-auth</tt> append <tt>rounds=<abbr title="$var_password_pam_unix_rounds"><tt>5000</tt></abbr></tt>
-to the <tt>pam_unix.so</tt> file, as shown below:
+to the <tt>pam_unix.so</tt> entry, as shown below:
 <pre>password sufficient pam_unix.so <i>...existing_options...</i> rounds=<abbr title="$var_password_pam_unix_rounds"><tt>5000</tt></abbr></pre>
 The system's default number of rounds is 5000.
   </td>
@@ -2219,7 +2215,7 @@ Configure the number or rounds for the password hashing algorithm. This can be
 accomplished by using the <tt>rounds</tt> option for the <tt>pam_unix</tt> PAM module.
 <br /><br />
 In file <tt>/etc/pam.d/password-auth</tt> append <tt>rounds=<abbr title="$var_password_pam_unix_rounds"><tt>5000</tt></abbr></tt>
-to the <tt>pam_unix.so</tt> file, as shown below:
+to the <tt>pam_unix.so</tt> entry, as shown below:
 <pre>password sufficient pam_unix.so <i>...existing_options...</i> rounds=<abbr title="$var_password_pam_unix_rounds"><tt>5000</tt></abbr></pre>
 The system's default number of rounds is 5000.
   </td>

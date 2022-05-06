@@ -1927,11 +1927,7 @@ the default.</td>
 <td>CCE-82043-1</td>
 <td>Set PAM's Password Hashing Algorithm</td>
 <td>The PAM system service can be configured to only store encrypted
-representations of passwords. In
-
-<code>/etc/pam.d/system-auth</code>,
-
-the
+representations of passwords. In "/etc/pam.d/password-auth", the
 <code>password</code> section of the file controls which PAM modules execute
 during a password change. Set the <code>pam_unix.so</code> module in the
 <code>password</code> section to include the argument <code>sha512</code>, as shown
@@ -2302,7 +2298,7 @@ properly stored, or the account should be deleted entirely.</td>
 accomplished by using the <code>rounds</code> option for the <code>pam_unix</code> PAM module.
 <br><br>
 In file <code>/etc/pam.d/password-auth</code> append <code>rounds=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_unix_rounds"></xccdf-1.1:sub></code>
-to the <code>pam_unix.so</code> file, as shown below:
+to the <code>pam_unix.so</code> entry, as shown below:
 <pre>password sufficient pam_unix.so <i>...existing_options...</i> rounds=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_unix_rounds"></xccdf-1.1:sub></pre>
 The system's default number of rounds is 5000.</td>
 </tr>
@@ -2313,7 +2309,7 @@ The system's default number of rounds is 5000.</td>
 accomplished by using the <code>rounds</code> option for the <code>pam_unix</code> PAM module.
 <br><br>
 In file <code>/etc/pam.d/system-auth</code> append <code>rounds=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_unix_rounds"></xccdf-1.1:sub></code>
-to the <code>pam_unix.so</code> file, as shown below:
+to the <code>pam_unix.so</code> entry, as shown below:
 <pre>password sufficient pam_unix.so <i>...existing_options...</i> rounds=<xccdf-1.1:sub xmlns:xccdf-1.1="http://checklists.nist.gov/xccdf/1.1" idref="var_password_pam_unix_rounds"></xccdf-1.1:sub></pre>
 The system's default number of rounds is 5000.</td>
 </tr>

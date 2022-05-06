@@ -4819,11 +4819,7 @@ more difficult by ensuring a larger search space.
   <td>Set PAM's Password Hashing Algorithm</td>
   <td xml:lang="en-US">
 The PAM system service can be configured to only store encrypted
-representations of passwords. In
-
-<tt>/etc/pam.d/system-auth</tt>,
-
-the
+representations of passwords. In "/etc/pam.d/password-auth", the
 <tt>password</tt> section of the file controls which PAM modules execute
 during a password change. Set the <tt>pam_unix.so</tt> module in the
 <tt>password</tt> section to include the argument <tt>sha512</tt>, as shown
@@ -5527,7 +5523,7 @@ configuration be set to encrypt interactive user passwords using a strong
 cryptographic hash.
 Check that the interactive user account passwords are using a strong
 password hash with the following command:
-<pre># sudo cut -d: -f2 /etc/shadow
+<pre>$ sudo cut -d: -f2 /etc/shadow
 $6$kcOnRq/5$NUEYPuyL.wghQwWssXRcLRFiiru7f5JPV6GaJhNC2aK5F3PZpE/BCCtwrxRc/AInKMNX3CdMw11m9STiql12f/</pre>
 Password hashes <tt>!</tt> or <tt>*</tt> indicate inactive accounts not
 available for logon and are not evaluated.
