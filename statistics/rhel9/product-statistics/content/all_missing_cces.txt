@@ -457,7 +457,6 @@ sshd_disable_pubkey_auth
 sshd_disable_rhosts_rsa
 sshd_disable_root_password_login
 sshd_enable_gssapi_auth
-sshd_enable_pubkey_auth
 sshd_enable_warning_banner_net
 sshd_enable_x11_forwarding
 sshd_limit_user_access

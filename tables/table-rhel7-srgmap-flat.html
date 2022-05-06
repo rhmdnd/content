@@ -22478,10 +22478,10 @@ Add the <code>nodev</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the nodev option is configured for the /dev/shm mount point,
     run the following command:
-    $ mount | grep '\s/dev/shm\s'
+    $ sudo mount | grep '\s/dev/shm\s'
     The output should show the corresponding mount point along with the nodev setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/dev/shm" file system does not have the "nodev" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The nodev mount option can be used to prevent creation of device
@@ -22517,10 +22517,10 @@ Add the <code>noexec</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the noexec option is configured for the /dev/shm mount point,
     run the following command:
-    $ mount | grep '\s/dev/shm\s'
+    $ sudo mount | grep '\s/dev/shm\s'
     The output should show the corresponding mount point along with the noexec setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/dev/shm" file system does not have the "noexec" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The noexec mount option can be used to prevent binaries
@@ -22556,10 +22556,10 @@ Add the <code>nosuid</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the nosuid option is configured for the /dev/shm mount point,
     run the following command:
-    $ mount | grep '\s/dev/shm\s'
+    $ sudo mount | grep '\s/dev/shm\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/dev/shm" file system does not have the "nosuid" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The nosuid mount option can be used to prevent execution
@@ -22594,10 +22594,10 @@ Add the <code>nosuid</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the nosuid option is configured for the /home mount point,
     run the following command:
-    $ mount | grep '\s/home\s'
+    $ sudo mount | grep '\s/home\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/home" file system does not have the "nosuid" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The nosuid mount option can be used to prevent
@@ -41640,7 +41640,22 @@ network requirements such as filtering. Verify that if any IPsec connection
 exists is an approved organizational connection.</td>
 <td>Applicable - Configurable</td>
 <td>Verify the operating system is configured in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs. If it is not, this is a finding.</td>
-<td>To check for configured IPsec connections (conn), perform the following:
+<td>Verify that Red Hat Enterprise Linux 7 does not have unauthorized IP tunnels configured.
+
+
+# yum list installed libreswan
+libreswan.x86-64 3.20-5.el7_4
+
+
+If "libreswan" is installed, check to see if the "IPsec" service is active with the following command:
+
+# systemctl status ipsec
+ipsec.service - Internet Key Exchange (IKE) Protocol Daemon for IPsec
+Loaded: loaded (/usr/lib/systemd/system/ipsec.service; disabled)
+Active: inactive (dead)
+
+
+If the "IPsec" service is active, check for configured IPsec connections (conn), perform the following:
 grep -rni conn /etc/ipsec.conf /etc/ipsec.d/
 Verify any returned results for organizational approval.
       Is it the case that the IPSec tunnels are not approved?
@@ -42428,10 +42443,10 @@ Add the <code>nosuid</code> option to the fourth column of
 <td>Verify the operating system is configured in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs. If it is not, this is a finding.</td>
 <td>To verify the nosuid option is configured for the /home mount point,
     run the following command:
-    $ mount | grep '\s/home\s'
+    $ sudo mount | grep '\s/home\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/home" file system does not have the "nosuid" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3905r375732_fix">Configure the operating system in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs.</fixtext></td>
 <td>The nosuid mount option can be used to prevent
@@ -43011,7 +43026,7 @@ run the command:
 $ ls -l /etc/ssh/*_key
 If properly configured, the output should indicate the following permissions:
 -rw-------
-      Is it the case that /etc/ssh/*_key has unix mode -rw-------?
+      Is it the case that /etc/ssh/*_key does not have unix mode -rw-------?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3905r375732_fix">Configure the operating system in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs.</fixtext></td>
 <td>
@@ -43040,7 +43055,7 @@ run the command:
 $ ls -l /etc/ssh/*.pub
 If properly configured, the output should indicate the following permissions:
 -rw-r--r--
-      Is it the case that /etc/ssh/*.pub has unix mode -rw-r--r--?
+      Is it the case that /etc/ssh/*.pub does not have unix mode -rw-r--r--?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3905r375732_fix">Configure the operating system in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs.</fixtext></td>
 <td> To properly set the permissions of /etc/ssh/*.pub, run the command: $ sudo chmod 0644 /etc/ssh/*.pub</td>

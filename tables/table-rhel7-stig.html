@@ -2922,10 +2922,10 @@ It should produce no output in a well-configured system.</pre></td>
 should not be able to execute SUID or SGID binaries from user home directory partitions.</pre></td>
 <td><pre>To verify the nosuid option is configured for the /home mount point,
     run the following command:
-    $ mount | grep '\s/home\s'
+    $ sudo mount | grep '\s/home\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/home" file system does not have the "nosuid" option set?
       </pre></td>
 <td><pre>The <code>nosuid</code> mount option can be used to prevent
 execution of setuid programs in <code>/home</code>. The SUID and SGID permissions
@@ -3009,10 +3009,10 @@ any NFS mounts.</pre></td>
 should not be able to execute SUID or SGID binaries from temporary storage partitions.</pre></td>
 <td><pre>To verify the nosuid option is configured for the /dev/shm mount point,
     run the following command:
-    $ mount | grep '\s/dev/shm\s'
+    $ sudo mount | grep '\s/dev/shm\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/dev/shm" file system does not have the "nosuid" option set?
       </pre></td>
 <td><pre>The <code>nosuid</code> mount option can be used to prevent execution
 of setuid programs in <code>/dev/shm</code>.  The SUID and SGID permissions should not
@@ -5743,7 +5743,7 @@ run the command:
 $ ls -l /etc/ssh/*.pub
 If properly configured, the output should indicate the following permissions:
 -rw-r--r--
-      Is it the case that /etc/ssh/*.pub has unix mode -rw-r--r--?
+      Is it the case that /etc/ssh/*.pub does not have unix mode -rw-r--r--?
       </pre></td>
 <td><pre> To properly set the permissions of <code>/etc/ssh/*.pub</code>, run the command: <pre>$ sudo chmod 0644 /etc/ssh/*.pub</pre></pre></td>
 <td>RHEL-07-040410</td>
@@ -5762,7 +5762,7 @@ run the command:
 $ ls -l /etc/ssh/*_key
 If properly configured, the output should indicate the following permissions:
 -rw-------
-      Is it the case that /etc/ssh/*_key has unix mode -rw-------?
+      Is it the case that /etc/ssh/*_key does not have unix mode -rw-------?
       </pre></td>
 <td><pre>
 To properly set the permissions of <code>/etc/ssh/*_key</code>, run the command:
@@ -6767,7 +6767,22 @@ modify the following line in
 <td>The Red Hat Enterprise Linux operating system must not have unauthorized IP tunnels configured.</td>
 <td>SRG-OS-ID</td>
 <td><pre>IP tunneling mechanisms can be used to bypass network filtering.</pre></td>
-<td><pre>To check for configured IPsec connections (conn), perform the following:
+<td><pre>Verify that Red Hat Enterprise Linux 7 does not have unauthorized IP tunnels configured.
+
+
+# yum list installed libreswan
+libreswan.x86-64 3.20-5.el7_4
+
+
+If "libreswan" is installed, check to see if the "IPsec" service is active with the following command:
+
+# systemctl status ipsec
+ipsec.service - Internet Key Exchange (IKE) Protocol Daemon for IPsec
+Loaded: loaded (/usr/lib/systemd/system/ipsec.service; disabled)
+Active: inactive (dead)
+
+
+If the "IPsec" service is active, check for configured IPsec connections (conn), perform the following:
 grep -rni conn /etc/ipsec.conf /etc/ipsec.d/
 Verify any returned results for organizational approval.
       Is it the case that the IPSec tunnels are not approved?

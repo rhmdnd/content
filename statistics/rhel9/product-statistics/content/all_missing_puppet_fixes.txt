@@ -455,6 +455,7 @@ ftp_limit_users
 gid_passwd_group_same
 gnome_gdm_disable_automatic_login
 gnome_gdm_disable_xdmcp
+group_unique_id
 grub2_admin_username
 grub2_audit_argument
 grub2_audit_backlog_limit_argument

@@ -98,6 +98,7 @@ file_permissions_sshd_config
 file_permissions_sshd_pub_key
 file_permissions_unauthorized_world_writable
 file_permissions_ungroupowned
+group_unique_id
 grub2_password
 grub2_uefi_password
 journald_compress

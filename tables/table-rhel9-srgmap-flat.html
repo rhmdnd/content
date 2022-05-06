@@ -16063,7 +16063,7 @@ run the command:
 $ ls -l /etc/audit/auditd.conf
 If properly configured, the output should indicate the following permissions:
 -rw-r-----
-      Is it the case that /etc/audit/auditd.conf has unix mode -rw-r-----?
+      Is it the case that /etc/audit/auditd.conf does not have unix mode -rw-r-----?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3745r557585_fix">Configure the operating system to allow only the ISSM (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited.</fixtext></td>
 <td>
@@ -16092,7 +16092,7 @@ run the command:
 $ ls -l /etc/audit/rules.d/*.rules
 If properly configured, the output should indicate the following permissions:
 -rw-r-----
-      Is it the case that /etc/audit/rules.d/*.rules has unix mode -rw-r-----?
+      Is it the case that /etc/audit/rules.d/*.rules does not have unix mode -rw-r-----?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3745r557585_fix">Configure the operating system to allow only the ISSM (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited.</fixtext></td>
 <td>
@@ -21544,7 +21544,7 @@ run the command:
 $ ls -l /var/log
 If properly configured, the output should indicate the following permissions:
 drwxr-xr-x
-      Is it the case that /var/log has unix mode drwxr-xr-x?
+      Is it the case that /var/log does not have unix mode drwxr-xr-x?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3789r557238_fix">Configure the operating system to reveal error messages only to authorized users.</fixtext></td>
 <td>
@@ -21575,7 +21575,7 @@ run the command:
 $ ls -l /var/log/messages
 If properly configured, the output should indicate the following permissions:
 -rw-r-----
-      Is it the case that /var/log/messages has unix mode -rw-r-----?
+      Is it the case that /var/log/messages does not have unix mode -rw-r-----?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3789r557238_fix">Configure the operating system to reveal error messages only to authorized users.</fixtext></td>
 <td>
@@ -28588,10 +28588,10 @@ Add the <code>nosuid</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the nosuid option is configured for the /boot mount point,
     run the following command:
-    $ mount | grep '\s/boot\s'
+    $ sudo mount | grep '\s/boot\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/boot" file system does not have the "nosuid" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The nosuid mount option can be used to prevent
@@ -28626,10 +28626,10 @@ Add the <code>nodev</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the nodev option is configured for the /dev/shm mount point,
     run the following command:
-    $ mount | grep '\s/dev/shm\s'
+    $ sudo mount | grep '\s/dev/shm\s'
     The output should show the corresponding mount point along with the nodev setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/dev/shm" file system does not have the "nodev" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The nodev mount option can be used to prevent creation of device
@@ -28665,10 +28665,10 @@ Add the <code>noexec</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the noexec option is configured for the /dev/shm mount point,
     run the following command:
-    $ mount | grep '\s/dev/shm\s'
+    $ sudo mount | grep '\s/dev/shm\s'
     The output should show the corresponding mount point along with the noexec setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/dev/shm" file system does not have the "noexec" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The noexec mount option can be used to prevent binaries
@@ -28704,10 +28704,10 @@ Add the <code>nosuid</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the nosuid option is configured for the /dev/shm mount point,
     run the following command:
-    $ mount | grep '\s/dev/shm\s'
+    $ sudo mount | grep '\s/dev/shm\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/dev/shm" file system does not have the "nosuid" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The nosuid mount option can be used to prevent execution
@@ -28742,10 +28742,10 @@ Add the <code>nosuid</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the nosuid option is configured for the /home mount point,
     run the following command:
-    $ mount | grep '\s/home\s'
+    $ sudo mount | grep '\s/home\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/home" file system does not have the "nosuid" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The nosuid mount option can be used to prevent
@@ -28781,7 +28781,7 @@ Add the <code>nodev</code> option to the fourth column of
 <td>Applicable - Configurable</td>
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the nodev option is configured for non-root local partitions, run the following command:
-$ mount | grep '^/dev\S* on /\S' | grep --invert-match 'nodev'
+$ sudo mount | grep '^/dev\S* on /\S' | grep --invert-match 'nodev'
 The output shows local non-root partitions mounted without the nodev option, and there should be no output at all.
 
       Is it the case that some mounts appear among output lines?
@@ -28821,10 +28821,10 @@ Add the <code>nodev</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the nodev option is configured for the /tmp mount point,
     run the following command:
-    $ mount | grep '\s/tmp\s'
+    $ sudo mount | grep '\s/tmp\s'
     The output should show the corresponding mount point along with the nodev setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/tmp" file system does not have the "nodev" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The nodev mount option can be used to prevent device files from
@@ -28858,10 +28858,10 @@ Add the <code>noexec</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the noexec option is configured for the /tmp mount point,
     run the following command:
-    $ mount | grep '\s/tmp\s'
+    $ sudo mount | grep '\s/tmp\s'
     The output should show the corresponding mount point along with the noexec setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/tmp" file system does not have the "noexec" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The noexec mount option can be used to prevent binaries
@@ -28895,10 +28895,10 @@ Add the <code>nosuid</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the nosuid option is configured for the /tmp mount point,
     run the following command:
-    $ mount | grep '\s/tmp\s'
+    $ sudo mount | grep '\s/tmp\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/tmp" file system does not have the "nosuid" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The nosuid mount option can be used to prevent
@@ -28935,10 +28935,10 @@ Add the <code>nodev</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the nodev option is configured for the /var/log/audit mount point,
     run the following command:
-    $ mount | grep '\s/var/log/audit\s'
+    $ sudo mount | grep '\s/var/log/audit\s'
     The output should show the corresponding mount point along with the nodev setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/log/audit" file system does not have the "nodev" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The nodev mount option can be used to prevent device files from
@@ -28974,10 +28974,10 @@ Add the <code>noexec</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the noexec option is configured for the /var/log/audit mount point,
     run the following command:
-    $ mount | grep '\s/var/log/audit\s'
+    $ sudo mount | grep '\s/var/log/audit\s'
     The output should show the corresponding mount point along with the noexec setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/log/audit" file system does not have the "noexec" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The noexec mount option can be used to prevent binaries
@@ -29011,10 +29011,10 @@ Add the <code>nosuid</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the nosuid option is configured for the /var/log/audit mount point,
     run the following command:
-    $ mount | grep '\s/var/log/audit\s'
+    $ sudo mount | grep '\s/var/log/audit\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/log/audit" file system does not have the "nosuid" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The nosuid mount option can be used to prevent
@@ -29051,10 +29051,10 @@ Add the <code>nodev</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the nodev option is configured for the /var/log mount point,
     run the following command:
-    $ mount | grep '\s/var/log\s'
+    $ sudo mount | grep '\s/var/log\s'
     The output should show the corresponding mount point along with the nodev setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/log" file system does not have the "nodev" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The nodev mount option can be used to prevent device files from
@@ -29090,10 +29090,10 @@ Add the <code>noexec</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the noexec option is configured for the /var/log mount point,
     run the following command:
-    $ mount | grep '\s/var/log\s'
+    $ sudo mount | grep '\s/var/log\s'
     The output should show the corresponding mount point along with the noexec setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/log" file system does not have the "noexec" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The noexec mount option can be used to prevent binaries
@@ -29127,10 +29127,10 @@ Add the <code>nosuid</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the nosuid option is configured for the /var/log mount point,
     run the following command:
-    $ mount | grep '\s/var/log\s'
+    $ sudo mount | grep '\s/var/log\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/log" file system does not have the "nosuid" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The nosuid mount option can be used to prevent
@@ -29165,10 +29165,10 @@ Add the <code>nodev</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the nodev option is configured for the /var/tmp mount point,
     run the following command:
-    $ mount | grep '\s/var/tmp\s'
+    $ sudo mount | grep '\s/var/tmp\s'
     The output should show the corresponding mount point along with the nodev setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/tmp" file system does not have the "nodev" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The nodev mount option can be used to prevent device files from
@@ -29202,10 +29202,10 @@ Add the <code>noexec</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the noexec option is configured for the /var/tmp mount point,
     run the following command:
-    $ mount | grep '\s/var/tmp\s'
+    $ sudo mount | grep '\s/var/tmp\s'
     The output should show the corresponding mount point along with the noexec setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/tmp" file system does not have the "noexec" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The noexec mount option can be used to prevent binaries
@@ -29239,10 +29239,10 @@ Add the <code>nosuid</code> option to the fourth column of
 <td>Verify the operating system prevents program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage. If it does not, this is a finding.</td>
 <td>To verify the nosuid option is configured for the /var/tmp mount point,
     run the following command:
-    $ mount | grep '\s/var/tmp\s'
+    $ sudo mount | grep '\s/var/tmp\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/tmp" file system does not have the "nosuid" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3846r375171_fix">Configure the operating system to prevent program execution in accordance with local policies regarding software program usage and restrictions and/or rules authorizing the terms and conditions of software program usage.</fixtext></td>
 <td>The nosuid mount option can be used to prevent
@@ -51051,10 +51051,10 @@ Add the <code>nosuid</code> option to the fourth column of
 <td>Verify the operating system is configured in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs. If it is not, this is a finding.</td>
 <td>To verify the nosuid option is configured for the /boot mount point,
     run the following command:
-    $ mount | grep '\s/boot\s'
+    $ sudo mount | grep '\s/boot\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/boot" file system does not have the "nosuid" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3905r375732_fix">Configure the operating system in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs.</fixtext></td>
 <td>The nosuid mount option can be used to prevent
@@ -51086,10 +51086,10 @@ Add the <code>noexec</code> option to the fourth column of
 <td>Verify the operating system is configured in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs. If it is not, this is a finding.</td>
 <td>To verify the noexec option is configured for the /home mount point,
     run the following command:
-    $ mount | grep '\s/home\s'
+    $ sudo mount | grep '\s/home\s'
     The output should show the corresponding mount point along with the noexec setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/home" file system does not have the "noexec" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3905r375732_fix">Configure the operating system in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs.</fixtext></td>
 <td>The noexec mount option can be used to prevent binaries from being
@@ -51121,10 +51121,10 @@ Add the <code>nosuid</code> option to the fourth column of
 <td>Verify the operating system is configured in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs. If it is not, this is a finding.</td>
 <td>To verify the nosuid option is configured for the /home mount point,
     run the following command:
-    $ mount | grep '\s/home\s'
+    $ sudo mount | grep '\s/home\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/home" file system does not have the "nosuid" option set?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3905r375732_fix">Configure the operating system in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs.</fixtext></td>
 <td>The nosuid mount option can be used to prevent
@@ -51158,7 +51158,7 @@ Add the <code>nodev</code> option to the fourth column of
 <td>Applicable - Configurable</td>
 <td>Verify the operating system is configured in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs. If it is not, this is a finding.</td>
 <td>To verify the nodev option is configured for non-root local partitions, run the following command:
-$ mount | grep '^/dev\S* on /\S' | grep --invert-match 'nodev'
+$ sudo mount | grep '^/dev\S* on /\S' | grep --invert-match 'nodev'
 The output shows local non-root partitions mounted without the nodev option, and there should be no output at all.
 
       Is it the case that some mounts appear among output lines?
@@ -52160,7 +52160,7 @@ run the command:
 $ ls -l /etc/ssh/*_key
 If properly configured, the output should indicate the following permissions:
 -rw-------
-      Is it the case that /etc/ssh/*_key has unix mode -rw-------?
+      Is it the case that /etc/ssh/*_key does not have unix mode -rw-------?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3905r375732_fix">Configure the operating system in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs.</fixtext></td>
 <td>
@@ -52189,7 +52189,7 @@ run the command:
 $ ls -l /etc/ssh/*.pub
 If properly configured, the output should indicate the following permissions:
 -rw-r--r--
-      Is it the case that /etc/ssh/*.pub has unix mode -rw-r--r--?
+      Is it the case that /etc/ssh/*.pub does not have unix mode -rw-r--r--?
       </td>
 <td><fixtext xmlns="http://checklists.nist.gov/xccdf/1.1" fixref="F-3905r375732_fix">Configure the operating system in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs.</fixtext></td>
 <td> To properly set the permissions of /etc/ssh/*.pub, run the command: $ sudo chmod 0644 /etc/ssh/*.pub</td>

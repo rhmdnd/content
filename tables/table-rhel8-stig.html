@@ -1049,7 +1049,7 @@ run the command:
 $ ls -l /var/log/messages
 If properly configured, the output should indicate the following permissions:
 -rw-r-----
-      Is it the case that /var/log/messages has unix mode -rw-r-----?
+      Is it the case that /var/log/messages does not have unix mode -rw-r-----?
       </pre></td>
 <td><pre>
 To properly set the permissions of <code>/var/log/messages</code>, run the command:
@@ -1109,7 +1109,7 @@ run the command:
 $ ls -l /var/log
 If properly configured, the output should indicate the following permissions:
 drwxr-xr-x
-      Is it the case that /var/log has unix mode drwxr-xr-x?
+      Is it the case that /var/log does not have unix mode drwxr-xr-x?
       </pre></td>
 <td><pre>
 To properly set the permissions of <code>/var/log</code>, run the command:
@@ -2538,7 +2538,7 @@ run the command:
 $ ls -l /etc/ssh/*.pub
 If properly configured, the output should indicate the following permissions:
 -rw-r--r--
-      Is it the case that /etc/ssh/*.pub has unix mode -rw-r--r--?
+      Is it the case that /etc/ssh/*.pub does not have unix mode -rw-r--r--?
       </pre></td>
 <td><pre> To properly set the permissions of <code>/etc/ssh/*.pub</code>, run the command: <pre>$ sudo chmod 0644 /etc/ssh/*.pub</pre></pre></td>
 <td>RHEL-08-010480</td>
@@ -2557,7 +2557,7 @@ run the command:
 $ ls -l /etc/ssh/*_key
 If properly configured, the output should indicate the following permissions:
 -rw-------
-      Is it the case that /etc/ssh/*_key has unix mode -rw-------?
+      Is it the case that /etc/ssh/*_key does not have unix mode -rw-------?
       </pre></td>
 <td><pre>
 To properly set the permissions of <code>/etc/ssh/*_key</code>, run the command:
@@ -2897,10 +2897,10 @@ The <code>rsyslog</code> service can be enabled with the following command:
 should not be able to execute SUID or SGID binaries from user home directory partitions.</pre></td>
 <td><pre>To verify the nosuid option is configured for the /home mount point,
     run the following command:
-    $ mount | grep '\s/home\s'
+    $ sudo mount | grep '\s/home\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/home" file system does not have the "nosuid" option set?
       </pre></td>
 <td><pre>The <code>nosuid</code> mount option can be used to prevent
 execution of setuid programs in <code>/home</code>. The SUID and SGID permissions
@@ -2921,10 +2921,10 @@ Add the <code>nosuid</code> option to the fourth column of
 should not be able to execute SUID or SGID binaries from boot partitions.</pre></td>
 <td><pre>To verify the nosuid option is configured for the /boot mount point,
     run the following command:
-    $ mount | grep '\s/boot\s'
+    $ sudo mount | grep '\s/boot\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/boot" file system does not have the "nosuid" option set?
       </pre></td>
 <td><pre>The <code>nosuid</code> mount option can be used to prevent
 execution of setuid programs in <code>/boot</code>. The SUID and SGID permissions
@@ -2959,7 +2959,7 @@ for device files is the <code>/dev</code> directory located on the root partitio
 The only exception to this is chroot jails, for which it is not advised
 to set <code>nodev</code> on these filesystems.</pre></td>
 <td><pre>To verify the nodev option is configured for non-root local partitions, run the following command:
-$ mount | grep '^/dev\S* on /\S' | grep --invert-match 'nodev'
+$ sudo mount | grep '^/dev\S* on /\S' | grep --invert-match 'nodev'
 The output shows local non-root partitions mounted without the nodev option, and there should be no output at all.
 
       Is it the case that some mounts appear among output lines?
@@ -2986,10 +2986,10 @@ this directory should not be considered as trusted and users should not be
 able to execute them.</pre></td>
 <td><pre>To verify the noexec option is configured for the /home mount point,
     run the following command:
-    $ mount | grep '\s/home\s'
+    $ sudo mount | grep '\s/home\s'
     The output should show the corresponding mount point along with the noexec setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/home" file system does not have the "noexec" option set?
       </pre></td>
 <td><pre>The <code>noexec</code> mount option can be used to prevent binaries from being
 executed out of <code>/home</code>. 
@@ -7500,7 +7500,7 @@ run the command:
 $ ls -l /etc/audit/rules.d/*.rules
 If properly configured, the output should indicate the following permissions:
 -rw-r-----
-      Is it the case that /etc/audit/rules.d/*.rules has unix mode -rw-r-----?
+      Is it the case that /etc/audit/rules.d/*.rules does not have unix mode -rw-r-----?
       </pre></td>
 <td><pre>
 To properly set the permissions of <code>/etc/audit/rules.d/*.rules</code>, run the command:
@@ -8517,10 +8517,10 @@ to prevent the loading of the Bluetooth module:
 located on the root partition. The only exception to this is chroot jails.</pre></td>
 <td><pre>To verify the nodev option is configured for the /dev/shm mount point,
     run the following command:
-    $ mount | grep '\s/dev/shm\s'
+    $ sudo mount | grep '\s/dev/shm\s'
     The output should show the corresponding mount point along with the nodev setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/dev/shm" file system does not have the "nodev" option set?
       </pre></td>
 <td><pre>The <code>nodev</code> mount option can be used to prevent creation of device
 files in <code>/dev/shm</code>. Legitimate character and block devices should
@@ -8541,10 +8541,10 @@ Add the <code>nodev</code> option to the fourth column of
 should not be able to execute SUID or SGID binaries from temporary storage partitions.</pre></td>
 <td><pre>To verify the nosuid option is configured for the /dev/shm mount point,
     run the following command:
-    $ mount | grep '\s/dev/shm\s'
+    $ sudo mount | grep '\s/dev/shm\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/dev/shm" file system does not have the "nosuid" option set?
       </pre></td>
 <td><pre>The <code>nosuid</code> mount option can be used to prevent execution
 of setuid programs in <code>/dev/shm</code>.  The SUID and SGID permissions should not
@@ -8565,10 +8565,10 @@ Add the <code>nosuid</code> option to the fourth column of
 such as <code>/dev/shm</code> can expose the system to potential compromise.</pre></td>
 <td><pre>To verify the noexec option is configured for the /dev/shm mount point,
     run the following command:
-    $ mount | grep '\s/dev/shm\s'
+    $ sudo mount | grep '\s/dev/shm\s'
     The output should show the corresponding mount point along with the noexec setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/dev/shm" file system does not have the "noexec" option set?
       </pre></td>
 <td><pre>The <code>noexec</code> mount option can be used to prevent binaries
 from being executed out of <code>/dev/shm</code>.
@@ -8590,10 +8590,10 @@ Add the <code>noexec</code> option to the fourth column of
 located on the root partition. The only exception to this is chroot jails.</pre></td>
 <td><pre>To verify the nodev option is configured for the /tmp mount point,
     run the following command:
-    $ mount | grep '\s/tmp\s'
+    $ sudo mount | grep '\s/tmp\s'
     The output should show the corresponding mount point along with the nodev setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/tmp" file system does not have the "nodev" option set?
       </pre></td>
 <td><pre>The <code>nodev</code> mount option can be used to prevent device files from
 being created in <code>/tmp</code>. Legitimate character and block devices
@@ -8614,10 +8614,10 @@ Add the <code>nodev</code> option to the fourth column of
 should not be able to execute SUID or SGID binaries from temporary storage partitions.</pre></td>
 <td><pre>To verify the nosuid option is configured for the /tmp mount point,
     run the following command:
-    $ mount | grep '\s/tmp\s'
+    $ sudo mount | grep '\s/tmp\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/tmp" file system does not have the "nosuid" option set?
       </pre></td>
 <td><pre>The <code>nosuid</code> mount option can be used to prevent
 execution of setuid programs in <code>/tmp</code>. The SUID and SGID permissions
@@ -8639,10 +8639,10 @@ such as <code>/tmp</code> should never be necessary in normal operation and
 can expose the system to potential compromise.</pre></td>
 <td><pre>To verify the noexec option is configured for the /tmp mount point,
     run the following command:
-    $ mount | grep '\s/tmp\s'
+    $ sudo mount | grep '\s/tmp\s'
     The output should show the corresponding mount point along with the noexec setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/tmp" file system does not have the "noexec" option set?
       </pre></td>
 <td><pre>The <code>noexec</code> mount option can be used to prevent binaries
 from being executed out of <code>/tmp</code>.
@@ -8662,10 +8662,10 @@ Add the <code>noexec</code> option to the fourth column of
 located on the root partition. The only exception to this is chroot jails.</pre></td>
 <td><pre>To verify the nodev option is configured for the /var/log mount point,
     run the following command:
-    $ mount | grep '\s/var/log\s'
+    $ sudo mount | grep '\s/var/log\s'
     The output should show the corresponding mount point along with the nodev setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/log" file system does not have the "nodev" option set?
       </pre></td>
 <td><pre>The <code>nodev</code> mount option can be used to prevent device files from
 being created in <code>/var/log</code>.
@@ -8689,10 +8689,10 @@ should not be able to execute SUID or SGID binaries from partitions
 designated for log files.</pre></td>
 <td><pre>To verify the nosuid option is configured for the /var/log mount point,
     run the following command:
-    $ mount | grep '\s/var/log\s'
+    $ sudo mount | grep '\s/var/log\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/log" file system does not have the "nosuid" option set?
       </pre></td>
 <td><pre>The <code>nosuid</code> mount option can be used to prevent
 execution of setuid programs in <code>/var/log</code>. The SUID and SGID permissions
@@ -8714,10 +8714,10 @@ such as <code>/var/log</code> should never be necessary in normal operation and
 can expose the system to potential compromise.</pre></td>
 <td><pre>To verify the noexec option is configured for the /var/log mount point,
     run the following command:
-    $ mount | grep '\s/var/log\s'
+    $ sudo mount | grep '\s/var/log\s'
     The output should show the corresponding mount point along with the noexec setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/log" file system does not have the "noexec" option set?
       </pre></td>
 <td><pre>The <code>noexec</code> mount option can be used to prevent binaries
 from being executed out of <code>/var/log</code>.
@@ -8737,10 +8737,10 @@ Add the <code>noexec</code> option to the fourth column of
 located on the root partition. The only exception to this is chroot jails.</pre></td>
 <td><pre>To verify the nodev option is configured for the /var/log/audit mount point,
     run the following command:
-    $ mount | grep '\s/var/log/audit\s'
+    $ sudo mount | grep '\s/var/log/audit\s'
     The output should show the corresponding mount point along with the nodev setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/log/audit" file system does not have the "nodev" option set?
       </pre></td>
 <td><pre>The <code>nodev</code> mount option can be used to prevent device files from
 being created in <code>/var/log/audit</code>.
@@ -8764,10 +8764,10 @@ should not be able to execute SUID or SGID binaries from partitions
 designated for audit log files.</pre></td>
 <td><pre>To verify the nosuid option is configured for the /var/log/audit mount point,
     run the following command:
-    $ mount | grep '\s/var/log/audit\s'
+    $ sudo mount | grep '\s/var/log/audit\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/log/audit" file system does not have the "nosuid" option set?
       </pre></td>
 <td><pre>The <code>nosuid</code> mount option can be used to prevent
 execution of setuid programs in <code>/var/log/audit</code>. The SUID and SGID permissions
@@ -8789,10 +8789,10 @@ such as <code>/var/log/audit</code> should never be necessary in normal operatio
 can expose the system to potential compromise.</pre></td>
 <td><pre>To verify the noexec option is configured for the /var/log/audit mount point,
     run the following command:
-    $ mount | grep '\s/var/log/audit\s'
+    $ sudo mount | grep '\s/var/log/audit\s'
     The output should show the corresponding mount point along with the noexec setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/log/audit" file system does not have the "noexec" option set?
       </pre></td>
 <td><pre>The <code>noexec</code> mount option can be used to prevent binaries
 from being executed out of <code>/var/log/audit</code>.
@@ -8812,10 +8812,10 @@ Add the <code>noexec</code> option to the fourth column of
 located on the root partition. The only exception to this is chroot jails.</pre></td>
 <td><pre>To verify the nodev option is configured for the /var/tmp mount point,
     run the following command:
-    $ mount | grep '\s/var/tmp\s'
+    $ sudo mount | grep '\s/var/tmp\s'
     The output should show the corresponding mount point along with the nodev setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/tmp" file system does not have the "nodev" option set?
       </pre></td>
 <td><pre>The <code>nodev</code> mount option can be used to prevent device files from
 being created in <code>/var/tmp</code>. Legitimate character and block devices
@@ -8836,10 +8836,10 @@ Add the <code>nodev</code> option to the fourth column of
 should not be able to execute SUID or SGID binaries from temporary storage partitions.</pre></td>
 <td><pre>To verify the nosuid option is configured for the /var/tmp mount point,
     run the following command:
-    $ mount | grep '\s/var/tmp\s'
+    $ sudo mount | grep '\s/var/tmp\s'
     The output should show the corresponding mount point along with the nosuid setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/tmp" file system does not have the "nosuid" option set?
       </pre></td>
 <td><pre>The <code>nosuid</code> mount option can be used to prevent
 execution of setuid programs in <code>/var/tmp</code>. The SUID and SGID permissions
@@ -8861,10 +8861,10 @@ such as <code>/var/tmp</code> should never be necessary in normal operation and
 can expose the system to potential compromise.</pre></td>
 <td><pre>To verify the noexec option is configured for the /var/tmp mount point,
     run the following command:
-    $ mount | grep '\s/var/tmp\s'
+    $ sudo mount | grep '\s/var/tmp\s'
     The output should show the corresponding mount point along with the noexec setting in parentheses.
 
-      Is it the case that the  is not present in the output line, or there is no output line at all?
+      Is it the case that the "/var/tmp" file system does not have the "noexec" option set?
       </pre></td>
 <td><pre>The <code>noexec</code> mount option can be used to prevent binaries
 from being executed out of <code>/var/tmp</code>.

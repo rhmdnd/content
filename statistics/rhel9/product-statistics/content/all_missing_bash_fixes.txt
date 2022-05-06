@@ -66,6 +66,7 @@ file_permissions_ungroupowned
 ftp_configure_firewall
 ftp_limit_users
 gid_passwd_group_same
+group_unique_id
 grub2_admin_username
 grub2_password
 grub2_uefi_admin_username
