@@ -1,5 +1,6 @@
+{{%- set obsolete_version = OBSOLETE_SINCE_VERSION if OBSOLETE_SINCE_VERSION else "" -%}}
 {{%- if XCCDF_VARIABLE -%}}
-{{{ sshd_oval_check(parameter=PARAMETER, xccdf_variable=XCCDF_VARIABLE, missing_parameter_pass=MISSING_PARAMETER_PASS, config_is_distributed=sshd_distributed_config, datatype=DATATYPE, rule_id=rule_id, rule_title=rule_title) }}}
+{{{ sshd_oval_check(parameter=PARAMETER, xccdf_variable=XCCDF_VARIABLE, missing_parameter_pass=MISSING_PARAMETER_PASS, config_is_distributed=sshd_distributed_config, datatype=DATATYPE, obsolete_since_version=obsolete_version, rule_id=rule_id, rule_title=rule_title) }}}
 {{%- else -%}}
-{{{ sshd_oval_check(parameter=PARAMETER, value=VALUE, missing_parameter_pass=MISSING_PARAMETER_PASS, config_is_distributed=sshd_distributed_config, datatype=DATATYPE, rule_id=rule_id, rule_title=rule_title) }}}
+{{{ sshd_oval_check(parameter=PARAMETER, value=VALUE, missing_parameter_pass=MISSING_PARAMETER_PASS, config_is_distributed=sshd_distributed_config, datatype=DATATYPE, obsolete_since_version=obsolete_version, rule_id=rule_id, rule_title=rule_title) }}}
 {{%- endif -%}}

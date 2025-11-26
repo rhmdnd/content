@@ -1017,6 +1017,60 @@ Generates the :code:`<affected>` tag for OVAL check using correct product platfo
 
 
 {{#
+    Generate an OVAL version check for OpenSSH Server.
+    This macro creates a complete definition that checks if OpenSSH Server version
+    is greater than or equal to the specified version.
+
+:param version: The minimum version to check (e.g., "7.0", "6.9", "7.5")
+:type version: str
+
+#}}
+{{%- macro sshd_version_check(version) -%}}
+{{%- set version_no_dots = version|replace(".", "") -%}}
+{{%- set def_id = "sshd_version_equal_or_higher_than_" ~ version_no_dots -%}}
+
+  <definition class="compliance" id="{{{ def_id }}}" version="1">
+    <metadata>
+      <title>OpenSSH Server is {{{ version }}} or newer</title>
+      <affected family="unix">
+        <platform>multi_platform_all</platform>
+      </affected>
+      <description>Check if version of OpenSSH Server is equal or higher than {{{ version }}}</description>
+    </metadata>
+    <criteria comment="OpenSSH Server version is equal or higher than {{{ version }}}" operator="OR">
+        <criterion comment="Check if OpenSSH Server is equal or higher than {{{ version }}}"
+            test_ref="test_openssh-server_version_{{{ version_no_dots }}}" />
+    </criteria>
+  </definition>
+
+{{%- if pkg_system == "rpm" -%}}
+  <linux:rpminfo_test check="all" check_existence="at_least_one_exists" comment="OpenSSH is version {{{ version }}} or higher" id="test_openssh-server_version_{{{ version_no_dots }}}" version="1">
+    <linux:object object_ref="obj_openssh-server_version_{{{ version_no_dots }}}" />
+    <linux:state state_ref="state_openssh-server_version_{{{ version_no_dots }}}" />
+  </linux:rpminfo_test>
+  <linux:rpminfo_object id="obj_openssh-server_version_{{{ version_no_dots }}}" version="1">
+    <linux:name>openssh-server</linux:name>
+  </linux:rpminfo_object>
+  <linux:rpminfo_state id="state_openssh-server_version_{{{ version_no_dots }}}" version="1">
+    <linux:evr datatype="evr_string" operation="greater than or equal">0:{{{ version }}}</linux:evr>
+  </linux:rpminfo_state>
+
+{{%- elif pkg_system == "dpkg" -%}}
+  <linux:dpkginfo_test check="at least one" check_existence="any_exist" comment="OpenSSH is version {{{ version }}} or higher" id="test_openssh-server_version_{{{ version_no_dots }}}" version="1">
+    <linux:object object_ref="obj_openssh-server_version_{{{ version_no_dots }}}" />
+    <linux:state state_ref="state_openssh-server_version_{{{ version_no_dots }}}" />
+  </linux:dpkginfo_test>
+  <linux:dpkginfo_object id="obj_openssh-server_version_{{{ version_no_dots }}}" version="1">
+    <linux:name>openssh-server</linux:name>
+  </linux:dpkginfo_object>
+  <linux:dpkginfo_state id="state_openssh-server_version_{{{ version_no_dots }}}" version="1">
+    <linux:evr datatype="evr_string" operation="greater than or equal">0:{{{ version }}}</linux:evr>
+  </linux:dpkginfo_state>
+{{%- endif -%}}
+{{%- endmacro %}}
+
+
+{{#
     Create a full OVAL check for an sshd parameter and value.
 
 :param parameter: Parameter to check
@@ -1031,9 +1085,11 @@ Generates the :code:`<affected>` tag for OVAL check using correct product platfo
 :type xccdf_variable: str
 :param datatype: a data type of the value
 :type datatype: str
+:param obsolete_since_version: OpenSSH version where this option became obsolete/hardcoded/removed (e.g., "7.0")
+:type obsolete_since_version: str
 
 #}}
-{{%- macro sshd_oval_check(parameter, value, missing_parameter_pass, config_is_distributed, xccdf_variable="", datatype="", rule_id=None, rule_title=None) -%}}
+{{%- macro sshd_oval_check(parameter, value, missing_parameter_pass, config_is_distributed, xccdf_variable="", datatype="", obsolete_since_version="", rule_id=None, rule_title=None) -%}}
 {{%- set sshd_config_path = "/etc/ssh/sshd_config" %}}
 {{%- set sshd_config_dir = "/etc/ssh/sshd_config.d" -%}}
 {{%- if xccdf_variable -%}}
@@ -1044,6 +1100,10 @@ Generates the :code:`<affected>` tag for OVAL check using correct product platfo
 {{%- if config_is_distributed == "true" %}}
 {{%- set description = description  ~ " or in " ~ sshd_config_dir -%}}
 {{%- endif %}}
+{{%- if obsolete_since_version -%}}
+{{%- set description = description ~ " or OpenSSH version is " ~ obsolete_since_version ~ "+" -%}}
+{{%- set version_def_ref = "sshd_version_equal_or_higher_than_" ~ obsolete_since_version|replace(".", "") -%}}
+{{%- endif -%}}
 {{%- set case_insensitivity_kwargs = dict(prefix_regex="^[ \\t]*(?i)", separator_regex = "(?-i)[ \\t]+") -%}}
 
 <def-group>
@@ -1061,6 +1121,22 @@ Generates the :code:`<affected>` tag for OVAL check using correct product platfo
            definition_ref="package_openssh-server_removed" />
           {{% endif %}}
      </criteria>
+{{%- if obsolete_since_version %}}
+     <!-- Option became obsolete (hardcoded/removed) in OpenSSH {{{ obsolete_since_version }}}+ -->
+     <criteria comment="sshd installed and option is obsolete" operator="AND">
+        <extend_definition comment="sshd is required or requirement is unset"
+          definition_ref="sshd_required_or_unset" />
+        {{% if product == "sle12" %}}
+        <extend_definition comment="rpm package openssh installed"
+          definition_ref="package_openssh_installed" />
+        {{% else %}}
+        <extend_definition comment="rpm package openssh-server installed"
+          definition_ref="package_openssh-server_installed" />
+        {{% endif %}}
+        <extend_definition comment="OpenSSH Server is version {{{ obsolete_since_version }}} or higher"
+          definition_ref="{{{ version_def_ref }}}" />
+     </criteria>
+{{%- endif %}}
      <criteria comment="sshd is installed and configured" operator="AND">
         <extend_definition comment="sshd is required or requirement is unset"
           definition_ref="sshd_required_or_unset" />
@@ -1071,6 +1147,11 @@ Generates the :code:`<affected>` tag for OVAL check using correct product platfo
         <extend_definition comment="rpm package openssh-server installed"
           definition_ref="package_openssh-server_installed" />
         {{% endif %}}
+{{%- if obsolete_since_version %}}
+        <!-- Only check configuration for OpenSSH versions < {{{ obsolete_since_version }}} -->
+        <extend_definition comment="OpenSSH Server is version {{{ obsolete_since_version }}} or higher"
+          definition_ref="{{{ version_def_ref }}}" negate="true" />
+{{%- endif %}}
         <criteria comment="sshd is configured correctly" operator="AND">
           <criteria comment="the configuration is correct if it exists" operator="AND">
             {{{- oval_line_in_file_criterion(sshd_config_path, parameter, avoid_conflicting=true, rule_id=rule_id) | indent(10)}}}
@@ -1162,6 +1243,11 @@ Generates the :code:`<affected>` tag for OVAL check using correct product platfo
   </ind:textfilecontent54_test>
 
   {{% endif %}}
+
+{{%- if obsolete_since_version %}}
+  <!-- Generate OpenSSH version check for {{{ obsolete_since_version }}} -->
+{{{ sshd_version_check(obsolete_since_version) }}}
+{{%- endif %}}
 </def-group>
 {{%- endmacro %}}
 
