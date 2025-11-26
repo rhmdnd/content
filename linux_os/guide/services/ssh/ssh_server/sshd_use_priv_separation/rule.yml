@@ -52,3 +52,4 @@ template:
         parameter: UsePrivilegeSeparation
         xccdf_variable: var_sshd_priv_separation
         datatype: string
+        obsolete_since_version: "7.5"
