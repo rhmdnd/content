@@ -65,3 +65,4 @@ template:
         parameter: Protocol
         value: "2"
         datatype: int
+        obsolete_since_version: "7.0"
